@@ -1,0 +1,54 @@
+/* _content/CraneCalc.Web/Views/Home/CargoDetail.cshtml.rz.scp.css */
+.cargo-detail[b-nrg88ftgpe] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.cargo-image[b-nrg88ftgpe] {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    height: 400px;
+    object-fit: cover;
+    border: 1px solid var(--borderColor);
+}
+
+.cargo-info[b-nrg88ftgpe] {
+    background: linear-gradient(135deg, var(--cardBg) 0%, var(--cardBgHover) 100%);
+    backdrop-filter: var(--glassEffect);
+    -webkit-backdrop-filter: var(--glassEffect);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--borderColor);
+}
+
+.cargo-title[b-nrg88ftgpe] {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--textColor);
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--borderColor);
+}
+
+.cargo-specs[b-nrg88ftgpe] {
+    margin-bottom: 25px;
+}
+
+.spec-item[b-nrg88ftgpe] {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 992px) {
+    .cargo-detail[b-nrg88ftgpe] {
+        grid-template-columns: 1fr;
+    }
+}

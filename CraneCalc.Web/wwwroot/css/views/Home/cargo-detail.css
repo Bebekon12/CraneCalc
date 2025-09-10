@@ -1,0 +1,60 @@
+﻿.cargo-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.0833vh;
+    margin-bottom: 2.7778vh;
+    width: 100%;
+    max-width: 70.3125vw;
+    padding: 0 0.78125vw;
+}
+
+.cargo-image {
+    width: 100%;
+    border-radius: 0.46875vw;
+    box-shadow: 0 0.5556vh 1.7361vh rgba(0, 0, 0, 0.2);
+    height: 55.5556vh;
+    object-fit: cover;
+    border: 1px solid var(--borderColor);
+}
+
+.cargo-info {
+    background: linear-gradient(135deg, var(--cardBg) 0%, var(--cardBgHover) 100%);
+    backdrop-filter: var(--glassEffect);
+    border-radius: 0.46875vw;
+    padding: 2.0833vh 1.1719vw;
+    box-shadow: 0 0.5556vh 1.7361vh rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--borderColor);
+}
+
+.cargo-title {
+    font-family: 'Akrobat', sans-serif;
+    font-size: 1.875vw;
+    margin-bottom: 1.3889vh;
+    color: var(--textColor);
+    padding-bottom: 1.0417vh;
+    border-bottom: 1px solid var(--borderColor);
+}
+
+.spec-item-text {
+    font-family: 'Akrobat', sans-serif;
+    font-size: 0.8984375vw;
+    color: var(--textColor);
+    font-weight: 700;
+}
+
+.cargo-specs {
+    margin-bottom: 1.7361vh;
+}
+
+.model-desc {
+    font-family: 'Akrobat', sans-serif;
+    font-size: 0.8984375vw;
+    color: var(--textColor);
+}
+
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8333vh 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}

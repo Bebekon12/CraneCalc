@@ -1,0 +1,60 @@
+﻿@model CraneCalc.Web.ViewModels.HomeServicesModel
+@{
+ViewBag.Title = "CraneCalc - Каталог грузов";
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+<link href="~/css/views/Home/services.css" rel="stylesheet" />
+}
+
+<section class="hero">
+  <h1 class="hero-title">Каталог грузов</h1>
+  <p class="hero-subtitle">Выберите тип груза для расчета производительности башенного крана</p>
+
+  <form method="get" action="@Url.Action("Services", "Home")">
+    <div class="search-container">
+      <div class="search-form">
+        <input type="text" name="search" class="search-input" placeholder="Поиск грузов по названию..." value="@ViewBag.CurrentTitle" />
+        <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </form>
+</section>
+
+<div class="cards-grid">
+  @foreach (var el in Model.CargoItems)
+  {
+    <div class="rentCard">
+      <div class="rentCardPhoto">
+        <img src="@el.ImageUrl"
+             onerror="this.onerror=null; this.src='/img/default.jpg'"
+             alt="@el.Title" loading="lazy">
+      </div>
+
+      <div class="rentCardContent">
+        <div class="contentName">Тип:</div>
+        <div class="contentText">@el.Type</div>
+      </div>
+
+      <div class="rentCardContent">
+        <div class="contentName">Размеры:</div>
+        <div class="contentText">@el.Dimensions.ToString()</div>
+      </div>
+
+      <div class="rentCardContent">
+        <div class="contentName">Масса:</div>
+        <div class="contentText">@el.Weight т</div>
+      </div>
+
+      <div class="rentCardButton">
+        <a href="@Url.Action("CargoDetail", "Home", new {el.Id})" class="btn-detail">Подробнее</a>
+        @* <button class="add-to-calc">Добавить в расчет</button> *@
+      </div>
+    </div>
+  }
+</div>
+
+<a href="@Url.Action("Index", "Calculation", new {Id = 3})" class="fixed-calc-btn">
+  <i class="fas fa-calculator"></i> Перейти к расчету (@Model.Quantity)
+</a>

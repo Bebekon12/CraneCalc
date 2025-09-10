@@ -1,0 +1,21 @@
+﻿<div class="header-content">
+    <a style="text-decoration: none" href="@Url.Action("Services", "Home")" class="logo">
+        <i class="fas fa-crane"></i>CraneCalc
+    </a>
+    <div class="nav-links">
+        @* <a href="@Url.Action("Services", "Home")" *@
+        @*    class="nav-link @(ViewContext.RouteData.Values["action"]!.ToString() == "Services" ? "active" : "")"> *@
+        @*     ГЛАВНАЯ *@
+        @* </a> *@
+        @* <a href="@Url.Action("Services", "Home")" *@
+        @*    class="nav-link"> *@
+        @*     КАТАЛОГ *@
+        @* </a> *@
+        @* <a href="@Url.Action("Index", "Calculation")" *@
+        @*    class="nav-link @(ViewContext.RouteData.Values["action"]!.ToString() == "Index" *@
+        @*    && ViewContext.RouteData.Values["controller"]!.ToString() *@
+        @*    == "Calculation" ? "active" : "")"> *@
+        @*     РАСЧЕТЫ *@
+        @* </a> *@
+    </div>
+</div>

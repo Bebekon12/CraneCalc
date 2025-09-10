@@ -1,0 +1,207 @@
+﻿.page-container {
+    max-width: 85.9375vw;
+    margin: 2.0833vh auto;
+    padding: 0 2.34375vw;
+    font-family: "Montserrat", sans-serif;
+    color: var(--textColor);
+}
+
+.two-column-layout {
+    display: flex;
+    gap: 3.4722vh;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.cargo-column, .calc-column {
+    background: linear-gradient(135deg, var(--cardBg) 0%, var(--cardBgHover) 100%);
+    backdrop-filter: var(--glassEffect);
+    -webkit-backdrop-filter: var(--glassEffect);
+    border-radius: 0.46875vw;
+    padding: 2.0833vh 1.1719vw;
+    box-shadow: 0 0.6944vh 2.0833vh rgba(0,0,0,0.1);
+    flex: 1;
+    min-width: 40.34375vw;
+}
+
+.column-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.3889vh;
+    font-weight: 600;
+}
+
+.request-items {
+    width: 100%;
+}
+
+.request-item {
+    display: flex;
+    align-items: center;
+    padding: 1.3889vh;
+    background: linear-gradient(135deg, var(--cardBg) 0%, var(--cardBgHover) 100%);
+    backdrop-filter: var(--glassEffect);
+    -webkit-backdrop-filter: var(--glassEffect);
+    border-radius: 0.390625vw;
+    box-shadow: 0 0.3472vh 1.0417vh rgba(0, 0, 0, 0.15);
+    margin-bottom: 1.3889vh;
+    transition: all 0.3s;
+    border: 1px solid var(--borderColor);
+    gap: 1.3889vh;
+}
+
+.request-item:hover {
+    transform: translateY(-0.2083vh);
+    box-shadow: 0 0.5556vh 1.3889vh rgba(0, 0, 0, 0.25);
+    border-color: var(--mainColor);
+}
+
+.item-image {
+    width: 4.6875vw;
+    height: 8.3333vh;
+    object-fit: cover;
+    border-radius: 0.234375vw;
+    margin-right: 0.78125vw;
+    border: 1px solid var(--borderColor);
+}
+
+.item-details {
+    flex-grow: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4167vh;
+    word-break: break-word;
+}
+
+.item-title {
+    font-weight: 600;
+    margin-bottom: 0.5556vh;
+    font-size: 1.1rem;
+    white-space: normal;
+}
+
+.item-specs {
+    font-size: 0.9rem;
+    color: var(--textSecondary);
+    white-space: normal;
+}
+
+.item-quantity {
+    width: 2.734375vw;
+    padding: 0.6944vh;
+    border: 1px solid var(--borderColor);
+    border-radius: 0.234375vw;
+    text-align: center;
+    font-size: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--textColor);
+}
+
+.calc-form {
+    background: linear-gradient(135deg, var(--cardBg) 0%, var(--cardBgHover) 100%);
+    backdrop-filter: var(--glassEffect);
+    -webkit-backdrop-filter: var(--glassEffect);
+    border-radius: 0.46875vw;
+    padding: 2.0833vh 1.1719vw;
+    box-shadow: 0 0.5556vh 1.7361vh rgba(0, 0, 0, 0.2);
+    margin-bottom: 2.0833vh;
+    border: 1px solid var(--borderColor);
+    width: 100%;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.0833vh;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.7361vh;
+    color: var(--textColor);
+    padding-bottom: 1.0417vh;
+    border-bottom: 1px solid var(--borderColor);
+}
+
+.form-group {
+    margin-bottom: 1.3889vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.4167vh;
+    font-weight: 600;
+    color: var(--textColor);
+}
+
+.form-input {
+    height: 3.7vh;
+    width: 100%;
+    padding: 1.1111vh;
+    border: 1px solid var(--borderColor);
+    border-radius: 0.234375vw;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--textColor);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--mainColor);
+    box-shadow: 0 0 0 0.117188vw rgba(52, 152, 219, 0.3);
+}
+
+.form-result-item-quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-side {
+    display: flex;
+    align-items: center;
+    gap: 0.1953125vw;
+}
+
+.form-result {
+    display: flex;
+    background: var(--bgGradient);
+    border: 1px solid white;
+    color: white;
+    padding: 0.625vh;
+    border-radius: 0.3125vw;
+    text-align: center;
+    justify-content: right;
+    font-weight: 600;
+}
+
+.calculate-button {
+    background-color: var(--mainColor);
+    color: #fff;
+    padding: 1.25vh 1.367188vw;
+    border: none;
+    border-radius: 0.3125vw;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    width: 100%;
+    max-width: 15.625vw;
+}
+
+.calculate-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-0.1389vh);
+    box-shadow: 0 0.3472vh 1.0417vh rgba(0, 0, 0, 0.3);
+}
+
+.form-footer {
+    margin-top: 2.0833vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

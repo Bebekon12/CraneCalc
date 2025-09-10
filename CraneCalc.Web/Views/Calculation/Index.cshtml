@@ -1,0 +1,73 @@
+﻿@model List<CraneCalc.Domain.Models.CargoItem>
+@{
+    ViewBag.Title = "CraneCalc - Заявка";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <link href="~/css/views/Calculation/calculation.css" rel="stylesheet" />
+}
+
+<div class="page-container">
+    <a href="@Url.Action("Services", "Home")" class="back-button">
+        <i class="fas fa-arrow-left"></i> Назад
+    </a>
+
+    <h1>Заявка</h1>
+    <p>Дата: @DateTime.Now</p>
+    <br/>
+
+    <div class="two-column-layout">
+        <div class="cargo-column">
+            <h2 class="column-title">Грузы в заявке</h2>
+            <div class="request-items">
+                @foreach (var item in Model)
+                {
+                    <div class="request-item">
+                        <img src="@item.ImageUrl"
+                             onerror="this.onerror=null; this.src='/img/default.jpg'"
+                             alt="@item.Title" class="item-image" />
+                        <div class="item-details">
+                            <div class="item-title">@item.Title</div>
+                            <div class="item-specs">@item.Weight т | @item.Dimensions.ToString()</div>
+                            <div class="form-result-item-quantity">
+                                <div class="left-side">
+                                    Количество:
+                                    <input type="number" min="1" value="1" class="item-quantity" data-item-id="@item.Id" />
+                                </div>
+                                <div class="form-result">Результаты расчета появятся здесь</div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="calc-column">
+            <div class="calc-form">
+                <h2 class="form-title">Параметры башенного крана</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Грузоподъемность (т)</label>
+                        <input type="number" class="form-input" value="0" id="loadCapacity" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Высота подъема (м)</label>
+                        <input type="number" class="form-input" value="0" id="liftingHeight" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Вылет стрелы (м)</label>
+                        <input type="number" class="form-input" value="0" id="jibOutreach" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Скорость подъема (м/мин)</label>
+                        <input type="number" class="form-input" value="0" id="liftingSpeed" />
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    @* <button class="calculate-button">Рассчитать производительность</button> *@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

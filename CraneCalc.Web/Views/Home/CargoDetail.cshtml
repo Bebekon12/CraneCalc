@@ -1,0 +1,56 @@
+﻿@using CraneCalc.Domain.Models
+@model CargoItem
+@{
+    ViewBag.Title = "CraneCalc - Детализация груза";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@section Styles {
+    <link href="~/css/views/Home/cargo-detail.css" rel="stylesheet" />
+}
+<div class="page-container">
+    <br/>
+    <a href="@Url.Action("Services", "Home")" class="back-button"><i class="fas fa-arrow-left"></i> Назад </a>
+
+    <div class="cargo-detail">
+        <div>
+            <img src="@Model.ImageUrl"
+                 onerror="this.onerror=null; this.src='/img/default.jpg'"
+                 alt="@Model.Title" class="cargo-image">
+        </div>
+
+        <div class="cargo-info">
+            <h2 class="cargo-title">@Model.Title</h2>
+
+            <div class="cargo-specs">
+                <div class="spec-item">
+                    <span>Тип груза:</span>
+                    <span class="spec-item-text">@Model.Type</span>
+                </div>
+                <div class="spec-item">
+                    <span>Масса:</span>
+                    <span class="spec-item-text">@Model.Weight т</span>
+                </div>
+                <div class="spec-item">
+                    <span>Габариты:</span>
+                    <span class="spec-item-text">@Model.Dimensions.ToString()</span>
+                </div>
+                <div class="spec-item">
+                    <span>Объем:</span>
+                    <span class="spec-item-text">@Model.Volume м³</span>
+                </div>
+                <div class="spec-item">
+                    <span>Марка бетона:</span>
+                    <span class="spec-item-text">@Model.ConcreteGrade</span>
+                </div>
+            </div>
+
+            <p style="margin-bottom: 20px;" class="model-desc">
+                @Model.Description
+            </p>
+
+            @* <button class="btn add-to-calc">Добавить к расчету</button> *@
+        </div>
+    </div>
+</div>

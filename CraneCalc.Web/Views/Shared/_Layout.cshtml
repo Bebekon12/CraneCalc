@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    @await Html.PartialAsync("_MetaTagsPartial")
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+<header class="header">
+    @{ await Html.RenderPartialAsync("_HeaderPartial"); }
+</header>
+
+<main>
+    @RenderBody()
+</main>
+
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,238 @@
+﻿.hero {
+    text-align: center;
+    padding: 4.1667vh 0.78125vw 2.7778vh 0.78125vw;
+    width: 100%;
+    max-width: 35.15625vw;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 1.75vw;
+    font-weight: 800;
+    margin-bottom: 1.0417vh;
+    background: var(--textColor);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.0391vw;
+}
+
+.hero-subtitle {
+    font-size: 0.75vw;
+    color: var(--textSecondary);
+    margin-bottom: 2.7778vh;
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 23.4375vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-container {
+    width: 100%;
+    max-width: 27.34375vw;
+    margin: 0 auto 2.7778vh;
+    position: relative;
+}
+
+.search-form {
+    display: flex;
+    background: rgba(30, 30, 30, 0.6);
+    backdrop-filter: var(--glassEffect);
+    -webkit-backdrop-filter: var(--glassEffect);
+    border-radius: 1.953125vw;
+    overflow: hidden;
+    border: 1px solid var(--borderColor);
+    transition: all 0.3s ease;
+}
+
+.search-form:focus-within {
+    box-shadow: 0 0 0 0.078125vw var(--mainColorLight);
+    transform: translateY(-0.1389vh);
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 1.1111vh 0.9766vw;
+    border: none;
+    font-size: 0.6875vw;
+    background: transparent;
+    color: var(--textColor);
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-btn {
+    background: var(--mainColor);
+    font-size: 0.78125vw;
+    color: white;
+    border: none;
+    padding: 0 0.9766vw;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-btn:hover {
+    background: var(--mainColorLight);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17.578125vw, 1fr));
+    gap: 2.0833vh;
+    max-width: 70.3125vw;
+    margin: 0 auto;
+    padding: 2.0833vh;
+}
+
+.rentCard {
+    background: var(--bgGradient);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    display: flex;
+    border-radius: 0.46875vw;
+    flex-direction: column;
+    height: 100%;
+    min-height: 48.6111vh;
+    box-shadow: 0 0.6944vh 2.0833vh rgba(0, 0, 0, 0.4);
+}
+
+.rentCardPhoto {
+    width: 100%;
+    height: 31.25vh;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    background: var(--bgGradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.rentCardPhoto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.rentCardContent {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    min-height: 4.1667vh;
+    flex-shrink: 0;
+}
+
+.contentName {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    padding: 1.0417vh 0.5859vw;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.625vw;
+    font-weight: 300;
+    box-sizing: border-box;
+}
+
+.contentText {
+    font-family: 'Akrobat', sans-serif;
+    font-size: 0.8984375vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    padding: 1.0417vh 0.5859vw;
+    font-weight: 700;
+    color: #fff;
+    box-sizing: border-box;
+    text-transform: uppercase;
+}
+
+.rentCardButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 4.8611vh;
+    font-size: 0.6640625vw;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 800;
+    color: #fff;
+    background-color: #ff5000;
+    cursor: pointer;
+    transition: background-color 0.25s;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.rentCardButton a,
+.rentCardButton button {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+    font: inherit;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+
+.rentCardButton a:hover,
+.rentCardButton button:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.rentCardButton a {
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(1.3889vh); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fixed-calc-btn {
+    position: fixed;
+    right: 1.1719vw;
+    bottom: 2.0833vh;
+    background: var(--mainColor);
+    color: white;
+    border: none;
+    border-radius: 1.953125vw;
+    padding: 1.1111vh 1.09375vw;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 0.3472vh 1.0417vh rgba(255, 80, 0, 0.4);
+    display: flex;
+    align-items: center;
+    z-index: 99;
+    font-size: 0.75vw;
+}
+
+.fixed-calc-btn:hover {
+    background: var(--mainColorLight);
+    box-shadow: 0 0.5556vh 1.3889vh rgba(255, 80, 0, 0.5);
+}
+
+.fixed-calc-btn i {
+    margin-right: 0.3125vw;
+}

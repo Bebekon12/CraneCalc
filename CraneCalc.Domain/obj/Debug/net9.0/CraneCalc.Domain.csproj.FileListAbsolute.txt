@@ -1,0 +1,22 @@
+C:\Users\0\OneDrive\Desktop\RIP\1 лаба\CraneCalc\CraneCalc.Domain\bin\Debug\net9.0\CraneCalc.Domain.deps.json
+C:\Users\0\OneDrive\Desktop\RIP\1 лаба\CraneCalc\CraneCalc.Domain\bin\Debug\net9.0\CraneCalc.Domain.dll
+C:\Users\0\OneDrive\Desktop\RIP\1 лаба\CraneCalc\CraneCalc.Domain\bin\Debug\net9.0\CraneCalc.Domain.pdb
+C:\Users\0\OneDrive\Desktop\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\CraneCalc.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\0\OneDrive\Desktop\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\CraneCalc.Domain.AssemblyInfoInputs.cache
+C:\Users\0\OneDrive\Desktop\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\CraneCalc.Domain.AssemblyInfo.cs
+C:\Users\0\OneDrive\Desktop\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\CraneCalc.Domain.csproj.CoreCompileInputs.cache
+C:\Users\0\OneDrive\Desktop\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\CraneCalc.Domain.dll
+C:\Users\0\OneDrive\Desktop\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\refint\CraneCalc.Domain.dll
+C:\Users\0\OneDrive\Desktop\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\CraneCalc.Domain.pdb
+C:\Users\0\OneDrive\Desktop\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\ref\CraneCalc.Domain.dll
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Domain\bin\Debug\net9.0\CraneCalc.Domain.deps.json
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Domain\bin\Debug\net9.0\CraneCalc.Domain.dll
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Domain\bin\Debug\net9.0\CraneCalc.Domain.pdb
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\CraneCalc.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\CraneCalc.Domain.AssemblyInfoInputs.cache
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\CraneCalc.Domain.AssemblyInfo.cs
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\CraneCalc.Domain.csproj.CoreCompileInputs.cache
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\CraneCalc.Domain.dll
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\refint\CraneCalc.Domain.dll
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\CraneCalc.Domain.pdb
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Domain\obj\Debug\net9.0\ref\CraneCalc.Domain.dll

@@ -1,0 +1,63 @@
+﻿.header {
+    width: 100%;
+    background: var(--headerBg);
+    padding: 1.0417vh 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.logo {
+    margin-left: 4.6875vw;
+    display: flex;
+    font-weight: 700;
+    font-size: 1.5625vw;
+    color: var(--textColor);
+    text-transform: uppercase;
+    letter-spacing: 0.0391vw;
+}
+
+.logo i {
+    font-size: 1.25vw;
+    color: var(--mainColor);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.1719vw;
+}
+
+.nav-link {
+    color: var(--textSecondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.625vw;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.3472vh 0;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--textColor);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0.1389vh;
+    background: var(--mainColor);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}

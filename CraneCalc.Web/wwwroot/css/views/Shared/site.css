@@ -1,0 +1,85 @@
+@font-face {
+  font-family: 'Akrobat';
+  src: url('../../../fonts/ofont.ru_Akrobat.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+html {
+  font-size: 0.625vw;
+}
+
+:root {
+  --mainColor: rgba(255, 80, 0, 1);
+  --mainColorLight: rgba(255, 80, 0, 0.7);
+  --bgGradient: radial-gradient(rgba(57, 58, 58, 1) 0%, rgba(14, 14, 14, 1));
+  --headerBg: linear-gradient(to right, rgba(33, 32, 32, 1), rgba(18, 12, 12, 1), rgba(18, 12, 12, 1));;
+  --cardBg: rgba(35, 35, 35, 0.7);
+  --cardBgHover: rgba(45, 45, 45, 0.8);
+  --textColor: #fff;
+  --textSecondary: rgba(255, 255, 255, 0.7);
+  --borderColor: rgba(255,255,255,0.15);
+  --glassEffect: blur(0.390625vw);
+}
+
+body {
+  margin: 0;
+  background: var(--bgGradient);
+  background-attachment: fixed;
+  color: var(--textColor);
+  overflow-x: hidden;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  color: var(--bgGradient);
+  border: 1px solid white;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 1.7361vh;
+  padding: 1.0417vh 0.78125vw;
+  background: rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.back-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.back-button:hover {
+  color: black;
+}
+
+.back-button:hover::before {
+  transform: scaleX(1);
+  transform-origin: right;
+}
+
+.back-button i {
+  margin-right: 0.3125vw;
+  transition: color 0.3s;
+}
