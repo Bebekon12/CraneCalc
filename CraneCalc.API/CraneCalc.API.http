@@ -1,0 +1,6 @@
+@CraneCalc.API_HostAddress = http://localhost:5069
+
+GET {{CraneCalc.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

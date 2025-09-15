@@ -1,0 +1,157 @@
+﻿@model List<CraneCalc.Domain.Models.Cargo>
+@{
+    ViewBag.Title = "CraneCalc - Заявка";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <link href="~/css/views/Calculation/calculation.css" rel="stylesheet" />
+}
+
+<div class="page-container">
+    <div class="page-header">
+        <h1>Заявка</h1>
+        <button id="removeCartBtn" class="btn-delete-cart">
+            <i class="fas fa-trash"></i> Удалить заявку
+        </button>
+    </div>
+    <p>Дата: @DateTime.Now</p>
+    <br/>
+    
+    <div class="crane-params-section">
+        <h2>Параметры башенного крана</h2>
+        <br/>
+        <div class="crane-params-grid">
+            <div class="param-group">
+                <label>Грузоподъемность (т)</label>
+                <input type="number" value="0" id="loadCapacity" />
+            </div>
+            <div class="param-group">
+                <label>Высота подъема (м)</label>
+                <input type="number" value="0" id="liftingHeight" />
+            </div>
+            <div class="param-group">
+                <label>Вылет стрелы (м)</label>
+                <input type="number" value="0" id="jibOutreach" />
+            </div>
+            <div class="param-group">
+                <label>Скорость подъема (м/мин)</label>
+                <input type="number" value="0" id="liftingSpeed" />
+            </div>
+            <div class="param-group result">
+                <label>Результат 1</label>
+                <div class="result-value">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="two-column-layout">
+        <div class="cargo-column">
+            <h2 class="column-title">Грузы в заявке</h2>
+            <div class="request-items">
+                @foreach (var item in Model)
+                {
+                    <div class="request-item">
+                        <img src="@item.ImageUrl"
+                             onerror="this.onerror=null; this.src='/img/default.jpg'"
+                             alt="@item.Title" class="item-image" />
+                        <div class="item-details">
+                            <div class="text-in-card">
+                                <div class="item-title">@item.Title</div>
+                                <div class="item-specs">@item.Weight т | @item.Dimensions.ToString()</div>
+                            </div>
+                            <div class="form-result-item">
+                                <div class="safety-comment">
+                                    <label>Комментарий по технике безопасности:</label>
+                                    <textarea class="item-comment" data-item-id="@item.Id"></textarea>
+                                </div>
+                                <div class="form-result">
+                                    <div class="result-label">Результат 2:</div>
+                                    <div class="result-value">0</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="remove-item-btn" data-item-id="@item.Id">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Обработчик для кнопки удаления корзины
+        const removeCartBtn = document.getElementById('removeCartBtn');
+        if (removeCartBtn) {
+            removeCartBtn.addEventListener('click', function() {
+                if (confirm('Вы уверены, что хотите удалить всю заявку? Это действие нельзя отменить.')) {
+                    removeCartBtn.disabled = true;
+                    removeCartBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Удаление...';
+
+                    fetch(`/remove-cart`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('Заявка успешно удалена');
+                            // Перенаправляем на главную страницу
+                            window.location.href = data.redirectUrl;
+                        } else {
+                            alert('Ошибка при удалении заявки');
+                            removeCartBtn.disabled = false;
+                            removeCartBtn.innerHTML = '<i class="fas fa-trash"></i> Удалить заявку';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Произошла ошибка при удалении заявки');
+                        removeCartBtn.disabled = false;
+                        removeCartBtn.innerHTML = '<i class="fas fa-trash"></i> Удалить заявку';
+                    });
+                }
+            });
+        }
+        
+        // Обработчик для кнопок удаления отдельных элементов
+        document.querySelectorAll('.remove-item-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const cargoId = this.dataset.itemId;
+                
+                if(confirm('Вы уверены, что хотите удалить груз из заявки?')) {
+                    fetch(`/remove-cargo-from-cart/${cargoId}`, {
+                        method: 'POST',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Удаляем элемент из DOM
+                            this.closest('.request-item').remove();
+                            
+                            // Обновляем итоговые данные если нужно
+                            updateTotals();
+                        } else {
+                            alert('Ошибка при удалении груза');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                }
+            });
+        });
+        
+        function updateTotals() {
+            // Добавьте здесь логику обновления итоговых значений
+            // Например, пересчет общего веса или стоимости
+        }
+    });
+    </script>
+}
