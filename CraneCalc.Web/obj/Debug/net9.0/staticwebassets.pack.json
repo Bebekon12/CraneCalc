@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\fonts\\ofont.ru_Akrobat.ttf"
     },
     {
+      "Id": "D:\\Универ\\3 курс\\RIP\\1 лаба\\CraneCalc\\CraneCalc.Web\\wwwroot\\ico\\crane.png",
+      "PackagePath": "staticwebassets\\ico\\crane.png"
+    },
+    {
       "Id": "D:\\Универ\\3 курс\\RIP\\1 лаба\\CraneCalc\\CraneCalc.Web\\wwwroot\\img\\default.jpg",
       "PackagePath": "staticwebassets\\img\\default.jpg"
     },

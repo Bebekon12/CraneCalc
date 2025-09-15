@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CraneCalc.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c0f1b0bd98d4870150c01088a038e2ba81bce1c")]
 [assembly: System.Reflection.AssemblyProductAttribute("CraneCalc.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CraneCalc.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

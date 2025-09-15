@@ -7,8 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Interfaces\" />
+      <Folder Include="Dtos\Response\" />
       <Folder Include="Services\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CraneCalc.Domain\CraneCalc.Domain.csproj" />
     </ItemGroup>
 
 </Project>

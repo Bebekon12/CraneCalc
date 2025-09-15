@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Универ\\3 курс\\RIP\\1 лаба\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj",
+      "projectUniqueName": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj",
       "projectName": "CraneCalc.Domain",
-      "projectPath": "D:\\Универ\\3 курс\\RIP\\1 лаба\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj",
+      "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj",
       "packagesPath": "C:\\Users\\artur\\.nuget\\packages\\",
-      "outputPath": "D:\\Универ\\3 курс\\RIP\\1 лаба\\CraneCalc\\CraneCalc.Domain\\obj\\",
+      "outputPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "UsingMicrosoftNETSdk": false,
       "fallbackFolders": [

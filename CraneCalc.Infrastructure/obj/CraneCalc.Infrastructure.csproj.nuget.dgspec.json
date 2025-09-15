@@ -1,17 +1,85 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Универ\\3 курс\\RIP\\1 лаба\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj": {}
+    "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\Универ\\3 курс\\RIP\\1 лаба\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj": {
+    "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Универ\\3 курс\\RIP\\1 лаба\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj",
-        "projectName": "CraneCalc.Infrastructure",
-        "projectPath": "D:\\Универ\\3 курс\\RIP\\1 лаба\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj",
+        "projectUniqueName": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj",
+        "projectName": "CraneCalc.Application",
+        "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj",
         "packagesPath": "C:\\Users\\artur\\.nuget\\packages\\",
-        "outputPath": "D:\\Универ\\3 курс\\RIP\\1 лаба\\CraneCalc\\CraneCalc.Infrastructure\\obj\\",
+        "outputPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
+        "fallbackFolders": [
+          "D:\\VisualStudio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\artur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj": {
+                "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj",
+        "projectName": "CraneCalc.Domain",
+        "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj",
+        "packagesPath": "C:\\Users\\artur\\.nuget\\packages\\",
+        "outputPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "UsingMicrosoftNETSdk": false,
         "fallbackFolders": [
@@ -48,6 +116,97 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj",
+        "projectName": "CraneCalc.Infrastructure",
+        "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\artur\\.nuget\\packages\\",
+        "outputPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
+        "fallbackFolders": [
+          "D:\\VisualStudio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\artur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj": {
+                "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj"
+              },
+              "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj": {
+                "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

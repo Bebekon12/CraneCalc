@@ -1,9 +1,8 @@
 ﻿@using CraneCalc.Domain.Models
-@model CargoItem
+@model Cargo
 @{
     ViewBag.Title = "CraneCalc - Детализация груза";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
 
 @section Styles {
@@ -11,8 +10,6 @@
 }
 <div class="page-container">
     <br/>
-    <a href="@Url.Action("Services", "Home")" class="back-button"><i class="fas fa-arrow-left"></i> Назад </a>
-
     <div class="cargo-detail">
         <div>
             <img src="@Model.ImageUrl"

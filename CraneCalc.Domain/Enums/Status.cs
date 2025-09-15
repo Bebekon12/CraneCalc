@@ -2,6 +2,9 @@
 
 public enum Status
 {
-    New = 1,
-    Done = 2,
+    Draft = 0,      // Черновик
+    Deleted = 1,    // Удалён
+    Formed = 2,     // Сформирован
+    Completed = 3,  // Завершён
+    Rejected = 4    // Отклонён
 }

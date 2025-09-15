@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "CraneCalc.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/CraneCalc.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CraneCalc.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "CraneCalc.Domain/1.0.0": {
+      "type": "project",
+      "path": "../CraneCalc.Domain/CraneCalc.Domain.csproj",
+      "msbuildProject": "../CraneCalc.Domain/CraneCalc.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "CraneCalc.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\artur\\.nuget\\packages\\": {},
@@ -14,11 +33,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Универ\\3 курс\\RIP\\1 лаба\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj",
+      "projectUniqueName": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj",
       "projectName": "CraneCalc.Application",
-      "projectPath": "D:\\Универ\\3 курс\\RIP\\1 лаба\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj",
+      "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj",
       "packagesPath": "C:\\Users\\artur\\.nuget\\packages\\",
-      "outputPath": "D:\\Универ\\3 курс\\RIP\\1 лаба\\CraneCalc\\CraneCalc.Application\\obj\\",
+      "outputPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\obj\\",
       "projectStyle": "PackageReference",
       "UsingMicrosoftNETSdk": false,
       "fallbackFolders": [
@@ -38,7 +57,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj": {
+              "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

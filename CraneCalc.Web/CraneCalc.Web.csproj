@@ -4,14 +4,21 @@
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>CraneCalc.Web</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\CraneCalc.Application\CraneCalc.Application.csproj" />
       <ProjectReference Include="..\CraneCalc.Domain\CraneCalc.Domain.csproj" />
+      <ProjectReference Include="..\CraneCalc.Infrastructure\CraneCalc.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="wwwroot\fonts\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
     </ItemGroup>
 
 </Project>

@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>7jjpsqpqgq</Fingerprint>
-      <Integrity>3XwI7AIGUu3XrIf/IJ7MVEKPmHkc/WSEi0qnbP1BwqU=</Integrity>
+      <Fingerprint>wdc3ods8j4</Fingerprint>
+      <Integrity>jHIBwM4VxSL/sMnS+cq8VsXCwmyLPQRAeTtcNE2Ewpk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\views\Calculation\calculation.css'))</OriginalItemSpec>
@@ -48,8 +48,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>4ukc0z5xn0</Fingerprint>
-      <Integrity>fPDF6VoZvl4C+9Xhc32qUC5u6fMNoLHPUKOuOhVBdCo=</Integrity>
+      <Fingerprint>2ses1tuyd9</Fingerprint>
+      <Integrity>0s7rIWDSU3d/+TNLMsTxSzy+PIzd350FMvUfJtwZ/uU=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\views\Home\services.css'))</OriginalItemSpec>
@@ -125,6 +125,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\fonts\ofont.ru_Akrobat.ttf'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ico\crane.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>CraneCalc.Web</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CraneCalc.Web</BasePath>
+      <RelativePath>ico/crane.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>yo5rx8rv9m</Fingerprint>
+      <Integrity>bll4LZPjgN3m13cuzJHegra6RdZzK40MKO77ROhT22k=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ico\crane.png'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\default.jpg'))">
       <SourceType>Package</SourceType>

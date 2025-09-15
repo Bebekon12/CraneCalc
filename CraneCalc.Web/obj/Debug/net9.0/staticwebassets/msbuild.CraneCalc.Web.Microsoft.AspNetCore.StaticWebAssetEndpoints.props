@@ -1,16 +1,16 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAssetEndpoint Include="_content/CraneCalc.Web/css/views/Calculation/calculation.7jjpsqpqgq.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\views\Calculation\calculation.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"7jjpsqpqgq"},{"Name":"integrity","Value":"sha256-3XwI7AIGUu3XrIf/IJ7MVEKPmHkc/WSEi0qnbP1BwqU="},{"Name":"label","Value":"_content/CraneCalc.Web/css/views/Calculation/calculation.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"4713"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00223XwI7AIGUu3XrIf/IJ7MVEKPmHkc/WSEi0qnbP1BwqU=\u0022"},{"Name":"Last-Modified","Value":"Tue, 09 Sep 2025 21:05:56 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/CraneCalc.Web/css/views/Calculation/calculation.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\views\Calculation\calculation.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-3XwI7AIGUu3XrIf/IJ7MVEKPmHkc/WSEi0qnbP1BwqU="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4713"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00223XwI7AIGUu3XrIf/IJ7MVEKPmHkc/WSEi0qnbP1BwqU=\u0022"},{"Name":"Last-Modified","Value":"Tue, 09 Sep 2025 21:05:56 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-jHIBwM4VxSL/sMnS\u002Bcq8VsXCwmyLPQRAeTtcNE2Ewpk="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"5472"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022jHIBwM4VxSL/sMnS\u002Bcq8VsXCwmyLPQRAeTtcNE2Ewpk=\u0022"},{"Name":"Last-Modified","Value":"Mon, 15 Sep 2025 15:36:07 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/CraneCalc.Web/css/views/Calculation/calculation.wdc3ods8j4.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\views\Calculation\calculation.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"wdc3ods8j4"},{"Name":"integrity","Value":"sha256-jHIBwM4VxSL/sMnS\u002Bcq8VsXCwmyLPQRAeTtcNE2Ewpk="},{"Name":"label","Value":"_content/CraneCalc.Web/css/views/Calculation/calculation.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"5472"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022jHIBwM4VxSL/sMnS\u002Bcq8VsXCwmyLPQRAeTtcNE2Ewpk=\u0022"},{"Name":"Last-Modified","Value":"Mon, 15 Sep 2025 15:36:07 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/CraneCalc.Web/css/views/Home/cargo-detail.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\views\Home\cargo-detail.css'))</AssetFile>
@@ -24,17 +24,17 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"y7hrfs4nqv"},{"Name":"integrity","Value":"sha256-7u6H2wnO/OU\u002B0BgpbPKAsjwNcKKCjLKtTYidY8zDsYY="},{"Name":"label","Value":"_content/CraneCalc.Web/css/views/Home/cargo-detail.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1433"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00227u6H2wnO/OU\u002B0BgpbPKAsjwNcKKCjLKtTYidY8zDsYY=\u0022"},{"Name":"Last-Modified","Value":"Sun, 07 Sep 2025 22:02:30 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/CraneCalc.Web/css/views/Home/services.4ukc0z5xn0.css">
+    <StaticWebAssetEndpoint Include="_content/CraneCalc.Web/css/views/Home/services.2ses1tuyd9.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\views\Home\services.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"4ukc0z5xn0"},{"Name":"integrity","Value":"sha256-fPDF6VoZvl4C\u002B9Xhc32qUC5u6fMNoLHPUKOuOhVBdCo="},{"Name":"label","Value":"_content/CraneCalc.Web/css/views/Home/services.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"5308"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022fPDF6VoZvl4C\u002B9Xhc32qUC5u6fMNoLHPUKOuOhVBdCo=\u0022"},{"Name":"Last-Modified","Value":"Sun, 07 Sep 2025 22:00:46 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"2ses1tuyd9"},{"Name":"integrity","Value":"sha256-0s7rIWDSU3d/\u002BTNLMsTxSzy\u002BPIzd350FMvUfJtwZ/uU="},{"Name":"label","Value":"_content/CraneCalc.Web/css/views/Home/services.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6285"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00220s7rIWDSU3d/\u002BTNLMsTxSzy\u002BPIzd350FMvUfJtwZ/uU=\u0022"},{"Name":"Last-Modified","Value":"Mon, 15 Sep 2025 16:17:36 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/CraneCalc.Web/css/views/Home/services.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\views\Home\services.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-fPDF6VoZvl4C\u002B9Xhc32qUC5u6fMNoLHPUKOuOhVBdCo="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"5308"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022fPDF6VoZvl4C\u002B9Xhc32qUC5u6fMNoLHPUKOuOhVBdCo=\u0022"},{"Name":"Last-Modified","Value":"Sun, 07 Sep 2025 22:00:46 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-0s7rIWDSU3d/\u002BTNLMsTxSzy\u002BPIzd350FMvUfJtwZ/uU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"6285"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00220s7rIWDSU3d/\u002BTNLMsTxSzy\u002BPIzd350FMvUfJtwZ/uU=\u0022"},{"Name":"Last-Modified","Value":"Mon, 15 Sep 2025 16:17:36 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/CraneCalc.Web/css/views/Shared/header.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\views\Shared\header.css'))</AssetFile>
@@ -83,6 +83,18 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"xc5h1iqwis"},{"Name":"integrity","Value":"sha256-Yf52niAsbclkHsJptXpIO4FPoKNPicnKiK4p2bSCmx0="},{"Name":"label","Value":"_content/CraneCalc.Web/fonts/ofont.ru_Akrobat.ttf"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"43624"},{"Name":"Content-Type","Value":"application/x-font-ttf"},{"Name":"ETag","Value":"\u0022Yf52niAsbclkHsJptXpIO4FPoKNPicnKiK4p2bSCmx0=\u0022"},{"Name":"Last-Modified","Value":"Sun, 07 Sep 2025 10:57:14 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/CraneCalc.Web/ico/crane.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ico\crane.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-bll4LZPjgN3m13cuzJHegra6RdZzK40MKO77ROhT22k="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1366"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022bll4LZPjgN3m13cuzJHegra6RdZzK40MKO77ROhT22k=\u0022"},{"Name":"Last-Modified","Value":"Sat, 13 Sep 2025 17:29:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/CraneCalc.Web/ico/crane.yo5rx8rv9m.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ico\crane.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"yo5rx8rv9m"},{"Name":"integrity","Value":"sha256-bll4LZPjgN3m13cuzJHegra6RdZzK40MKO77ROhT22k="},{"Name":"label","Value":"_content/CraneCalc.Web/ico/crane.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1366"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022bll4LZPjgN3m13cuzJHegra6RdZzK40MKO77ROhT22k=\u0022"},{"Name":"Last-Modified","Value":"Sat, 13 Sep 2025 17:29:53 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/CraneCalc.Web/img/default.a2ghqshof1.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\default.jpg'))</AssetFile>
