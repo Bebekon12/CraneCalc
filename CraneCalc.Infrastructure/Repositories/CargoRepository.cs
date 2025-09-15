@@ -1,4 +1,5 @@
-﻿using CraneCalc.Application.Interfaces;
+﻿using CraneCalc.Application.Dtos.Request;
+using CraneCalc.Application.Interfaces;
 using CraneCalc.Domain.Models;
 using CraneCalc.Infrastructure.Entities;
 using CraneCalc.Infrastructure.EntityMappers;
@@ -6,7 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CraneCalc.Infrastructure.Repositories;
 
-public class CargoRepository(AppDbContext context) : ICargoRepository
+public class CargoRepository(
+        AppDbContext context,
+        IFileStorageService storageService) : ICargoRepository
 {
     public async Task<List<Cargo>> GetCargosPaginatedAsync(int pageNumber, int pageSize, CancellationToken ct)
     {
@@ -19,34 +22,72 @@ public class CargoRepository(AppDbContext context) : ICargoRepository
         return cargosPaginated;
     }
 
-    public async Task<List<Cargo>> GetCargosAsync(CancellationToken ct)
+    public async Task<Cargo> CreateCargoAsync(Cargo cargo, CancellationToken ct)
     {
-        var cargos = await context.Cargos
-            .Select(c=>c.Map())
-            .ToListAsync(ct);
+        var cargoEntity = cargo.Map();
         
-        return cargos;
+        await context.Cargos.AddAsync(cargoEntity, ct);
+        await context.SaveChangesAsync(ct);
+        
+        return cargo;
     }
 
-    public async Task<List<Cargo>> GetCargosSearchAsync(string search, CancellationToken ct)
+    public async Task<Cargo?> UpdateCargoAsync(Guid id, UpdateCargoRequest cargo, CancellationToken ct)
     {
-        if (string.IsNullOrEmpty(search))
-        {
-            return await context.Cargos
-                .Select(c => c.Map())
-                .ToListAsync(ct);
-        }
+        var cargoEntity = await context.Cargos
+            .FirstOrDefaultAsync(c=>c.Id==id,ct);
 
-        var cargos = await context.Cargos
-            .Where(c => 
-                EF.Functions.Like(c.Type, $"%{search}%") || 
-                EF.Functions.Like(c.Title, $"%{search}%"))
-            .Select(c => c.Map())
-            .ToListAsync(ct);
-    
-        return cargos;
+        if (cargoEntity == null)
+            return null;
+        
+        if(cargo.Type!=string.Empty && cargo.Type!=cargoEntity.Type)
+            cargoEntity.Type = cargo.Type;
+        
+        if(cargo.Title!=string.Empty && cargo.Title!=cargoEntity.Title)
+            cargoEntity.Title = cargo.Title;
+        
+        if(cargo.Description!=string.Empty && cargo.Description!=cargoEntity.Description)
+            cargoEntity.Description = cargo.Description;
+        
+        if(cargo.Height!=0 && Math.Abs(cargo.Height - cargoEntity.Height) > 0)
+            cargoEntity.Height = cargo.Height;
+        
+        if(cargo.Weight!=0 && Math.Abs(cargo.Weight - cargoEntity.Weight) > 0)
+            cargoEntity.Weight = cargo.Weight;
+        
+        if(cargo.Length!=0 && Math.Abs(cargo.Length - cargoEntity.Length) > 0)
+            cargoEntity.Length = cargo.Length;
+        
+        if(cargo.Width!=0 && Math.Abs(cargo.Width - cargoEntity.Width) > 0)
+            cargoEntity.Width = cargo.Width;
+        
+        if(cargo.ConcreteGrade!=string.Empty && cargo.ConcreteGrade!=cargoEntity.ConcreteGrade)
+            cargoEntity.ConcreteGrade = cargo.ConcreteGrade;
+        
+        if(cargo.Volume!=0 && Math.Abs(cargo.Volume - cargoEntity.Volume) > 0)
+            cargoEntity.Volume = cargo.Volume;
+        
+        await context.SaveChangesAsync(ct);
+        return cargoEntity.Map();
     }
 
+    public async Task DeleteCargoAsync(Guid id, CancellationToken ct)
+    {
+        var cargo = await context.Cargos
+            .FirstOrDefaultAsync(c => c.Id == id, ct);
+        
+        if (cargo == null)
+            throw new Exception($"Cargo with id:{id} not found");
+        
+        if (!string.IsNullOrEmpty(cargo.ImageUrl))
+        {
+            await storageService.DeletePhotoAsync(cargo.ImageUrl, ct);
+        }
+        
+        context.Cargos.Remove(cargo);
+        await context.SaveChangesAsync(ct);
+    }
+    
     public async Task<Cargo> GetCargoByIdAsync(Guid id, CancellationToken ct)
     {
         var cargo = await context.Cargos
@@ -58,28 +99,72 @@ public class CargoRepository(AppDbContext context) : ICargoRepository
         return cargo.Map();
     }
 
-    public async Task PutCargoInCartAsync(Guid cargoId, Guid cartId, CancellationToken ct)
+    public async Task PutCargoInCartAsync(Guid cargoId, CancellationToken ct)
     {
         var cargo = await context.Cargos.FirstOrDefaultAsync(c => c.Id == cargoId, ct);
         
         if(cargo == null)
             throw new NullReferenceException("Cargo");
-        
-        var cart = await context.Carts.FirstOrDefaultAsync(c => c.Id == cartId, ct);
-        
-        if(cart == null)
-            throw new NullReferenceException("Cart");
-        
-        cart.CartCargo.Add(new CartCargoEntity
+
+        var cart = await context.Carts
+            .FirstOrDefaultAsync(c => c.CreatorId == 1, ct);
+
+        if(cart != null)
         {
-            CartId = cartId,
+            cart.CartCargo.Add(new CartCargoEntity
+            {
+                CartId = cart.Id,
+                CargoId = cargoId,
+                Cargo = cargo,
+                Cart = cart,
+                CalculationResult = 0,
+                SafetyComment = string.Empty,
+            });
+            
+            await context.SaveChangesAsync(ct);
+            
+            return;
+        }
+
+        var newCart = new CartEntity
+        {
+            Id = Guid.NewGuid(),
+        };
+        
+        newCart.CartCargo.Add(new CartCargoEntity
+        {
+            CartId = newCart.Id,
             CargoId = cargoId,
             Cargo = cargo,
-            Cart = cart,
+            Cart = newCart,
             CalculationResult = 0,
             SafetyComment = string.Empty,
         });
         
+        await context.Carts.AddAsync(newCart, ct);
         await context.SaveChangesAsync(ct);
+    }
+
+    public async Task<string> AddOrUpdateCargoPhotoAsync(Guid cargoId, Stream fileStream, CancellationToken ct)
+    {
+        var cargo = await context.Cargos
+            .FirstOrDefaultAsync(c => c.Id == cargoId, ct);
+        
+        if (cargo == null)
+            throw new Exception($"Cargo with id:{cargoId} not found");
+
+        var newFileName = await storageService.GenerateFileName();
+        
+        await storageService.UploadPhotoAsync(fileStream, newFileName, ct);
+        
+        if (!string.IsNullOrEmpty(cargo.ImageUrl))
+        {
+            await storageService.DeletePhotoAsync(cargo.ImageUrl, ct);
+        }
+        
+        cargo.ImageUrl = newFileName;
+        await context.SaveChangesAsync(ct);
+        
+        return newFileName;
     }
 }

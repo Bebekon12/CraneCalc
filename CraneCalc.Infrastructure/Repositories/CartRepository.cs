@@ -29,6 +29,18 @@ public class CartRepository(AppDbContext context) : ICartRepository
         return cart?.Map();
     }
 
+    public async Task<List<Cart>> GetFilteredCartsAsync(DateTime from, DateTime before, CancellationToken ct)
+    {
+        var carts = await context.Carts
+            .Include(c=>c.CartCargo.Where(cc => !cc.IsDeleted))
+            .ThenInclude(cc=>cc.Cargo)
+            .Where(c => !c.IsDeleted && c.CreatedDate >= from && c.CreatedDate <= before)
+            .Select(c=>c.Map())
+            .ToListAsync(ct);
+        
+        return carts;
+    }
+
     public async Task<Cart> CreateCartAsync(Cart cart, CancellationToken ct)
     {
         var requestEntity = cart.Map();

@@ -11,6 +11,7 @@ services.AddSwaggerGen();
 
 services.AddDbContextExtensions(configuration);
 services.AddRepository();
+services.AddMinioExtension(configuration);
 
 var app = builder.Build();
 
@@ -23,8 +24,7 @@ using (var scope = app.Services.CreateScope())
 app.UseHttpsRedirection();
 app.UseRouting();
 
-app.UseAuthentication();
-app.UseAuthorization();
+//authorize authentication
 
 app.MapControllers();
 

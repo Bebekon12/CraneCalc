@@ -2,25 +2,25 @@
 
 public class Cargo
 {
-    public Guid Id { get; init; }
-    public string Title { get; init; } = string.Empty;
-    public string Type { get; init; } = string.Empty;
-    public double Weight { get; init; }
-    public Dimensions Dimensions { get; init; } = new();
+    public Guid Id { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public string Type { get; set; } = string.Empty;
+    public double Weight { get; set; }
+    public Dimensions Dimensions { get; set; } = new();
     
-    public bool IsDeleted { get; init; }
+    public bool IsDeleted { get; set; }
     
-    public double Volume { get; init; }
-    public string ConcreteGrade { get; init; } = string.Empty;
-    public string Description { get; init; } = string.Empty;
-    public string? ImageUrl { get; init; } = string.Empty;
+    public double Volume { get; set; }
+    public string ConcreteGrade { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public string? ImageUrl { get; set; } = string.Empty;
 }
 
 public class Dimensions
 {
-    public double Length { get; init; }
-    public double Width { get; init; }
-    public double Height { get; init; }
+    public double Length { get; set; }
+    public double Width { get; set; }
+    public double Height { get; set; }
 
     public override string ToString()
     {

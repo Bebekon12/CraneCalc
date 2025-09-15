@@ -9,8 +9,8 @@ public class CartEntity
     public Status Status { get; set; } = Status.Draft;
         
     public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
-        
-    public int CreatorId { get; set; }
+
+    public int CreatorId { get; set; } = 1;
 
     public bool IsDeleted { get; set; } = false;
         

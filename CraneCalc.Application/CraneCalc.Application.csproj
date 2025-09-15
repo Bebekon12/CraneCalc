@@ -7,12 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Dtos\Response\" />
-      <Folder Include="Services\" />
+      <ProjectReference Include="..\CraneCalc.Domain\CraneCalc.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CraneCalc.Domain\CraneCalc.Domain.csproj" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.9" />
+      <PackageReference Include="Minio" Version="6.0.5" />
     </ItemGroup>
 
 </Project>

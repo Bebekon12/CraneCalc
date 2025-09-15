@@ -1,6 +1,6 @@
-﻿using CraneCalc.Application.Dtos.Request;
+﻿using CraneCalc.Application.DtoMappers;
+using CraneCalc.Application.Dtos.Request;
 using CraneCalc.Application.Interfaces;
-using CraneCalc.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CraneCalc.API.Controllers;
@@ -10,7 +10,7 @@ namespace CraneCalc.API.Controllers;
 public class CargoController(ICargoRepository cargoRepository) : ControllerBase
 {
     [HttpGet("cargos-paginated")]
-    public async Task<IActionResult> GetCargosPaginated(int pageNumber, int pageSize, CancellationToken ct)
+    public async Task<IActionResult> GetCargosPaginated(int pageNumber = 1, int pageSize = 10, CancellationToken ct = default)
     {
         var cargos = await cargoRepository.
             GetCargosPaginatedAsync(pageNumber, pageSize, ct);
@@ -25,5 +25,51 @@ public class CargoController(ICargoRepository cargoRepository) : ControllerBase
         
         return Ok(cargo);
     }
-    
+
+    [HttpPost("create-cargo")]
+    public async Task<IActionResult> CreateCargo([FromBody] CreateCargoRequest request, CancellationToken ct)
+    {
+        var createdCargo = await cargoRepository.CreateCargoAsync(request.Map(), ct);
+        
+        return Ok(createdCargo.Map());
+    }
+
+    [HttpPut("update-cargo")]
+    public async Task<IActionResult> UpdateCargo([FromQuery] Guid id, [FromBody] UpdateCargoRequest request, CancellationToken ct)
+    {
+        var updatedCargo = await cargoRepository.UpdateCargoAsync(id, request, ct);
+        
+        if(updatedCargo == null)
+            return NotFound();
+        
+        return Ok(updatedCargo.Map());
+    }
+
+    [HttpDelete("delete-cargo")]
+    public async Task<IActionResult> DeleteCargo(Guid cargoId, CancellationToken ct)
+    {
+        await cargoRepository.DeleteCargoAsync(cargoId, ct);
+        
+        return Ok();
+    }
+
+    [HttpPost("put-cargo-in-cart")]
+    public async Task<IActionResult> PutCargoInCart(Guid cargoId, CancellationToken ct)
+    {
+        await cargoRepository.PutCargoInCartAsync(cargoId, ct);
+
+        return Ok();
+    }
+
+    [HttpPost("add-image")]
+    public async Task<IActionResult> AddImageToCargo(Guid cargoId, IFormFile file, CancellationToken ct)
+    {
+        await using var stream = file.OpenReadStream();
+        var fileName = await cargoRepository.AddOrUpdateCargoPhotoAsync(cargoId, stream, ct);
+        
+        return Ok(new
+        {
+            FileName = fileName
+        });
+    }
 }
