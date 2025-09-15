@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CraneCalc.Application", "Cr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CraneCalc.Infrastructure", "CraneCalc.Infrastructure\CraneCalc.Infrastructure.csproj", "{DFD3B38B-E5A3-4C36-8D19-6589723FA651}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CraneCalc.API", "CraneCalc.API\CraneCalc.API.csproj", "{070FB2D1-81A8-48AA-8EBC-BB9D5329AA47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{DFD3B38B-E5A3-4C36-8D19-6589723FA651}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFD3B38B-E5A3-4C36-8D19-6589723FA651}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFD3B38B-E5A3-4C36-8D19-6589723FA651}.Release|Any CPU.Build.0 = Release|Any CPU
+		{070FB2D1-81A8-48AA-8EBC-BB9D5329AA47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{070FB2D1-81A8-48AA-8EBC-BB9D5329AA47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{070FB2D1-81A8-48AA-8EBC-BB9D5329AA47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{070FB2D1-81A8-48AA-8EBC-BB9D5329AA47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
