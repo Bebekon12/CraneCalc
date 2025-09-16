@@ -6,19 +6,26 @@ using Microsoft.AspNetCore.Mvc;
 namespace CraneCalc.API.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/cargo")]
 public class CargoController(ICargoRepository cargoRepository) : ControllerBase
 {
-    [HttpGet("cargos-paginated")]
-    public async Task<IActionResult> GetCargosPaginated(int pageNumber = 1, int pageSize = 10, CancellationToken ct = default)
+    [HttpGet("paginated")]
+    public async Task<IActionResult> GetCargosPaginated(
+        [FromQuery] CargoFilter filter,
+        int pageNumber = 1,
+        int pageSize = 10,
+        CancellationToken ct = default)
     {
-        var cargos = await cargoRepository.
-            GetCargosPaginatedAsync(pageNumber, pageSize, ct);
-        
+        var cargos = await cargoRepository.GetCargosPaginatedAsync(
+            filter, 
+            pageNumber, 
+            pageSize, 
+            ct);
+    
         return Ok(cargos);
     }
 
-    [HttpGet("cargo")]
+    [HttpGet("")]
     public async Task<IActionResult> GetCargo(Guid cargoId, CancellationToken ct)
     {
         var cargo = await cargoRepository.GetCargoByIdAsync(cargoId, ct);
@@ -26,7 +33,7 @@ public class CargoController(ICargoRepository cargoRepository) : ControllerBase
         return Ok(cargo);
     }
 
-    [HttpPost("create-cargo")]
+    [HttpPost("create")]
     public async Task<IActionResult> CreateCargo([FromBody] CreateCargoRequest request, CancellationToken ct)
     {
         var createdCargo = await cargoRepository.CreateCargoAsync(request.Map(), ct);
@@ -34,7 +41,7 @@ public class CargoController(ICargoRepository cargoRepository) : ControllerBase
         return Ok(createdCargo.Map());
     }
 
-    [HttpPut("update-cargo")]
+    [HttpPut("update")]
     public async Task<IActionResult> UpdateCargo([FromQuery] Guid id, [FromBody] UpdateCargoRequest request, CancellationToken ct)
     {
         var updatedCargo = await cargoRepository.UpdateCargoAsync(id, request, ct);
@@ -45,7 +52,7 @@ public class CargoController(ICargoRepository cargoRepository) : ControllerBase
         return Ok(updatedCargo.Map());
     }
 
-    [HttpDelete("delete-cargo")]
+    [HttpDelete("delete")]
     public async Task<IActionResult> DeleteCargo(Guid cargoId, CancellationToken ct)
     {
         await cargoRepository.DeleteCargoAsync(cargoId, ct);
@@ -53,7 +60,7 @@ public class CargoController(ICargoRepository cargoRepository) : ControllerBase
         return Ok();
     }
 
-    [HttpPost("put-cargo-in-cart")]
+    [HttpPost("put-in-cart")]
     public async Task<IActionResult> PutCargoInCart(Guid cargoId, CancellationToken ct)
     {
         await cargoRepository.PutCargoInCartAsync(cargoId, ct);

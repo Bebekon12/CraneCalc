@@ -1,6 +1,6 @@
 ﻿namespace CraneCalc.Application.Dtos.Request;
 
-public class CreateCargoRequest
+public record CreateCargoRequest
 {
     public string Title { get; init; } = string.Empty;
     public string Type { get; init; } = string.Empty;

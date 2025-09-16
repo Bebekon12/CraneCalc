@@ -11,14 +11,33 @@ public class CargoRepository(
         AppDbContext context,
         IFileStorageService storageService) : ICargoRepository
 {
-    public async Task<List<Cargo>> GetCargosPaginatedAsync(int pageNumber, int pageSize, CancellationToken ct)
+    public async Task<List<Cargo>> GetCargosPaginatedAsync(
+        CargoFilter filter,
+        int pageNumber,
+        int pageSize,
+        CancellationToken ct)
     {
-        var cargosPaginated = await context.Cargos
+        var query = context.Cargos.AsQueryable();
+
+        if (!string.IsNullOrEmpty(filter.Title))
+            query = query.Where(c => c.Title.ToLower().Contains(filter.Title.ToLower()));
+
+        if (!string.IsNullOrEmpty(filter.Type))
+            query = query.Where(c => c.Type.ToLower() == filter.Type.ToLower());
+
+        if (filter.MinWeight.HasValue)
+            query = query.Where(c => c.Weight >= filter.MinWeight.Value);
+
+        if (filter.MaxWeight.HasValue)
+            query = query.Where(c => c.Weight <= filter.MaxWeight.Value);
+        
+        var cargosPaginated = await query
+            .OrderBy(c => c.Id)
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
-            .Select(c=>c.Map())
+            .Select(c => c.Map())
             .ToListAsync(ct);
-        
+    
         return cargosPaginated;
     }
 
@@ -129,6 +148,8 @@ public class CargoRepository(
         var newCart = new CartEntity
         {
             Id = Guid.NewGuid(),
+            ModeratorId = 1,
+            CreatorId = 1
         };
         
         newCart.CartCargo.Add(new CartCargoEntity

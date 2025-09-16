@@ -1,6 +1,6 @@
 ﻿namespace CraneCalc.Application.Dtos.Request;
 
-public class UpdateCargoRequest
+public record UpdateCargoRequest
 {
     public string Title { get; set; } = string.Empty;
     public string Type { get; set; } = string.Empty;

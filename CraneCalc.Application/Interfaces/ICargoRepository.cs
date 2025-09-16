@@ -5,7 +5,12 @@ namespace CraneCalc.Application.Interfaces;
 
 public interface ICargoRepository
 {
-    Task<List<Cargo>> GetCargosPaginatedAsync(int pageNumber, int pageSize, CancellationToken ct);
+    Task<List<Cargo>> GetCargosPaginatedAsync(
+        CargoFilter filter,
+        int pageNumber,
+        int pageSize,
+        CancellationToken ct);
+    
     Task<Cargo> CreateCargoAsync(Cargo cargo, CancellationToken ct);
     Task<Cargo?> UpdateCargoAsync(Guid id, UpdateCargoRequest cargo, CancellationToken ct);
     Task DeleteCargoAsync(Guid id, CancellationToken ct);

@@ -1,6 +1,6 @@
 ﻿namespace CraneCalc.Application.Dtos.Response;
 
-public class CargoResponse
+public record CargoResponse
 {
     public Guid Id { get; init; }
     public string Title { get; init; } = string.Empty;
