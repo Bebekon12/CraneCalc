@@ -1,5 +1,4 @@
 ﻿using CraneCalc.Application.Contracts.Request;
-using CraneCalc.Application.Interfaces;
 using CraneCalc.Application.Interfaces.Repository;
 using CraneCalc.Application.Interfaces.Services;
 using CraneCalc.Domain.Models;
@@ -125,13 +124,17 @@ public class CargoRepository(
         var cargo = await context.Cargos.FirstOrDefaultAsync(c => c.Id == cargoId, ct);
         
         if(cargo == null)
-            throw new NullReferenceException("Cargo");
+            throw new NullReferenceException("Cargo not found");
 
         var cart = await context.Carts
+            .Include(c=>c.CartCargo.Where(i=>!i.IsDeleted))
             .FirstOrDefaultAsync(c => c.CreatorId == 1, ct);
 
         if(cart != null)
         {
+            if(cart.CartCargo.Where(cc=>cc.CargoId == cargoId).ToList().Count > 0)
+                throw new Exception($"Cargo already purchased");
+            
             cart.CartCargo.Add(new CartCargoEntity
             {
                 CartId = cart.Id,
