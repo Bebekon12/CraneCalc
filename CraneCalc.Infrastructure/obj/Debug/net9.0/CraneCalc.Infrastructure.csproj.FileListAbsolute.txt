@@ -1,0 +1,39 @@
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Infrastructure.deps.json
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Infrastructure.runtimeconfig.json
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Infrastructure.dll
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Infrastructure.pdb
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Application.dll
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Domain.dll
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Application.pdb
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Domain.pdb
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.csproj.AssemblyReference.cache
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.AssemblyInfoInputs.cache
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.AssemblyInfo.cs
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCal.55766466.Up2Date
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.dll
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\refint\CraneCalc.Infrastructure.dll
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.pdb
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.genruntimeconfig.cache
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\ref\CraneCalc.Infrastructure.dll
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Infrastructure.deps.json
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Infrastructure.runtimeconfig.json
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Infrastructure.dll
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Infrastructure.pdb
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Application.dll
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Domain.dll
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Application.pdb
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\bin\Debug\net9.0\CraneCalc.Domain.pdb
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.csproj.AssemblyReference.cache
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.AssemblyInfoInputs.cache
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.AssemblyInfo.cs
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.sourcelink.json
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCal.55766466.Up2Date
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.dll
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\refint\CraneCalc.Infrastructure.dll
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.pdb
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\CraneCalc.Infrastructure.genruntimeconfig.cache
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Infrastructure\obj\Debug\net9.0\ref\CraneCalc.Infrastructure.dll

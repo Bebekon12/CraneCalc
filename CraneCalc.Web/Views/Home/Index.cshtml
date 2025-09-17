@@ -1,0 +1,116 @@
+﻿@model CraneCalc.Web.ViewModels.HomeServicesModel
+@{
+    ViewBag.Title = "CraneCalc - Каталог грузов";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    var isCartEmpty = Model.Quantity == 0;
+    var cartClass = isCartEmpty ? "fixed-calc-btn disabled" : "fixed-calc-btn";
+    var cartHref = isCartEmpty ? "javascript:void(0)" : Url.Action("Cart", "Home", new { Id = Model.CartId });
+}
+
+@section Styles {
+    <link href="~/css/views/Home/services.css" rel="stylesheet" />
+}
+
+<section class="hero">
+  <h1 class="hero-title">Каталог грузов</h1>
+  <p class="hero-subtitle">Выберите тип груза для расчета производительности башенного крана</p>
+
+  <form method="get" action="@Url.Action("Index", "Home")">
+    <div class="search-container">
+      <div class="search-form">
+        <input type="text" name="searchCargo" class="search-input" placeholder="Поиск грузов по названию..." value="@ViewBag.CurrentTitle" />
+        <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </form>
+</section>
+
+<div class="cards-grid">
+  @foreach (var el in Model.CargoItems)
+  {
+    <div class="rentCard">
+      <div class="rentCardPhoto">
+        <img src="@el.ImageUrl"
+             onerror="this.onerror=null; this.src='/img/default.jpg'"
+             alt="@el.Title" loading="lazy">
+      </div>
+
+      <div class="rentCardContent">
+        <div class="contentName">Тип:</div>
+        <div class="contentText">@el.Type</div>
+      </div>
+
+      <div class="rentCardContent">
+        <div class="contentName">Размеры:</div>
+        <div class="contentText">@el.Dimensions.ToString()</div>
+      </div>
+
+      <div class="rentCardContent">
+        <div class="contentName">Масса:</div>
+        <div class="contentText">@el.Weight т</div>
+      </div>
+
+      <div class="rentCardButton">
+        <a href="@Url.Action("CargoDetail", "Home", new {el.Id})" class="btn-detail">Подробнее</a>
+        <button class="add-to-calc" data-cargo-id="@el.Id">Добавить в расчет</button>
+      </div>
+    </div>
+  }
+</div>
+
+<a href="@cartHref" class="@cartClass">
+    <div class="icon-wrapper">
+        <img src="~/ico/crane.png" alt="crane" class="icon-wrapper-ico"/>
+        <span class="badge">@Model.Quantity</span>
+    </div>
+</a>
+
+@section Scripts {
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.add-to-calc').forEach(button => {
+            button.addEventListener('click', async function() {
+                const cargoId = this.dataset.cargoId;
+                const button = this;
+                
+                button.disabled = true;
+                button.textContent = 'Добавляем...';
+
+                try {
+                    const response = await fetch('/add-to-cart', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: `cargoId=${cargoId}`
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        const badge = document.querySelector('.badge');
+                        badge.textContent = result.quantity;
+
+                        const cartButton = document.querySelector('.fixed-calc-btn');
+                        if (result.quantity === 0) {
+                            cartButton.classList.add('disabled');
+                            cartButton.href = "javascript:void(0)";
+                        } else {
+                            cartButton.classList.remove('disabled');
+                            cartButton.href = result.cartUrl;
+                        }
+                        location.reload()
+                    } else {
+                    }
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                } finally {
+                    button.disabled = false;
+                    button.textContent = 'Добавить в расчет';
+                }
+            });
+        });
+    });
+</script>
+}

@@ -1,0 +1,31 @@
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Application\bin\Debug\net9.0\CraneCalc.Application.deps.json
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Application\bin\Debug\net9.0\CraneCalc.Application.dll
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Application\bin\Debug\net9.0\CraneCalc.Application.pdb
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Application\bin\Debug\net9.0\CraneCalc.Domain.dll
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Application\bin\Debug\net9.0\CraneCalc.Domain.pdb
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCalc.Application.csproj.AssemblyReference.cache
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCalc.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCalc.Application.AssemblyInfoInputs.cache
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCalc.Application.AssemblyInfo.cs
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCalc.Application.csproj.CoreCompileInputs.cache
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCal.C4D69D37.Up2Date
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCalc.Application.dll
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\refint\CraneCalc.Application.dll
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCalc.Application.pdb
+D:\Универ\3 курс\RIP\1 лаба\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\ref\CraneCalc.Application.dll
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\bin\Debug\net9.0\CraneCalc.Application.deps.json
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\bin\Debug\net9.0\CraneCalc.Application.dll
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\bin\Debug\net9.0\CraneCalc.Application.pdb
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\bin\Debug\net9.0\CraneCalc.Domain.dll
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\bin\Debug\net9.0\CraneCalc.Domain.pdb
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCalc.Application.csproj.AssemblyReference.cache
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCalc.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCalc.Application.AssemblyInfoInputs.cache
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCalc.Application.AssemblyInfo.cs
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCalc.Application.csproj.CoreCompileInputs.cache
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCalc.Application.sourcelink.json
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCal.C4D69D37.Up2Date
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCalc.Application.dll
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\refint\CraneCalc.Application.dll
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\CraneCalc.Application.pdb
+D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Application\obj\Debug\net9.0\ref\CraneCalc.Application.dll
