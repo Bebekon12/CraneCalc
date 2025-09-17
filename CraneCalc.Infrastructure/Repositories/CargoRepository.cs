@@ -3,6 +3,7 @@ using CraneCalc.Application.Features.Cargo.Commands.UpdateCargo;
 using CraneCalc.Application.Features.Cargo.Queries.GetCargoPaginated;
 using CraneCalc.Application.Interfaces.Repository;
 using CraneCalc.Application.Interfaces.Services;
+using CraneCalc.Domain.Exceptions;
 using CraneCalc.Domain.Models;
 using CraneCalc.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -99,7 +100,7 @@ public class CargoRepository(
             .FirstOrDefaultAsync(c => c.Id == id, ct);
         
         if (cargo == null)
-            throw new Exception($"Cargo with id:{id} not found");
+            throw new EntityException($"Cargo with id:{id} not found");
         
         if (!string.IsNullOrEmpty(cargo.ImageUrl))
         {
@@ -116,7 +117,7 @@ public class CargoRepository(
             .FirstOrDefaultAsync(c => c.Id == id, ct);
         
         if(cargo == null)
-            throw new NullReferenceException("Cargo");
+            throw new EntityException("Cargo not found");
         
         return mapper.Map<Cargo>(cargo);
     }
@@ -135,7 +136,7 @@ public class CargoRepository(
         if(cart != null)
         {
             if(cart.CartCargo.Where(cc=>cc.CargoId == cargoId).ToList().Count > 0)
-                throw new Exception($"Cargo already purchased");
+                throw new EntityException($"Cargo already purchased");
             
             cart.CartCargo.Add(new CartCargoEntity
             {
@@ -179,7 +180,7 @@ public class CargoRepository(
             .FirstOrDefaultAsync(c => c.Id == cargoId, ct);
         
         if (cargo == null)
-            throw new Exception($"Cargo with id:{cargoId} not found");
+            throw new EntityException($"Cargo with id:{cargoId} not found");
 
         var newFileName = await storageService.GenerateFileName();
         

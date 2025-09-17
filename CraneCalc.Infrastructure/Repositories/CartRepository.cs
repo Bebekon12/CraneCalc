@@ -2,6 +2,7 @@
 using CraneCalc.Application.Features.Cart.Commands.UpdateCart;
 using CraneCalc.Application.Interfaces.Repository;
 using CraneCalc.Domain.Enums;
+using CraneCalc.Domain.Exceptions;
 using CraneCalc.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Minio.Exceptions;
@@ -73,14 +74,14 @@ public class CartRepository(AppDbContext context, IMapper mapper) : ICartReposit
         if(cart == null)
             return null;
         
-        if (cart.CreatorId != 1) throw new ArgumentException("Только создатель может формировать заявку");
+        if (cart.CreatorId != 1) throw new EntityException("Только создатель может формировать заявку");
         
         if (cart.LoadCapacity <= 0 || cart.LiftingHeight <= 0 || 
             cart.JibOutreach <= 0 || cart.LiftingSpeed <= 0)
-            throw new ErrorResponseException("Все технические параметры должны быть заполнены");
+            throw new EntityException("Все технические параметры должны быть заполнены");
         
         if (cart.CartCargo.Count == 0)
-            throw new ErrorResponseException("Добавьте хотя бы один груз");
+            throw new EntityException("Добавьте хотя бы один груз");
         
         cart.FormationDate = DateTime.UtcNow;
         cart.Status = Status.Formed;

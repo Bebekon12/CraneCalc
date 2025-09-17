@@ -18,5 +18,8 @@ public class EntityModelMappers : Profile
             .ForMember(dest=>dest.Cargo, opt=>opt.Ignore());
         CreateMap<CartCargoEntity, CartCargo>()
             .ForMember(dest=>dest.Cargo, opt=>opt.Ignore());
+
+        CreateMap<UserEntity, User>();
+        CreateMap<User, UserEntity>();
     }
 }

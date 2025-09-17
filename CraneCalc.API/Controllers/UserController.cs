@@ -44,7 +44,7 @@ public class UserController(IUserRepository repository) : ControllerBase
         var userId = Request.Cookies["userId"];
         
         if(userId == null)
-            return Unauthorized();
+            return NotFound();
         
         var user = await repository.GetUserAsync(Convert.ToInt32(userId), ct);
         
@@ -63,10 +63,7 @@ public class UserController(IUserRepository repository) : ControllerBase
         var userId = Request.Cookies["userID"];
         var isAuthenticated = Request.Cookies["userIsAuthenticated"];
         
-        if(isAuthenticated!=userId)
-            return Unauthorized();
-        
-        if (userId == null)
+        if(isAuthenticated!=userId || userId==null || isAuthenticated==null)
             return Unauthorized();
         
         var user = await repository.UpdateUserAsync(Convert.ToInt32(userId), new User
