@@ -1,4 +1,5 @@
 ﻿using CraneCalc.Application.Interfaces;
+using CraneCalc.Application.Interfaces.Services;
 using CraneCalc.Application.Services;
 using Minio;
 

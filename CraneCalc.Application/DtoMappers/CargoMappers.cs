@@ -1,5 +1,5 @@
-﻿using CraneCalc.Application.Dtos.Request;
-using CraneCalc.Application.Dtos.Response;
+﻿using CraneCalc.Application.Contracts.Request;
+using CraneCalc.Application.Contracts.Response;
 using CraneCalc.Domain.Models;
 
 namespace CraneCalc.Application.DtoMappers;

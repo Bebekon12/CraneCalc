@@ -1,4 +1,5 @@
 ﻿using CraneCalc.Application.Interfaces;
+using CraneCalc.Application.Interfaces.Repository;
 using CraneCalc.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 

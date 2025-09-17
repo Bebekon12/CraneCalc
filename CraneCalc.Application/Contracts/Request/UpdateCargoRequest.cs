@@ -1,4 +1,4 @@
-﻿namespace CraneCalc.Application.Dtos.Request;
+﻿namespace CraneCalc.Application.Contracts.Request;
 
 public record UpdateCargoRequest
 {

@@ -1,4 +1,4 @@
-﻿namespace CraneCalc.Application.Dtos.Response;
+﻿namespace CraneCalc.Application.Contracts.Response;
 
 public record CargoResponse
 {

@@ -1,5 +1,5 @@
 ﻿using CraneCalc.Application.Interfaces;
-
+using CraneCalc.Application.Interfaces.Services;
 using Microsoft.Extensions.Logging;
 using Minio;
 using Minio.DataModel.Args;

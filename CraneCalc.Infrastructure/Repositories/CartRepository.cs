@@ -1,5 +1,6 @@
-﻿using CraneCalc.Application.Dtos.Request;
+﻿using CraneCalc.Application.Contracts.Request;
 using CraneCalc.Application.Interfaces;
+using CraneCalc.Application.Interfaces.Repository;
 using CraneCalc.Domain.Enums;
 using CraneCalc.Domain.Models;
 using CraneCalc.Infrastructure.EntityMappers;

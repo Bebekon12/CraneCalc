@@ -1,7 +1,7 @@
-﻿using CraneCalc.Application.Dtos.Request;
+﻿using CraneCalc.Application.Contracts.Request;
 using CraneCalc.Domain.Models;
 
-namespace CraneCalc.Application.Interfaces;
+namespace CraneCalc.Application.Interfaces.Repository;
 
 public interface ICargoRepository
 {

@@ -1,4 +1,4 @@
-﻿namespace CraneCalc.Application.Interfaces;
+﻿namespace CraneCalc.Application.Interfaces.Services;
 
 public interface IFileStorageService
 {

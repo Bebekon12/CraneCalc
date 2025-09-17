@@ -1,6 +1,7 @@
-﻿using CraneCalc.Application.DtoMappers;
-using CraneCalc.Application.Dtos.Request;
+﻿using CraneCalc.Application.Contracts.Request;
+using CraneCalc.Application.DtoMappers;
 using CraneCalc.Application.Interfaces;
+using CraneCalc.Application.Interfaces.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CraneCalc.API.Controllers;
