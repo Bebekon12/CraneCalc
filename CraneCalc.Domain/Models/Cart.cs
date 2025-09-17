@@ -27,5 +27,4 @@ public class Cart
     public double CalculationResult { get; set; }
         
     public virtual List<CartCargo> CartCargo { get; set; } = [];
-    
 }

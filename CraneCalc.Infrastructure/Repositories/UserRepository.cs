@@ -1,20 +1,21 @@
-﻿using CraneCalc.Application.Interfaces.Repository;
+﻿using AutoMapper;
+using CraneCalc.Application.Interfaces.Repository;
 using CraneCalc.Domain.Models;
-using CraneCalc.Infrastructure.EntityMappers;
+using CraneCalc.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CraneCalc.Infrastructure.Repositories;
 
-public class UserRepository(AppDbContext context) : IUserRepository
+public class UserRepository(AppDbContext context, IMapper mapper) : IUserRepository
 {
     public async Task<User> CreateUserAsync(User user, CancellationToken ct)
     {
-        var entityUser = user.Map();
+        var entityUser = mapper.Map<UserEntity>(user);
         
         await context.Users.AddAsync(entityUser, ct);
         await context.SaveChangesAsync(ct);
         
-        return entityUser.Map();
+        return mapper.Map<User>(entityUser);
     }
 
     public async Task<User?> GetUserAsync(int userId, CancellationToken ct)
@@ -22,7 +23,9 @@ public class UserRepository(AppDbContext context) : IUserRepository
         var user = await context.Users
             .FirstOrDefaultAsync(u=>u.Id==userId, ct);
         
-        return user?.Map();
+        return user == null 
+            ? null 
+            : mapper.Map<User>(user);
     }
 
     public async Task<User?> UpdateUserAsync(int userId, User user, CancellationToken ct)
@@ -43,6 +46,6 @@ public class UserRepository(AppDbContext context) : IUserRepository
         
         await context.SaveChangesAsync(ct);
         
-        return entityUser.Map();
+        return mapper.Map<User>(entityUser);
     }
 }

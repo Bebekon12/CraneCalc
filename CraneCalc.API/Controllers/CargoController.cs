@@ -1,14 +1,15 @@
-﻿using CraneCalc.Application.Contracts.Request;
-using CraneCalc.Application.DtoMappers;
-using CraneCalc.Application.Interfaces;
+﻿using AutoMapper;
+using CraneCalc.Application.Contracts.Request;
+using CraneCalc.Application.Contracts.Response;
 using CraneCalc.Application.Interfaces.Repository;
+using CraneCalc.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CraneCalc.API.Controllers;
 
 [ApiController]
 [Route("api/cargo")]
-public class CargoController(ICargoRepository cargoRepository) : ControllerBase
+public class CargoController(ICargoRepository cargoRepository, IMapper mapper) : ControllerBase
 {
     [HttpGet("paginated")]
     public async Task<IActionResult> GetCargosPaginated(
@@ -37,9 +38,9 @@ public class CargoController(ICargoRepository cargoRepository) : ControllerBase
     [HttpPost("create")]
     public async Task<IActionResult> CreateCargo([FromBody] CreateCargoRequest request, CancellationToken ct)
     {
-        var createdCargo = await cargoRepository.CreateCargoAsync(request.Map(), ct);
+        var createdCargo = await cargoRepository.CreateCargoAsync(mapper.Map<Cargo>(request), ct);
         
-        return Ok(createdCargo.Map());
+        return Ok(mapper.Map<CargoResponse>(createdCargo));
     }
 
     [HttpPut("update")]
@@ -50,7 +51,7 @@ public class CargoController(ICargoRepository cargoRepository) : ControllerBase
         if(updatedCargo == null)
             return NotFound();
         
-        return Ok(updatedCargo.Map());
+        return Ok(mapper.Map<CargoResponse>(updatedCargo));
     }
 
     [HttpDelete("delete")]

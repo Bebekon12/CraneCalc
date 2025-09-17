@@ -1,16 +1,17 @@
-﻿using CraneCalc.Application.Contracts.Request;
+﻿using AutoMapper;
+using CraneCalc.Application.Contracts.Request;
 using CraneCalc.Application.Interfaces.Repository;
 using CraneCalc.Application.Interfaces.Services;
 using CraneCalc.Domain.Models;
 using CraneCalc.Infrastructure.Entities;
-using CraneCalc.Infrastructure.EntityMappers;
 using Microsoft.EntityFrameworkCore;
 
 namespace CraneCalc.Infrastructure.Repositories;
 
 public class CargoRepository(
         AppDbContext context,
-        IFileStorageService storageService) : ICargoRepository
+        IFileStorageService storageService,
+        IMapper mapper) : ICargoRepository
 {
     public async Task<List<Cargo>> GetCargosPaginatedAsync(
         CargoFilter filter,
@@ -36,7 +37,7 @@ public class CargoRepository(
             .OrderBy(c => c.Id)
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
-            .Select(c => c.Map())
+            .Select(c => mapper.Map<Cargo>(c))
             .ToListAsync(ct);
     
         return cargosPaginated;
@@ -44,12 +45,12 @@ public class CargoRepository(
 
     public async Task<Cargo> CreateCargoAsync(Cargo cargo, CancellationToken ct)
     {
-        var cargoEntity = cargo.Map();
+        var cargoEntity = mapper.Map<CargoEntity>(cargo);
         
         await context.Cargos.AddAsync(cargoEntity, ct);
         await context.SaveChangesAsync(ct);
         
-        return cargo;
+        return mapper.Map<Cargo>(cargoEntity);
     }
 
     public async Task<Cargo?> UpdateCargoAsync(Guid id, UpdateCargoRequest cargo, CancellationToken ct)
@@ -88,7 +89,7 @@ public class CargoRepository(
             cargoEntity.Volume = cargo.Volume;
         
         await context.SaveChangesAsync(ct);
-        return cargoEntity.Map();
+        return mapper.Map<Cargo>(cargoEntity);
     }
 
     public async Task DeleteCargoAsync(Guid id, CancellationToken ct)
@@ -116,7 +117,7 @@ public class CargoRepository(
         if(cargo == null)
             throw new NullReferenceException("Cargo");
         
-        return cargo.Map();
+        return mapper.Map<Cargo>(cargo);
     }
 
     public async Task PutCargoInCartAsync(Guid cargoId, CancellationToken ct)
