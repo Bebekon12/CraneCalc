@@ -1,55 +1,78 @@
-﻿using CraneCalc.Application.Contracts.Request;
-using CraneCalc.Application.Interfaces;
-using CraneCalc.Application.Interfaces.Repository;
+﻿using CraneCalc.Application.Features.Cart.Commands.DeleteCart;
+using CraneCalc.Application.Features.Cart.Commands.FormCart;
+using CraneCalc.Application.Features.Cart.Commands.ModerateCart;
+using CraneCalc.Application.Features.Cart.Commands.UpdateCart;
+using CraneCalc.Application.Features.Cart.Queries.GetCart;
+using CraneCalc.Application.Features.Cart.Queries.GetCartInfo;
+using CraneCalc.Application.Features.Cart.Queries.GetFilteredCarts;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CraneCalc.API.Controllers;
 
 [ApiController]
 [Route("api/cart")]
-public class CartController(ICartRepository repository) : ControllerBase
+public class CartController(IMediator mediator) : ControllerBase
 {
     [HttpGet("info")]
-    public async Task<IActionResult> GetCartInformation(CancellationToken ct)
+    public async Task<IActionResult> GetCartInformation( CancellationToken ct)
     {
-        var cart = await repository.GetCartByUserIdAsync(1, ct);
+        var query = new GetCartInformationQuery();
+        var result = await mediator.Send(query, ct);
         
-        if(cart == null)
+        if(result==null)
             return NotFound();
         
-        return Ok(new
-        {
-            cart.Id,
-            Quantity = cart.CartCargo.Count
-        });
+        return Ok(result);
     }
 
     [HttpGet("filtered")]
-    public async Task<IActionResult> GetFilteredCarts(DateTime from, DateTime before, CancellationToken ct)
+    public async Task<IActionResult> GetFilteredCarts([FromQuery] GetFilteredCartsQuery query, CancellationToken ct)
     {
-        var carts = await repository.GetFilteredCartsAsync(from, before, ct);
+        var result = await mediator.Send(query, ct);
         
-        return Ok(carts);
+        return Ok(result);
     }
 
     [HttpGet("")]
-    public async Task<IActionResult> GetCart(Guid id, CancellationToken ct)
+    public async Task<IActionResult> GetCart([FromQuery] GetCartQuery query, CancellationToken ct)
     {
-        var cart = await repository.GetCartByIdAsync(id, ct);
+        var result = await mediator.Send(query, ct);
         
-        if(cart == null)
+        if(result == null)
             return NotFound();
         
-        return Ok(cart);
+        return Ok(result);
     }
 
     [HttpPut("update")]
     public async Task<IActionResult> UpdateCart(
-        Guid cartId,
-        [FromBody] UpdateCartRequest request,
+        [FromBody] UpdateCartCommand request,
         CancellationToken ct)
     {
-        var cart = await repository.UpdateCartAsync(cartId, request, ct);
+        var result = await mediator.Send(request, ct);
+        
+        if(result == null)
+            return NotFound();
+        
+        return Ok(result);
+    }
+
+    [HttpPut("form")]
+    public async Task<IActionResult> FormCart([FromQuery] FormCartCommand query, CancellationToken ct)
+    {
+        var result = await mediator.Send(query, ct);
+        
+        if(result == null)
+            return NotFound();
+        
+        return Ok(result);
+    }
+
+    [HttpPut("moderate")]
+    public async Task<IActionResult> ModerateCart([FromQuery] ModerateCartCommand query, CancellationToken ct)
+    {
+        var cart = await mediator.Send(query, ct);
         
         if(cart == null)
             return NotFound();
@@ -57,34 +80,11 @@ public class CartController(ICartRepository repository) : ControllerBase
         return Ok(cart);
     }
 
-    [HttpPut("{cartId:guid}/form")]
-    public async Task<IActionResult> FormCart(Guid cartId, CancellationToken ct)
+    [HttpDelete("delete")]
+    public async Task<IActionResult> DeleteCart([FromQuery] DeleteCartCommand query, CancellationToken ct)
     {
-        var cart = await repository.FormCartAsync(cartId, ct);
-        
-        if(cart == null)
-            return NotFound();
-        
-        return Ok(cart);
-    }
-
-    [HttpPut("{cartId:guid}/moderate")]
-    public async Task<IActionResult> ModerateCart(Guid cartId, bool isApproved, CancellationToken ct)
-    {
-        var cart = await repository.ModerateCartAsync(cartId, 1, isApproved, ct);
-        
-        if(cart == null)
-            return NotFound();
-        
-        return Ok(cart);
-    }
-
-    [HttpDelete("delete/{cartId:guid}")]
-    public async Task<IActionResult> DeleteCart(Guid cartId, CancellationToken ct)
-    {
-        await repository.DeleteCartAsync(cartId, 1, ct);
+        await mediator.Send(query, ct);
 
         return NoContent();
     }
-    
 }

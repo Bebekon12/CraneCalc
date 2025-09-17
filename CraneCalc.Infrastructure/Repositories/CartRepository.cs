@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
-using CraneCalc.Application.Contracts.Request;
-using CraneCalc.Application.Interfaces;
+using CraneCalc.Application.Features.Cart.Commands.UpdateCart;
 using CraneCalc.Application.Interfaces.Repository;
 using CraneCalc.Domain.Enums;
 using CraneCalc.Domain.Models;
-using CraneCalc.Infrastructure.EntityMappers;
 using Microsoft.EntityFrameworkCore;
 using Minio.Exceptions;
 
@@ -50,7 +48,7 @@ public class CartRepository(AppDbContext context, IMapper mapper) : ICartReposit
         return carts;
     }
 
-    public async Task<Cart?> UpdateCartAsync(Guid id, UpdateCartRequest cart, CancellationToken ct)
+    public async Task<Cart?> UpdateCartAsync(Guid id, UpdateCartCommand cart, CancellationToken ct)
     {
         var entity = await context.Carts.FirstOrDefaultAsync(c=>c.Id==id,ct);
         

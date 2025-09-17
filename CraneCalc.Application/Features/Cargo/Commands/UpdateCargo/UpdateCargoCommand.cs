@@ -1,7 +1,13 @@
-﻿namespace CraneCalc.Application.Contracts.Request;
+﻿using CraneCalc.Application.Features.Cargo.Dto;
+using CraneCalc.Application.Features.Shared;
+using MediatR;
 
-public record UpdateCargoRequest
+namespace CraneCalc.Application.Features.Cargo.Commands.UpdateCargo;
+
+public record UpdateCargoCommand : IRequest<CargoResponse?>
 {
+    public Guid Id { get; set; }
+    
     public string Title { get; set; } = string.Empty;
     public string Type { get; set; } = string.Empty;
     public double Weight { get; set; }

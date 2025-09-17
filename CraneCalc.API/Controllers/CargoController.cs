@@ -1,84 +1,81 @@
-﻿using AutoMapper;
-using CraneCalc.Application.Contracts.Request;
-using CraneCalc.Application.Contracts.Response;
-using CraneCalc.Application.Interfaces.Repository;
-using CraneCalc.Domain.Models;
+﻿using CraneCalc.Application.Features.Cargo.Commands.AddImageToCargo;
+using CraneCalc.Application.Features.Cargo.Commands.CreateCargo;
+using CraneCalc.Application.Features.Cargo.Commands.DeleteCargo;
+using CraneCalc.Application.Features.Cargo.Commands.PutCargoInCart;
+using CraneCalc.Application.Features.Cargo.Commands.UpdateCargo;
+using CraneCalc.Application.Features.Cargo.Queries.GetCargo;
+using CraneCalc.Application.Features.Cargo.Queries.GetCargoPaginated;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CraneCalc.API.Controllers;
 
 [ApiController]
 [Route("api/cargo")]
-public class CargoController(ICargoRepository cargoRepository, IMapper mapper) : ControllerBase
+public class CargoController(IMediator mediator) : ControllerBase
 {
     [HttpGet("paginated")]
     public async Task<IActionResult> GetCargosPaginated(
-        [FromQuery] CargoFilter filter,
-        int pageNumber = 1,
-        int pageSize = 10,
+        [FromQuery] GetCargosPaginatedQuery query,
         CancellationToken ct = default)
     {
-        var cargos = await cargoRepository.GetCargosPaginatedAsync(
-            filter, 
-            pageNumber, 
-            pageSize, 
-            ct);
+        var result = await mediator.Send(query, ct);
     
-        return Ok(cargos);
+        return Ok(result);
     }
 
     [HttpGet("")]
-    public async Task<IActionResult> GetCargo(Guid cargoId, CancellationToken ct)
+    public async Task<IActionResult> GetCargo([FromQuery] GetCargoQuery query, CancellationToken ct)
     {
-        var cargo = await cargoRepository.GetCargoByIdAsync(cargoId, ct);
+        var result = await mediator.Send(query, ct);
         
-        return Ok(cargo);
+        return Ok(result);
     }
 
     [HttpPost("create")]
-    public async Task<IActionResult> CreateCargo([FromBody] CreateCargoRequest request, CancellationToken ct)
+    public async Task<IActionResult> CreateCargo([FromBody] CreateCargoCommand request, CancellationToken ct)
     {
-        var createdCargo = await cargoRepository.CreateCargoAsync(mapper.Map<Cargo>(request), ct);
+        var result = await mediator.Send(request, ct);
         
-        return Ok(mapper.Map<CargoResponse>(createdCargo));
+        return Ok(result);
     }
 
     [HttpPut("update")]
-    public async Task<IActionResult> UpdateCargo([FromQuery] Guid id, [FromBody] UpdateCargoRequest request, CancellationToken ct)
+    public async Task<IActionResult> UpdateCargo([FromBody] UpdateCargoCommand request, CancellationToken ct)
     {
-        var updatedCargo = await cargoRepository.UpdateCargoAsync(id, request, ct);
+        var result = await mediator.Send(request, ct);
         
-        if(updatedCargo == null)
-            return NotFound();
-        
-        return Ok(mapper.Map<CargoResponse>(updatedCargo));
+        return Ok(result);
     }
 
     [HttpDelete("delete")]
-    public async Task<IActionResult> DeleteCargo(Guid cargoId, CancellationToken ct)
+    public async Task<IActionResult> DeleteCargo([FromQuery] DeleteCargoCommand request, CancellationToken ct)
     {
-        await cargoRepository.DeleteCargoAsync(cargoId, ct);
+        await mediator.Send(request, ct);
         
-        return Ok();
+        return NoContent();
     }
 
     [HttpPost("put-in-cart")]
-    public async Task<IActionResult> PutCargoInCart(Guid cargoId, CancellationToken ct)
+    public async Task<IActionResult> PutCargoInCart([FromQuery] PutCargoInCartCommand request, CancellationToken ct)
     {
-        await cargoRepository.PutCargoInCartAsync(cargoId, ct);
+        await mediator.Send(request, ct);
 
-        return Ok();
+        return NoContent();
     }
 
     [HttpPost("add-image")]
-    public async Task<IActionResult> AddImageToCargo(Guid cargoId, IFormFile file, CancellationToken ct)
+    public async Task<IActionResult> AddImageToCargo([FromQuery] Guid cargoId, IFormFile file, CancellationToken ct)
     {
-        await using var stream = file.OpenReadStream();
-        var fileName = await cargoRepository.AddOrUpdateCargoPhotoAsync(cargoId, stream, ct);
+        if (file.Length == 0)
+            return BadRequest("Файл не выбран или пуст.");
         
-        return Ok(new
-        {
-            FileName = fileName
-        });
+        await using var stream = file.OpenReadStream();
+        
+        var command = new AddCargoImageCommand(cargoId, stream);
+        
+        var result = await mediator.Send(command, ct);
+        
+        return Ok(result);
     }
 }

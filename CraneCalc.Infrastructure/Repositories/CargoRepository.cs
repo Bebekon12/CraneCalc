@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using CraneCalc.Application.Contracts.Request;
+using CraneCalc.Application.Features.Cargo.Commands.UpdateCargo;
+using CraneCalc.Application.Features.Cargo.Queries.GetCargoPaginated;
 using CraneCalc.Application.Interfaces.Repository;
 using CraneCalc.Application.Interfaces.Services;
 using CraneCalc.Domain.Models;
@@ -14,7 +15,7 @@ public class CargoRepository(
         IMapper mapper) : ICargoRepository
 {
     public async Task<List<Cargo>> GetCargosPaginatedAsync(
-        CargoFilter filter,
+        GetCargosPaginatedQuery filter,
         int pageNumber,
         int pageSize,
         CancellationToken ct)
@@ -53,7 +54,7 @@ public class CargoRepository(
         return mapper.Map<Cargo>(cargoEntity);
     }
 
-    public async Task<Cargo?> UpdateCargoAsync(Guid id, UpdateCargoRequest cargo, CancellationToken ct)
+    public async Task<Cargo?> UpdateCargoAsync(Guid id, UpdateCargoCommand cargo, CancellationToken ct)
     {
         var cargoEntity = await context.Cargos
             .FirstOrDefaultAsync(c=>c.Id==id,ct);

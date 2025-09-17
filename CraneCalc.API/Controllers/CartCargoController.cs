@@ -1,17 +1,18 @@
-﻿using CraneCalc.Application.Interfaces;
-using CraneCalc.Application.Interfaces.Repository;
+﻿using CraneCalc.Application.Features.CartCargo.Commands.DeleteCargoInCart;
+using CraneCalc.Application.Features.CartCargo.Commands.UpdateCartCargo;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CraneCalc.API.Controllers;
 
 [ApiController]
 [Route("api/cart-cargo")]
-public class CartCargoController(ICartCargoRepository repository) : ControllerBase
+public class CartCargoController(IMediator mediator) : ControllerBase
 {
     [HttpDelete]
-    public async Task<IActionResult> DeleteCargoInCart(Guid cartId, Guid cargoId, CancellationToken ct)
+    public async Task<IActionResult> DeleteCargoInCart([FromQuery] DeleteCargoInCartCommand query, CancellationToken ct)
     {
-        var result = await repository.DeleteCargoInCartAsync(cartId, cargoId, ct);
+        var result = await mediator.Send(query, ct);
         
         if(result==null)
             return NotFound();
@@ -20,10 +21,10 @@ public class CartCargoController(ICartCargoRepository repository) : ControllerBa
     }
 
     [HttpPut]
-    public async Task<IActionResult> UpdateCartCargo(Guid cartId, Guid cargoId, string safetyComment,
+    public async Task<IActionResult> UpdateCartCargo([FromQuery] UpdateCartCargoCommand query,
         CancellationToken ct)
     {
-        var result = await repository.UpdateCargoInCartAsync(cartId, cargoId, safetyComment, ct);
+        var result = await mediator.Send(query, ct);
         
         if(result==null)
             return NotFound();

@@ -1,7 +1,8 @@
-﻿namespace CraneCalc.Application.Contracts.Request;
+﻿namespace CraneCalc.Application.Features.Cargo.Dto;
 
-public record CreateCargoRequest
+public record CargoResponse
 {
+    public Guid Id { get; init; }
     public string Title { get; init; } = string.Empty;
     public string Type { get; init; } = string.Empty;
     public double Weight { get; init; }
@@ -13,4 +14,5 @@ public record CreateCargoRequest
     public double Volume { get; init; }
     public string ConcreteGrade { get; init; } = string.Empty;
     public string Description { get; init; } = string.Empty;
+    public string? ImageUrl { get; init; } = string.Empty;
 }
