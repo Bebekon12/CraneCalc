@@ -11,7 +11,7 @@ namespace CraneCalc.Infrastructure.Repositories;
 
 public class CartRepository(AppDbContext context, IMapper mapper) : ICartRepository
 {
-    public async Task<Cart?> GetCartByIdAsync(Guid cartId, CancellationToken ct)
+    public async Task<CartModel?> GetCartByIdAsync(Guid cartId, CancellationToken ct)
     {
         var cart = await context.Carts
             .Include(c=>c.CartCargo.Where(cc => !cc.IsDeleted))
@@ -21,10 +21,10 @@ public class CartRepository(AppDbContext context, IMapper mapper) : ICartReposit
 
         return cart == null 
             ? null 
-            : mapper.Map<Cart>(cart);
+            : mapper.Map<CartModel>(cart);
     }
 
-    public async Task<Cart?> GetCartByUserIdAsync(int userId, CancellationToken ct)
+    public async Task<CartModel?> GetCartByUserIdAsync(int userId, CancellationToken ct)
     {
         var cart = await context.Carts
             .Include(c=>c.CartCargo.Where(cc => !cc.IsDeleted))
@@ -34,22 +34,22 @@ public class CartRepository(AppDbContext context, IMapper mapper) : ICartReposit
 
         return cart==null 
             ? null
-            : mapper.Map<Cart>(cart);
+            : mapper.Map<CartModel>(cart);
     }
 
-    public async Task<List<Cart>> GetFilteredCartsAsync(DateTime from, DateTime before, CancellationToken ct)
+    public async Task<List<CartModel>> GetFilteredCartsAsync(DateTime from, DateTime before, CancellationToken ct)
     {
         var carts = await context.Carts
             .Include(c=>c.CartCargo.Where(cc => !cc.IsDeleted))
             .ThenInclude(cc=>cc.Cargo)
             .Where(c => !c.IsDeleted && c.CreatedDate >= from && c.CreatedDate <= before)
-            .Select(c=>mapper.Map<Cart>(c))
+            .Select(c=>mapper.Map<CartModel>(c))
             .ToListAsync(ct);
         
         return carts;
     }
 
-    public async Task<Cart?> UpdateCartAsync(Guid id, UpdateCartCommand cart, CancellationToken ct)
+    public async Task<CartModel?> UpdateCartAsync(Guid id, UpdateCartCommand cart, CancellationToken ct)
     {
         var entity = await context.Carts.FirstOrDefaultAsync(c=>c.Id==id,ct);
         
@@ -62,10 +62,10 @@ public class CartRepository(AppDbContext context, IMapper mapper) : ICartReposit
         entity.LiftingSpeed = cart.LiftingSpeed;
         
         await context.SaveChangesAsync(ct);
-        return mapper.Map<Cart>(entity);
+        return mapper.Map<CartModel>(entity);
     }
 
-    public async Task<Cart?> FormCartAsync(Guid cartId, CancellationToken ct)
+    public async Task<CartModel?> FormCartAsync(Guid cartId, CancellationToken ct)
     {
         var cart = await context.Carts
             .Include(cartEntity => cartEntity.CartCargo)
@@ -88,10 +88,10 @@ public class CartRepository(AppDbContext context, IMapper mapper) : ICartReposit
         
         await context.SaveChangesAsync(ct);
         
-        return mapper.Map<Cart>(cart);
+        return mapper.Map<CartModel>(cart);
     }
 
-    public async Task<Cart?> ModerateCartAsync(Guid cartId, int userId, bool isApproved, CancellationToken ct)
+    public async Task<CartModel?> ModerateCartAsync(Guid cartId, int userId, bool isApproved, CancellationToken ct)
     {
         var cart = await context.Carts.FirstOrDefaultAsync(c=>c.Id == cartId, ct);
         
@@ -113,7 +113,7 @@ public class CartRepository(AppDbContext context, IMapper mapper) : ICartReposit
         }
         
         await context.SaveChangesAsync(ct);
-        return mapper.Map<Cart>(cart);
+        return mapper.Map<CartModel>(cart);
     }
 
     public async Task<string?> DeleteCartAsync(Guid cartId, int userId, CancellationToken ct)

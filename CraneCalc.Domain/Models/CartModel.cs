@@ -2,7 +2,7 @@
 
 namespace CraneCalc.Domain.Models;
 
-public class Cart
+public class CartModel
 {
     public Guid Id { get; set; }
         
@@ -26,5 +26,5 @@ public class Cart
         
     public double CalculationResult { get; set; }
         
-    public virtual List<CartCargo> CartCargo { get; set; } = [];
+    public virtual List<CartCargoModel> CartCargo { get; set; } = [];
 }

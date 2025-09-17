@@ -1,6 +1,6 @@
 ﻿namespace CraneCalc.Domain.Models;
 
-public class CartCargo
+public class CartCargoModel
 {
     public int Id { get; set; }
     
@@ -14,7 +14,7 @@ public class CartCargo
         
     public double CalculationResult { get; set; }
         
-    public virtual Cart Cart { get; set; } = null!;
+    public virtual CartModel CartModel { get; set; } = null!;
         
-    public virtual Cargo Cargo { get; set; } = null!;
+    public virtual CargoModel CargoModel { get; set; } = null!;
 }

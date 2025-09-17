@@ -15,7 +15,7 @@ public class CargoRepository(
         IFileStorageService storageService,
         IMapper mapper) : ICargoRepository
 {
-    public async Task<List<Cargo>> GetCargosPaginatedAsync(
+    public async Task<List<CargoModel>> GetCargosPaginatedAsync(
         GetCargosPaginatedQuery filter,
         int pageNumber,
         int pageSize,
@@ -39,23 +39,23 @@ public class CargoRepository(
             .OrderBy(c => c.Id)
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
-            .Select(c => mapper.Map<Cargo>(c))
+            .Select(c => mapper.Map<CargoModel>(c))
             .ToListAsync(ct);
     
         return cargosPaginated;
     }
 
-    public async Task<Cargo> CreateCargoAsync(Cargo cargo, CancellationToken ct)
+    public async Task<CargoModel> CreateCargoAsync(CargoModel cargoModel, CancellationToken ct)
     {
-        var cargoEntity = mapper.Map<CargoEntity>(cargo);
+        var cargoEntity = mapper.Map<CargoEntity>(cargoModel);
         
         await context.Cargos.AddAsync(cargoEntity, ct);
         await context.SaveChangesAsync(ct);
         
-        return mapper.Map<Cargo>(cargoEntity);
+        return mapper.Map<CargoModel>(cargoEntity);
     }
 
-    public async Task<Cargo?> UpdateCargoAsync(Guid id, UpdateCargoCommand cargo, CancellationToken ct)
+    public async Task<CargoModel?> UpdateCargoAsync(Guid id, UpdateCargoCommand cargo, CancellationToken ct)
     {
         var cargoEntity = await context.Cargos
             .FirstOrDefaultAsync(c=>c.Id==id,ct);
@@ -91,7 +91,7 @@ public class CargoRepository(
             cargoEntity.Volume = cargo.Volume;
         
         await context.SaveChangesAsync(ct);
-        return mapper.Map<Cargo>(cargoEntity);
+        return mapper.Map<CargoModel>(cargoEntity);
     }
 
     public async Task DeleteCargoAsync(Guid id, CancellationToken ct)
@@ -111,7 +111,7 @@ public class CargoRepository(
         await context.SaveChangesAsync(ct);
     }
     
-    public async Task<Cargo> GetCargoByIdAsync(Guid id, CancellationToken ct)
+    public async Task<CargoModel> GetCargoByIdAsync(Guid id, CancellationToken ct)
     {
         var cargo = await context.Cargos
             .FirstOrDefaultAsync(c => c.Id == id, ct);
@@ -119,7 +119,7 @@ public class CargoRepository(
         if(cargo == null)
             throw new EntityException("Cargo not found");
         
-        return mapper.Map<Cargo>(cargo);
+        return mapper.Map<CargoModel>(cargo);
     }
 
     public async Task PutCargoInCartAsync(Guid cargoId, CancellationToken ct)

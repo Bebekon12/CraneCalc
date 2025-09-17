@@ -10,10 +10,10 @@ public class DtoModelMapper : Profile
 {
     public DtoModelMapper()
     {
-        CreateMap<Cargo, CreateCargoCommand>();
-        CreateMap<CreateCargoCommand, Cargo>();
+        CreateMap<CargoModel, CreateCargoCommand>();
+        CreateMap<CreateCargoCommand, CargoModel>();
         
-        CreateMap<Cargo, CargoResponse>();
-        CreateMap<CargoResponse, Cargo>();
+        CreateMap<CargoModel, CargoResponse>();
+        CreateMap<CargoResponse, CargoModel>();
     }
 }

@@ -8,44 +8,54 @@ namespace CraneCalc.Infrastructure.Repositories;
 
 public class UserRepository(AppDbContext context, IMapper mapper) : IUserRepository
 {
-    public async Task<User> CreateUserAsync(User user, CancellationToken ct)
+    public async Task<UserModel> CreateUserAsync(UserModel userModel, CancellationToken ct)
     {
-        var entityUser = mapper.Map<UserEntity>(user);
+        var entityUser = mapper.Map<UserEntity>(userModel);
         
         await context.Users.AddAsync(entityUser, ct);
         await context.SaveChangesAsync(ct);
         
-        return mapper.Map<User>(entityUser);
+        return mapper.Map<UserModel>(entityUser);
     }
 
-    public async Task<User?> GetUserAsync(int userId, CancellationToken ct)
+    public async Task<UserModel?> GetUserByIdAsync(int userId, CancellationToken ct)
     {
         var user = await context.Users
             .FirstOrDefaultAsync(u=>u.Id==userId, ct);
         
         return user == null 
             ? null 
-            : mapper.Map<User>(user);
+            : mapper.Map<UserModel>(user);
     }
 
-    public async Task<User?> UpdateUserAsync(int userId, User user, CancellationToken ct)
+    public async Task<UserModel?> GetUserByLoginAsync(string login, CancellationToken ct)
+    {
+        var user = await context.Users
+            .FirstOrDefaultAsync(u => u.Login == login, ct);
+        
+        return user == null
+            ? null
+            : mapper.Map<UserModel>(user);
+    }
+
+    public async Task<UserModel?> UpdateUserAsync(int userId, UserModel userModel, CancellationToken ct)
     {
         var entityUser = await context.Users.FirstOrDefaultAsync(u => u.Id == userId, ct);
         
         if(entityUser == null)
             return null;
         
-        if(entityUser.Login != user.Login)
-            entityUser.Login = user.Login;
+        if(entityUser.Login != userModel.Login)
+            entityUser.Login = userModel.Login;
         
-        if(entityUser.Password != user.Password)
-            entityUser.Password = user.Password;
+        if(entityUser.Password != userModel.Password)
+            entityUser.Password = userModel.Password;
         
-        if(entityUser.Role != user.Role)
-            entityUser.Role = user.Role;
+        if(entityUser.Role != userModel.Role)
+            entityUser.Role = userModel.Role;
         
         await context.SaveChangesAsync(ct);
         
-        return mapper.Map<User>(entityUser);
+        return mapper.Map<UserModel>(entityUser);
     }
 }

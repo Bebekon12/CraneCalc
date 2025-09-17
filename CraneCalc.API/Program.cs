@@ -1,19 +1,47 @@
 using CraneCalc.API.Extensions;
 using CraneCalc.Application.DtoModelMappers;
-using CraneCalc.Application.Features.Cargo.Queries.GetCargoPaginated;
-using CraneCalc.Application.Features.Shared;
+using CraneCalc.Application.Options;
 using CraneCalc.Infrastructure;
 using CraneCalc.Infrastructure.EntityMappers;
-using FluentValidation;
-using MediatR;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
 
+services.Configure<JwtOptions>(configuration.GetSection(nameof(JwtOptions)));
+
+services.AddApiAuthentication(configuration.GetSection(nameof(JwtOptions)).Get<JwtOptions>()!);
+
 services.AddOpenApi();
 services.AddControllers();
-services.AddSwaggerGen();
+services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme",
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT"
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+
+    options.OperationFilter<AddAuthHeaderOperationFilter>();
+});
 
 services.AddMediatrValidators();
 
@@ -22,7 +50,7 @@ services.AddAutoMapper(
     typeof(DtoModelMapper).Assembly);
 
 services.AddDbContextExtensions(configuration);
-services.AddRepository();
+services.AddRepositoryAndServices();
 services.AddMinioExtension(configuration);
 
 var app = builder.Build();
@@ -38,7 +66,8 @@ app.AddUseExceptionHandler();
 app.UseHttpsRedirection();
 app.UseRouting();
 
-//authorize authentication
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

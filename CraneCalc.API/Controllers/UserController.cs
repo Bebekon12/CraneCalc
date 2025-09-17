@@ -1,87 +1,68 @@
-﻿using CraneCalc.Application.Contracts.Request;
-using CraneCalc.Application.Interfaces.Repository;
-using CraneCalc.Domain.Enums;
-using CraneCalc.Domain.Models;
+﻿using CraneCalc.Application.Features.User.Commands.Login;
+using CraneCalc.Application.Features.User.Commands.Register;
+using CraneCalc.Application.Features.User.Commands.Update;
+using CraneCalc.Application.Features.User.Queries.Me;
+using CraneCalc.Application.Options;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CraneCalc.API.Controllers;
 
 [ApiController]
 [Route("api/user")]
-public class UserController(IUserRepository repository) : ControllerBase
+public class UserController(IMediator mediator) : ControllerBase
 {
+    [Authorize]
     [HttpGet("me")]
     public async Task<IActionResult> GetUser(CancellationToken ct)
     {
-        var userId = Request.Cookies["userId"];
-        var isAuthenticated = Request.Cookies["userIsAuthenticated"];
-    
-        if (userId == null || isAuthenticated == null || userId != isAuthenticated)
-            return Unauthorized();
-    
-        var user = await repository.GetUserAsync(Convert.ToInt32(userId), ct);
+        var user = await mediator.Send(new MeQuery(), ct);
+        
         return Ok(user);
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register(RegisterRequest request, CancellationToken ct)
+    public async Task<IActionResult> Register([FromBody] RegisterCommand request, CancellationToken ct)
     {
-        var user = await repository.CreateUserAsync(new User
-        {
-            Login = request.Login,
-            Password = request.Password,
-            Role = Role.User
-        }, ct);
+        await mediator.Send(request, ct);
         
-        Response.Cookies.Append("userId", user.Id.ToString());
-    
-        return Ok(user);
+        return NoContent();
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login(LoginRequest request, CancellationToken ct)
+    public async Task<IActionResult> Login([FromBody] LoginCommand request, CancellationToken ct)
     {
-        var userId = Request.Cookies["userId"];
+        var token = await mediator.Send(request, ct);
         
-        if(userId == null)
+        if(token is null) 
             return NotFound();
         
-        var user = await repository.GetUserAsync(Convert.ToInt32(userId), ct);
+        Response.Cookies.Append(TokenName.Cookie, token);
         
-        if(user == null || user.Login != request.Login || user.Password != request.Password)
-            return Unauthorized();
-        
-        Response.Cookies.Append("userId", user.Id.ToString());
-        Response.Cookies.Append("userIsAuthenticated", user.Id.ToString());
-        
-        return Ok("logined");
+        return Ok(token);
     }
 
+    [Authorize]
     [HttpPut("update")]
-    public async Task<IActionResult> UpdateUser(UpdateUserRequest request, CancellationToken ct)
+    public async Task<IActionResult> UpdateUser([FromBody] UpdateCommand request, CancellationToken ct)
     {
-        var userId = Request.Cookies["userID"];
-        var isAuthenticated = Request.Cookies["userIsAuthenticated"];
+        var token = await mediator.Send(request, ct);
         
-        if(isAuthenticated!=userId || userId==null || isAuthenticated==null)
-            return Unauthorized();
+        if(token is null)
+            return NotFound();
         
-        var user = await repository.UpdateUserAsync(Convert.ToInt32(userId), new User
-        {
-            Login = request.Login,
-            Password = request.Password,
-            Role = Role.User
-        }, ct);
+        Response.Cookies.Append(TokenName.Cookie, token);
         
-        return Ok(user);
+        return Ok(token);
     }
 
+    [Authorize]
     [HttpPost("logout")]
     public IActionResult Logout()
     {
-        Response.Cookies.Delete("userId");
-        Response.Cookies.Delete("userIsAuthenticated");
-    
-        return Ok();
+        Response.Cookies.Delete(TokenName.Cookie);
+        
+        return NoContent();
     }
 }

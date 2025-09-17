@@ -8,18 +8,18 @@ public class EntityModelMappers : Profile
 {
     public EntityModelMappers()
     {
-        CreateMap<Cart, CartEntity>();
-        CreateMap<CartEntity, Cart>();
+        CreateMap<CartModel, CartEntity>();
+        CreateMap<CartEntity, CartModel>();
         
-        CreateMap<Cargo, CargoEntity>();
-        CreateMap<CargoEntity, Cargo>();
+        CreateMap<CargoModel, CargoEntity>();
+        CreateMap<CargoEntity, CargoModel>();
         
-        CreateMap<CartCargo, CartCargoEntity>()
+        CreateMap<CartCargoModel, CartCargoEntity>()
             .ForMember(dest=>dest.Cargo, opt=>opt.Ignore());
-        CreateMap<CartCargoEntity, CartCargo>()
-            .ForMember(dest=>dest.Cargo, opt=>opt.Ignore());
+        CreateMap<CartCargoEntity, CartCargoModel>()
+            .ForMember(dest=>dest.CargoModel, opt=>opt.Ignore());
 
-        CreateMap<UserEntity, User>();
-        CreateMap<User, UserEntity>();
+        CreateMap<UserEntity, UserModel>();
+        CreateMap<UserModel, UserEntity>();
     }
 }

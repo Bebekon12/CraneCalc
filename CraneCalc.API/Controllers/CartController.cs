@@ -6,6 +6,7 @@ using CraneCalc.Application.Features.Cart.Queries.GetCart;
 using CraneCalc.Application.Features.Cart.Queries.GetCartInfo;
 using CraneCalc.Application.Features.Cart.Queries.GetFilteredCarts;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CraneCalc.API.Controllers;
@@ -14,6 +15,7 @@ namespace CraneCalc.API.Controllers;
 [Route("api/cart")]
 public class CartController(IMediator mediator) : ControllerBase
 {
+    [Authorize]
     [HttpGet("info")]
     public async Task<IActionResult> GetCartInformation( CancellationToken ct)
     {
@@ -26,6 +28,7 @@ public class CartController(IMediator mediator) : ControllerBase
         return Ok(result);
     }
 
+    [Authorize]
     [HttpGet("filtered")]
     public async Task<IActionResult> GetFilteredCarts([FromQuery] GetFilteredCartsQuery query, CancellationToken ct)
     {
@@ -34,6 +37,7 @@ public class CartController(IMediator mediator) : ControllerBase
         return Ok(result);
     }
 
+    [Authorize]
     [HttpGet("")]
     public async Task<IActionResult> GetCart([FromQuery] GetCartQuery query, CancellationToken ct)
     {
@@ -45,6 +49,7 @@ public class CartController(IMediator mediator) : ControllerBase
         return Ok(result);
     }
 
+    [Authorize]
     [HttpPut("update")]
     public async Task<IActionResult> UpdateCart(
         [FromBody] UpdateCartCommand request,
@@ -58,6 +63,7 @@ public class CartController(IMediator mediator) : ControllerBase
         return Ok(result);
     }
 
+    [Authorize]
     [HttpPut("form")]
     public async Task<IActionResult> FormCart([FromQuery] FormCartCommand query, CancellationToken ct)
     {
@@ -69,6 +75,7 @@ public class CartController(IMediator mediator) : ControllerBase
         return Ok(result);
     }
 
+    [Authorize(Roles = "Administrator")]
     [HttpPut("moderate")]
     public async Task<IActionResult> ModerateCart([FromQuery] ModerateCartCommand query, CancellationToken ct)
     {
@@ -80,6 +87,7 @@ public class CartController(IMediator mediator) : ControllerBase
         return Ok(cart);
     }
 
+    [Authorize]
     [HttpDelete("delete")]
     public async Task<IActionResult> DeleteCart([FromQuery] DeleteCartCommand query, CancellationToken ct)
     {

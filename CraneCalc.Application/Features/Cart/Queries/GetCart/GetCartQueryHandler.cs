@@ -3,9 +3,9 @@ using MediatR;
 
 namespace CraneCalc.Application.Features.Cart.Queries.GetCart;
 
-public class GetCartQueryHandler(ICartRepository repository) : IRequestHandler<GetCartQuery, Domain.Models.Cart?>
+public class GetCartQueryHandler(ICartRepository repository) : IRequestHandler<GetCartQuery, Domain.Models.CartModel?>
 {
-    public async Task<Domain.Models.Cart?> Handle(GetCartQuery request, CancellationToken ct)
+    public async Task<Domain.Models.CartModel?> Handle(GetCartQuery request, CancellationToken ct)
     {
         var cart = await repository.GetCartByIdAsync(request.Id, ct);
         

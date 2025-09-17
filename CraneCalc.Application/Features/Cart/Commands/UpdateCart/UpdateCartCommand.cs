@@ -7,4 +7,4 @@ public record UpdateCartCommand(
     double LoadCapacity, 
     double LiftingHeight, 
     double JibOutreach, 
-    double LiftingSpeed) : IRequest<Domain.Models.Cart?>;
+    double LiftingSpeed) : IRequest<Domain.Models.CartModel?>;

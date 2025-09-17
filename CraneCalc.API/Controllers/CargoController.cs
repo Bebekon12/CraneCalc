@@ -6,6 +6,7 @@ using CraneCalc.Application.Features.Cargo.Commands.UpdateCargo;
 using CraneCalc.Application.Features.Cargo.Queries.GetCargo;
 using CraneCalc.Application.Features.Cargo.Queries.GetCargoPaginated;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CraneCalc.API.Controllers;
@@ -32,6 +33,7 @@ public class CargoController(IMediator mediator) : ControllerBase
         return Ok(result);
     }
 
+    [Authorize(Roles = "Administrator")]
     [HttpPost("create")]
     public async Task<IActionResult> CreateCargo([FromBody] CreateCargoCommand request, CancellationToken ct)
     {
@@ -40,6 +42,7 @@ public class CargoController(IMediator mediator) : ControllerBase
         return Ok(result);
     }
 
+    [Authorize(Roles = "Administrator")]
     [HttpPut("update")]
     public async Task<IActionResult> UpdateCargo([FromBody] UpdateCargoCommand request, CancellationToken ct)
     {
@@ -48,6 +51,7 @@ public class CargoController(IMediator mediator) : ControllerBase
         return Ok(result);
     }
 
+    [Authorize(Roles = "Administrator")]
     [HttpDelete("delete")]
     public async Task<IActionResult> DeleteCargo([FromQuery] DeleteCargoCommand request, CancellationToken ct)
     {
@@ -56,6 +60,7 @@ public class CargoController(IMediator mediator) : ControllerBase
         return NoContent();
     }
 
+    [Authorize]
     [HttpPost("put-in-cart")]
     public async Task<IActionResult> PutCargoInCart([FromQuery] PutCargoInCartCommand request, CancellationToken ct)
     {
@@ -64,6 +69,7 @@ public class CargoController(IMediator mediator) : ControllerBase
         return NoContent();
     }
 
+    [Authorize(Roles = "Administrator")]
     [HttpPost("add-image")]
     public async Task<IActionResult> AddImageToCargo([FromQuery] Guid cargoId, IFormFile file, CancellationToken ct)
     {

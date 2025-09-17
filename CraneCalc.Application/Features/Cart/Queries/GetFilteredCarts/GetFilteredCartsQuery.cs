@@ -2,4 +2,4 @@
 
 namespace CraneCalc.Application.Features.Cart.Queries.GetFilteredCarts;
 
-public record GetFilteredCartsQuery(DateTime From, DateTime Before) : IRequest<List<Domain.Models.Cart>>;
+public record GetFilteredCartsQuery(DateTime From, DateTime Before) : IRequest<List<Domain.Models.CartModel>>;

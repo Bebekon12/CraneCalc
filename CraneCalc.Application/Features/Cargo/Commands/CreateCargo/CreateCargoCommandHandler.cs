@@ -10,7 +10,7 @@ public class CreateCargoCommandHandler(ICargoRepository repository, IMapper mapp
 {
     public async Task<CargoResponse> Handle(CreateCargoCommand request, CancellationToken ct)
     {
-        var createdCargo = await repository.CreateCargoAsync(mapper.Map<Domain.Models.Cargo>(request), ct);
+        var createdCargo = await repository.CreateCargoAsync(mapper.Map<Domain.Models.CargoModel>(request), ct);
         
         return mapper.Map<CargoResponse>(createdCargo);
     }

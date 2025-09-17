@@ -1,6 +1,6 @@
 ﻿namespace CraneCalc.Domain.Models;
 
-public class Cargo
+public class CargoModel
 {
     public Guid Id { get; set; }
     public string Title { get; set; } = string.Empty;
