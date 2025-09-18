@@ -13,7 +13,7 @@ public class UserService(IHttpContextAccessor httpContextAccessor, IUserReposito
 {
     public string? GetCurrentUserLogin()
     {
-        var token = httpContextAccessor.HttpContext?.Request.Cookies[TokenName.Cookie];
+        var token = httpContextAccessor.HttpContext?.Request.Cookies[CookieNames.AccessToken];
         
         if (string.IsNullOrEmpty(token))
             return null;
@@ -25,7 +25,7 @@ public class UserService(IHttpContextAccessor httpContextAccessor, IUserReposito
             .FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
     }
 
-    public async Task<int> GetCurrentUserIdAsync(CancellationToken ct)
+    public async Task<Guid> GetCurrentUserIdAsync(CancellationToken ct)
     {
         var user  = await GetCurrentUserAsync(ct);
         

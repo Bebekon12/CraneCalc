@@ -1,9 +1,10 @@
-﻿using FluentValidation;
+﻿using CraneCalc.Application.Features.User.Dto;
+using FluentValidation;
 using MediatR;
 
 namespace CraneCalc.Application.Features.User.Commands.Login;
 
-public class LoginCommand : IRequest<string?>
+public class LoginCommand : IRequest<AuthenticationResult?>
 {
     public string Login { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;

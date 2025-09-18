@@ -1,15 +1,17 @@
 ﻿using System.Text.Json;
+using CraneCalc.Application.DtoModelMappers;
 using CraneCalc.Application.Features.Cargo.Commands.CreateCargo;
 using CraneCalc.Application.Features.Cargo.Queries.GetCargoPaginated;
 using CraneCalc.Application.Features.Shared;
 using CraneCalc.Domain.Exceptions;
+using CraneCalc.Infrastructure.EntityMappers;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Diagnostics;
 
-namespace CraneCalc.API.Extensions;
+namespace CraneCalc.API.Configurations;
 
-public static class MediatrValidatorExtensions
+public static class MediatrValidatorMapperConfig
 {
     public static void AddMediatrValidators(this IServiceCollection services)
     {
@@ -18,6 +20,10 @@ public static class MediatrValidatorExtensions
         services.AddValidatorsFromAssemblyContaining<CreateCargoCommandValidator>();
         
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+        
+        services.AddAutoMapper(
+            typeof(EntityModelMappers).Assembly, 
+            typeof(DtoModelMapper).Assembly);
     }
 
     public static void AddUseExceptionHandler(this WebApplication app)

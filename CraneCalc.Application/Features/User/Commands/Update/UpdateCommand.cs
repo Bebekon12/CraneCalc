@@ -5,7 +5,6 @@ namespace CraneCalc.Application.Features.User.Commands.Update;
 
 public class UpdateCommand : IRequest<string?>
 {
-    public int Id { get; set; }
     public string Login { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
 }

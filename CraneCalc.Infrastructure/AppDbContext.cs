@@ -1,5 +1,4 @@
-﻿using CraneCalc.Domain.Enums;
-using CraneCalc.Infrastructure.Entities;
+﻿using CraneCalc.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CraneCalc.Infrastructure;

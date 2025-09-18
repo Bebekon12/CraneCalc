@@ -12,13 +12,15 @@ public class UserRepository(AppDbContext context, IMapper mapper) : IUserReposit
     {
         var entityUser = mapper.Map<UserEntity>(userModel);
         
+        entityUser.Id = Guid.NewGuid();
+        
         await context.Users.AddAsync(entityUser, ct);
         await context.SaveChangesAsync(ct);
         
         return mapper.Map<UserModel>(entityUser);
     }
 
-    public async Task<UserModel?> GetUserByIdAsync(int userId, CancellationToken ct)
+    public async Task<UserModel?> GetUserByIdAsync(Guid userId, CancellationToken ct)
     {
         var user = await context.Users
             .FirstOrDefaultAsync(u=>u.Id==userId, ct);
@@ -38,7 +40,7 @@ public class UserRepository(AppDbContext context, IMapper mapper) : IUserReposit
             : mapper.Map<UserModel>(user);
     }
 
-    public async Task<UserModel?> UpdateUserAsync(int userId, UserModel userModel, CancellationToken ct)
+    public async Task<UserModel?> UpdateUserAsync(Guid userId, UserModel userModel, CancellationToken ct)
     {
         var entityUser = await context.Users.FirstOrDefaultAsync(u => u.Id == userId, ct);
         

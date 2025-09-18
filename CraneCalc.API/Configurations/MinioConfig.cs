@@ -1,11 +1,10 @@
-﻿using CraneCalc.Application.Interfaces;
-using CraneCalc.Application.Interfaces.Services;
+﻿using CraneCalc.Application.Interfaces.Services;
 using CraneCalc.Application.Services;
 using Minio;
 
-namespace CraneCalc.API.Extensions;
+namespace CraneCalc.API.Configurations;
 
-public static class MinioExtensions
+public static class MinioConfig
 {
     public static void AddMinioExtension(this IServiceCollection services, IConfiguration configuration)
     {

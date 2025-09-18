@@ -3,14 +3,18 @@ using CraneCalc.Application.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
-namespace CraneCalc.API.Extensions;
+namespace CraneCalc.API.Configurations;
 
-public static class AuthExtensions
+public static class AuthConfig
 {
     public static void AddApiAuthentication(
         this IServiceCollection services,
-        JwtOptions jwtOptions)
+        IConfiguration configuration)
     {
+        services.Configure<JwtOptions>(configuration.GetSection(nameof(JwtOptions)));
+
+        var jwtOptions = configuration.GetSection(nameof(JwtOptions)).Get<JwtOptions>()!;
+        
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
             {
@@ -27,7 +31,7 @@ public static class AuthExtensions
                 {
                     OnMessageReceived = context =>
                     {
-                        context.Token = context.Request.Cookies[TokenName.Cookie];
+                        context.Token = context.Request.Cookies[CookieNames.AccessToken];
 
                         return Task.CompletedTask;
                     }

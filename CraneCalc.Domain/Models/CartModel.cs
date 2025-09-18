@@ -10,14 +10,14 @@ public class CartModel
         
     public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
         
-    public int CreatorId { get; set; }
+    public Guid CreatorId { get; set; }
     
     public bool IsDeleted { get; set; } = false;
         
     public DateTime? FormationDate { get; set; }
     public DateTime? CompletionDate { get; set; }
         
-    public int? ModeratorId { get; set; }
+    public Guid? ModeratorId { get; set; }
         
     public double LoadCapacity { get; set; }
     public double LiftingHeight { get; set; }

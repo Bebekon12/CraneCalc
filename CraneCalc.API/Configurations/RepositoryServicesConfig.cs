@@ -4,9 +4,9 @@ using CraneCalc.Application.Interfaces.Services;
 using CraneCalc.Application.Services;
 using CraneCalc.Infrastructure.Repositories;
 
-namespace CraneCalc.API.Extensions;
+namespace CraneCalc.API.Configurations;
 
-public static class RepositoryServicesExtensions
+public static class RepositoryServicesConfig
 {
     public static void AddRepositoryAndServices(this IServiceCollection services)
     {

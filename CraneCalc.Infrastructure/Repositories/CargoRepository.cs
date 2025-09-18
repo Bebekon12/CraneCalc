@@ -3,6 +3,7 @@ using CraneCalc.Application.Features.Cargo.Commands.UpdateCargo;
 using CraneCalc.Application.Features.Cargo.Queries.GetCargoPaginated;
 using CraneCalc.Application.Interfaces.Repository;
 using CraneCalc.Application.Interfaces.Services;
+using CraneCalc.Domain.Enums;
 using CraneCalc.Domain.Exceptions;
 using CraneCalc.Domain.Models;
 using CraneCalc.Infrastructure.Entities;
@@ -122,15 +123,17 @@ public class CargoRepository(
         return mapper.Map<CargoModel>(cargo);
     }
 
-    public async Task PutCargoInCartAsync(Guid cargoId, int creatorId, bool isModerator, CancellationToken ct)
+    public async Task PutCargoInCartAsync(Guid cargoId, Guid creatorId, bool isModerator, CancellationToken ct)
     {
         var cargo = await context.Cargos.FirstOrDefaultAsync(c => c.Id == cargoId, ct);
         
         if(cargo == null)
-            throw new NullReferenceException("Cargo not found");
+            throw new EntityException("Cargo not found");
 
         var cart = await context.Carts
             .Include(c=>c.CartCargo.Where(i=>!i.IsDeleted))
+            .ThenInclude(c=>c.Cargo)
+            .Where(c=>c.Status==Status.Draft)
             .FirstOrDefaultAsync(c => c.CreatorId == creatorId, ct);
 
         if(cart != null)

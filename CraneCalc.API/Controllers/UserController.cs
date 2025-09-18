@@ -1,4 +1,5 @@
 ﻿using CraneCalc.Application.Features.User.Commands.Login;
+using CraneCalc.Application.Features.User.Commands.Logout;
 using CraneCalc.Application.Features.User.Commands.Register;
 using CraneCalc.Application.Features.User.Commands.Update;
 using CraneCalc.Application.Features.User.Queries.Me;
@@ -33,14 +34,27 @@ public class UserController(IMediator mediator) : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginCommand request, CancellationToken ct)
     {
-        var token = await mediator.Send(request, ct);
+        var result = await mediator.Send(request, ct);
         
-        if(token is null) 
+        if(result is null) 
             return NotFound();
         
-        Response.Cookies.Append(TokenName.Cookie, token);
+        Response.Cookies.Append(CookieNames.AccessToken, result.AccessToken, new CookieOptions
+        {
+            HttpOnly = true,
+            Expires = DateTimeOffset.UtcNow.AddMinutes(15)
+        });
+    
+        Response.Cookies.Append(CookieNames.RefreshToken, result.RefreshToken, new CookieOptions
+        {
+            HttpOnly = true,
+            Expires = DateTimeOffset.UtcNow.AddDays(7)
+        });
         
-        return Ok(token);
+        return Ok(new
+        {
+            result.AccessToken
+        });
     }
 
     [Authorize]
@@ -52,16 +66,19 @@ public class UserController(IMediator mediator) : ControllerBase
         if(token is null)
             return NotFound();
         
-        Response.Cookies.Append(TokenName.Cookie, token);
+        Response.Cookies.Append(CookieNames.AccessToken, token);
         
         return Ok(token);
     }
 
     [Authorize]
     [HttpPost("logout")]
-    public IActionResult Logout()
+    public async Task<IActionResult> Logout(CancellationToken ct)
     {
-        Response.Cookies.Delete(TokenName.Cookie);
+        await mediator.Send(new LogoutCommand(), ct);
+        
+        Response.Cookies.Delete(CookieNames.AccessToken);
+        Response.Cookies.Delete(CookieNames.RefreshToken);
         
         return NoContent();
     }
