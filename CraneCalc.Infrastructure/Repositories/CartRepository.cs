@@ -74,7 +74,8 @@ public class CartRepository(AppDbContext context, IMapper mapper) : ICartReposit
         if(cart == null)
             return null;
         
-        if (cart.CreatorId != 1) throw new EntityException("Только создатель может формировать заявку");
+        if (cart.ModeratorId==null) 
+            throw new EntityException("Только создатель может формировать заявку");
         
         if (cart.LoadCapacity <= 0 || cart.LiftingHeight <= 0 || 
             cart.JibOutreach <= 0 || cart.LiftingSpeed <= 0)
@@ -120,7 +121,8 @@ public class CartRepository(AppDbContext context, IMapper mapper) : ICartReposit
     {
         var cart = await context.Carts.FirstOrDefaultAsync(c=>c.Id == cartId, ct);
 
-        if (cart?.ModeratorId == null || cart.ModeratorId != userId) return null;
+        if (cart?.CreatorId != userId) 
+            return null;
         
         cart.IsDeleted = true;
         cart.Status = Status.Deleted;

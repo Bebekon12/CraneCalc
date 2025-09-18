@@ -1,6 +1,4 @@
-﻿using CraneCalc.Application.Interfaces;
-using CraneCalc.Application.Interfaces.Repository;
-using CraneCalc.Domain.Models;
+﻿using CraneCalc.Application.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace CraneCalc.Infrastructure.Repositories;

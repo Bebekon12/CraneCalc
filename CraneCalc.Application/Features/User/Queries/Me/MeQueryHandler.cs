@@ -6,7 +6,7 @@ using MediatR;
 
 namespace CraneCalc.Application.Features.User.Queries.Me;
 
-public class MeQueryHandler(IUserRepository repository, ITokenService service) : IRequestHandler<MeQuery, UserModel?>
+public class MeQueryHandler(IUserRepository repository, IUserService service) : IRequestHandler<MeQuery, UserModel?>
 {
     public async Task<UserModel?> Handle(MeQuery request, CancellationToken ct)
     {

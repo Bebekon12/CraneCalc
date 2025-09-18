@@ -122,7 +122,7 @@ public class CargoRepository(
         return mapper.Map<CargoModel>(cargo);
     }
 
-    public async Task PutCargoInCartAsync(Guid cargoId, CancellationToken ct)
+    public async Task PutCargoInCartAsync(Guid cargoId, int creatorId, bool isModerator, CancellationToken ct)
     {
         var cargo = await context.Cargos.FirstOrDefaultAsync(c => c.Id == cargoId, ct);
         
@@ -131,7 +131,7 @@ public class CargoRepository(
 
         var cart = await context.Carts
             .Include(c=>c.CartCargo.Where(i=>!i.IsDeleted))
-            .FirstOrDefaultAsync(c => c.CreatorId == 1, ct);
+            .FirstOrDefaultAsync(c => c.CreatorId == creatorId, ct);
 
         if(cart != null)
         {
@@ -156,8 +156,8 @@ public class CargoRepository(
         var newCart = new CartEntity
         {
             Id = Guid.NewGuid(),
-            ModeratorId = 1,
-            CreatorId = 1
+            ModeratorId = isModerator ? creatorId : null,
+            CreatorId = creatorId
         };
         
         newCart.CartCargo.Add(new CartCargoEntity

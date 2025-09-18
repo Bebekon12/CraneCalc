@@ -16,7 +16,7 @@ public static class RepositoryServicesExtensions
         services.AddScoped<IUserRepository, UserRepository>();
         
         services.AddHttpContextAccessor();
-        services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IUserService, UserService>();
         services.AddScoped<IJwtProvider, JwtProvider>();
         services.AddScoped<IPasswordHasher, PasswordHasher>();
     }
