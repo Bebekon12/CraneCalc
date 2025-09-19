@@ -111,7 +111,31 @@ public class CartRepository(AppDbContext context, IMapper mapper) : ICartReposit
             if (isApproved)
             {
                 cart.Status = Status.Completed;
-                cart.CalculationResult = 11;
+                
+                // Константы
+                const double kV = 0.85;  // Коэффициент использования крана
+                const double tR = 0.5;   // Время ручных операций (мин)
+                const double vT = 30;    // Скорость тележки (м/мин)
+                const double vD = 30;    // Скорость движения крана (м/мин)
+                const double n1 = 1;     // Число поворотов стрелы
+                const double n = 2;       // Максимальное число поворотов
+                const double kSov = 1.0; // Коэффициент совмещения операций
+
+                // Параметры из заявки
+                var q = cart.LoadCapacity;        // Грузоподъемность (т)
+                var h = cart.LiftingHeight;       // Высота подъема (м)
+                var vP = cart.LiftingSpeed;      // Скорость подъема (м/мин)
+                var lT = cart.JibOutreach;       // Вылет стрелы (м)
+                var lD = cart.JibOutreach * 0.5; // Предполагаемое расстояние движения крана
+
+                // Расчет времени цикла
+                var tM = 2.5 * (h / vP) + 2 * (lT / vT + lD / vD + n1 / n) * kSov;
+                var tC = tM + tR;
+
+                // Расчет производительности (т/ч)
+                var productivity = 60 * q * kV / tC;
+
+                cart.CalculationResult = Math.Round(productivity, 2);
             }
             else
             {
