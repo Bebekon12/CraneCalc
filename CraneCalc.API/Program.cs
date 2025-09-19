@@ -1,10 +1,4 @@
 using CraneCalc.API.Configurations;
-using CraneCalc.Application.DtoModelMappers;
-using CraneCalc.Application.Options;
-using CraneCalc.Application.Services;
-using CraneCalc.Infrastructure;
-using CraneCalc.Infrastructure.EntityMappers;
-using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;

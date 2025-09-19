@@ -15,7 +15,7 @@ public class CartRepository(AppDbContext context, IMapper mapper) : ICartReposit
         var cart = await context.Carts
             .Include(c=>c.CartCargo.Where(cc => !cc.IsDeleted))
             .ThenInclude(cc=>cc.Cargo)
-            .Where(r=>r.Status == Status.Draft)
+            .Where(r=>r.Status == Status.Draft && !r.IsDeleted)
             .FirstOrDefaultAsync(r=>r.Id == cartId, ct);
 
         return cart == null 
@@ -28,7 +28,7 @@ public class CartRepository(AppDbContext context, IMapper mapper) : ICartReposit
         var cart = await context.Carts
             .Include(c=>c.CartCargo.Where(cc => !cc.IsDeleted))
             .ThenInclude(cc=>cc.Cargo)
-            .Where(r=>r.Status == Status.Draft)
+            .Where(r=>r.Status == Status.Draft && !r.IsDeleted)
             .FirstOrDefaultAsync(r => r.CreatorId == userId, ct);
 
         return cart==null 
@@ -36,7 +36,7 @@ public class CartRepository(AppDbContext context, IMapper mapper) : ICartReposit
             : mapper.Map<CartModel>(cart);
     }
 
-    public async Task<List<CartModel>> GetFilteredCartsAsync(DateTime from, DateTime before, CancellationToken ct)
+    public async Task<List<CartModel>> GetFilteredCartsAsync(DateTime from, DateTime before, Status status, CancellationToken ct)
     {
         var utcFrom = DateTime.SpecifyKind(from, DateTimeKind.Utc);
         var utcBefore = DateTime.SpecifyKind(before, DateTimeKind.Utc);
@@ -44,7 +44,11 @@ public class CartRepository(AppDbContext context, IMapper mapper) : ICartReposit
         var carts = await context.Carts
             .Include(c=>c.CartCargo.Where(cc => !cc.IsDeleted))
             .ThenInclude(cc=>cc.Cargo)
-            .Where(c => !c.IsDeleted && c.CreatedDate >= utcFrom && c.CreatedDate <= utcBefore)
+            .Where(c => !c.IsDeleted && c.CreatedDate >= utcFrom 
+                                     && c.CreatedDate <= utcBefore 
+                                     && c.Status==status
+                                     && c.Status!=Status.Draft
+                                     && c.Status!=Status.Completed)
             .Select(c=>mapper.Map<CartModel>(c))
             .ToListAsync(ct);
         

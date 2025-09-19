@@ -8,7 +8,7 @@ public class GetFilteredCartsQueryHandler(ICartRepository repository) : IRequest
 {
     public async Task<List<CartModel>> Handle(GetFilteredCartsQuery request, CancellationToken ct)
     {
-        var carts = await repository.GetFilteredCartsAsync(request.From, request.Before, ct);
+        var carts = await repository.GetFilteredCartsAsync(request.From, request.Before, request.Status, ct);
         
         return carts;
     }
