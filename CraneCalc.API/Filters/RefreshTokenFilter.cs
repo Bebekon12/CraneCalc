@@ -6,7 +6,7 @@ using CraneCalc.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace CraneCalc.API.Configurations;
+namespace CraneCalc.API.Filters;
 
 public class RefreshTokenFilter(
     IJwtProvider jwtProvider,

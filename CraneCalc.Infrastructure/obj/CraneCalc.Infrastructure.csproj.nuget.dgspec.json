@@ -1,31 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj": {}
+    "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj": {
+    "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj",
+        "projectUniqueName": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj",
         "projectName": "CraneCalc.Application",
-        "projectPath": "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj",
-        "packagesPath": "C:\\Users\\0\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Application\\obj\\",
+        "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj",
+        "packagesPath": "C:\\Users\\artur\\.nuget\\packages\\",
+        "outputPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\obj\\",
         "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\VisualStudio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\0\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\artur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -33,8 +32,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj": {
-                "projectPath": "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj"
+              "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj": {
+                "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj"
               }
             }
           }
@@ -115,32 +114,31 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj": {
+    "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj",
+        "projectUniqueName": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj",
         "projectName": "CraneCalc.Domain",
-        "projectPath": "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj",
-        "packagesPath": "C:\\Users\\0\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Domain\\obj\\",
+        "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj",
+        "packagesPath": "C:\\Users\\artur\\.nuget\\packages\\",
+        "outputPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\VisualStudio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\0\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\artur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -190,32 +188,31 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj": {
+    "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj",
+        "projectUniqueName": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj",
         "projectName": "CraneCalc.Infrastructure",
-        "projectPath": "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\0\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Infrastructure\\obj\\",
+        "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Infrastructure\\CraneCalc.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\artur\\.nuget\\packages\\",
+        "outputPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\VisualStudio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\0\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\artur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -223,11 +220,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj": {
-                "projectPath": "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj"
+              "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj": {
+                "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj"
               },
-              "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj": {
-                "projectPath": "C:\\Users\\0\\OneDrive\\Desktop\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj"
+              "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj": {
+                "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj"
               }
             }
           }
@@ -290,7 +287,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

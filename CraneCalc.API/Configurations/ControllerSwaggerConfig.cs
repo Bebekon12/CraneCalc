@@ -1,4 +1,5 @@
-﻿using CraneCalc.Application.Services;
+﻿using CraneCalc.API.Filters;
+using CraneCalc.Application.Services;
 using Microsoft.OpenApi.Models;
 
 namespace CraneCalc.API.Configurations;

@@ -1,7 +1,7 @@
 ﻿using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace CraneCalc.API.Configurations;
+namespace CraneCalc.API.Filters;
 
 public class AuthResponsesOperationFilter : IOperationFilter
 {
