@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CraneCalc.Application.Interfaces.Repository;
+using CraneCalc.Domain.Exceptions;
 using CraneCalc.Domain.Models;
 using CraneCalc.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -47,5 +48,15 @@ public class UserRepository(AppDbContext context, IMapper mapper) : IUserReposit
         await context.SaveChangesAsync(ct);
         
         return mapper.Map<User>(entityUser);
+    }
+
+    public async Task<User?> GetUserByIdAsync(int userId, CancellationToken ct)
+    {
+        var user = await context.Users.FirstOrDefaultAsync(u => u.Id == userId, ct);
+
+        if (user == null)
+            throw new EntityException("User not found");
+        
+        return mapper.Map<User>(user);
     }
 }

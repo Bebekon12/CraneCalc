@@ -35,13 +35,14 @@ public class CartRepository(AppDbContext context, IMapper mapper) : ICartReposit
             ? null
             : mapper.Map<Cart>(cart);
     }
+    
 
-    public async Task<List<Cart>> GetFilteredCartsAsync(DateTime from, DateTime before, CancellationToken ct)
+    public async Task<List<Cart>> GetFilteredCartsAsync(DateTime from, DateTime before, Status status, CancellationToken ct)
     {
         var carts = await context.Carts
             .Include(c=>c.CartCargo.Where(cc => !cc.IsDeleted))
             .ThenInclude(cc=>cc.Cargo)
-            .Where(c => !c.IsDeleted && c.CreatedDate >= from && c.CreatedDate <= before)
+            .Where(c => !c.IsDeleted && c.CreatedDate >= from && c.CreatedDate <= before && c.Status == status)
             .Select(c=>mapper.Map<Cart>(c))
             .ToListAsync(ct);
         
