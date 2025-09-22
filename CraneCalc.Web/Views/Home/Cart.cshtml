@@ -70,9 +70,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="remove-item-btn" data-item-id="@item.Id">
-                            <i class="fas fa-trash-alt"></i>
-                        </div>
                     </div>
                 }
             </div>
@@ -112,28 +109,6 @@
                     });
             });
         }
-        
-        document.querySelectorAll('.remove-item-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const cargoId = this.dataset.itemId;
-
-                fetch(`/remove-cargo-from-cart/${cargoId}`, {
-                    method: 'POST',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
-                    .then(response => {
-                        if (response.ok) {
-                            this.closest('.request-item').remove();
-
-                            updateTotals();
-                        } else {
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-            });
-        });
         
         function updateTotals() {
             // Добавьте здесь логику обновления итоговых значений

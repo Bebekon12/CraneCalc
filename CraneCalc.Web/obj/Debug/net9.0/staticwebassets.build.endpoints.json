@@ -3,6 +3,88 @@
   "ManifestType": "Build",
   "Endpoints": [
     {
+      "Route": "adminer/adminer-5.4.0.6lwa8ro70r.php",
+      "AssetFile": "adminer/adminer-5.4.0.php",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "507284"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"elct3E5RLUdSkCt2nrtABGVYPYFMnSgMC3F11RoxWeA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 21 Sep 2025 19:23:34 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6lwa8ro70r"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-elct3E5RLUdSkCt2nrtABGVYPYFMnSgMC3F11RoxWeA="
+        },
+        {
+          "Name": "label",
+          "Value": "adminer/adminer-5.4.0.php"
+        }
+      ]
+    },
+    {
+      "Route": "adminer/adminer-5.4.0.php",
+      "AssetFile": "adminer/adminer-5.4.0.php",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "507284"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"elct3E5RLUdSkCt2nrtABGVYPYFMnSgMC3F11RoxWeA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 21 Sep 2025 19:23:34 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-elct3E5RLUdSkCt2nrtABGVYPYFMnSgMC3F11RoxWeA="
+        }
+      ]
+    },
+    {
       "Route": "css/views/Calculation/calculation.css",
       "AssetFile": "css/views/Calculation/calculation.css.gz",
       "Selectors": [

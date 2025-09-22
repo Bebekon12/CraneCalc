@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KIFDBbNEwBr1RCFJ9aU4Ox8eRLcEooUpPb+bsV3/8FY=",
+  "Hash": "H1NMQDYGOg9+LN1Pu/fqP8bNNGNK5DdFMtoGaEkUaig=",
   "Source": "CraneCalc.Web",
   "BasePath": "_content/CraneCalc.Web",
   "Mode": "Default",
@@ -1401,6 +1401,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Identity": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Web\\wwwroot\\adminer\\adminer-5.4.0.php",
+      "SourceId": "CraneCalc.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Web\\wwwroot\\",
+      "BasePath": "_content/CraneCalc.Web",
+      "RelativePath": "adminer/adminer-5.4.0#[.{fingerprint}]?.php",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6lwa8ro70r",
+      "Integrity": "elct3E5RLUdSkCt2nrtABGVYPYFMnSgMC3F11RoxWeA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\adminer\\adminer-5.4.0.php"
     },
     {
       "Identity": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Web\\wwwroot\\css\\views\\Calculation\\calculation.css",
@@ -2874,6 +2895,88 @@
     }
   ],
   "Endpoints": [
+    {
+      "Route": "adminer/adminer-5.4.0.6lwa8ro70r.php",
+      "AssetFile": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Web\\wwwroot\\adminer\\adminer-5.4.0.php",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "507284"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"elct3E5RLUdSkCt2nrtABGVYPYFMnSgMC3F11RoxWeA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 21 Sep 2025 19:23:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6lwa8ro70r"
+        },
+        {
+          "Name": "label",
+          "Value": "adminer/adminer-5.4.0.php"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-elct3E5RLUdSkCt2nrtABGVYPYFMnSgMC3F11RoxWeA="
+        }
+      ]
+    },
+    {
+      "Route": "adminer/adminer-5.4.0.php",
+      "AssetFile": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Web\\wwwroot\\adminer\\adminer-5.4.0.php",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "507284"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"elct3E5RLUdSkCt2nrtABGVYPYFMnSgMC3F11RoxWeA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 21 Sep 2025 19:23:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-elct3E5RLUdSkCt2nrtABGVYPYFMnSgMC3F11RoxWeA="
+        }
+      ]
+    },
     {
       "Route": "css/views/Calculation/calculation.css",
       "AssetFile": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Web\\obj\\Debug\\net9.0\\compressed\\17ar2073bo-wdc3ods8j4.gz",

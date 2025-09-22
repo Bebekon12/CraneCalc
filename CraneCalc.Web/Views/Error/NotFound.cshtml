@@ -1,0 +1,117 @@
+﻿@{
+    ViewData["Title"] = "Страница не найдена";
+    Layout = null; // Если не хотите использовать общий layout
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        html {
+            font-size: 0.625vw;
+            height: 100%;
+        }
+
+        body {
+            background: var(--bgGradient, radial-gradient(rgba(57, 58, 58, 1) 0%, rgba(14, 14, 14, 1)));
+            color: var(--textColor, #fff);
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        :root {
+            --mainColor: rgba(255, 80, 0, 1);
+            --mainColorLight: rgba(255, 80, 0, 0.7);
+            --bgGradient: radial-gradient(rgba(57, 58, 58, 1) 0%, rgba(14, 14, 14, 1));
+            --headerBg: linear-gradient(to right, rgba(33, 32, 32, 1), rgba(18, 12, 12, 1), rgba(18, 12, 12, 1));
+            --cardBg: rgba(35, 35, 35, 0.7);
+            --cardBgHover: rgba(45, 45, 45, 0.8);
+            --textColor: #fff;
+            --textSecondary: rgba(255, 255, 255, 0.7);
+            --borderColor: rgba(255,255,255,0.15);
+            --glassEffect: blur(0.390625vw);
+        }
+
+        .not-found-container {
+            text-align: center;
+            background: var(--cardBg);
+            padding: 8rem 6rem;
+            border-radius: 2rem;
+            backdrop-filter: var(--glassEffect);
+            border: 1px solid var(--borderColor);
+            max-width: 80rem;
+        }
+
+        .error-code {
+            font-family: 'Akrobat', sans-serif;
+            font-size: 20rem;
+            line-height: 1;
+            color: var(--mainColor);
+            text-shadow: 0 0 30px var(--mainColorLight);
+            margin-bottom: 3rem;
+        }
+
+        .message {
+            font-size: 3.6rem;
+            margin-bottom: 4rem;
+            opacity: 0.9;
+        }
+
+        .home-link {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            font-size: 2rem;
+            text-decoration: none;
+            color: var(--textColor);
+            background: var(--mainColor);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .home-link:hover {
+            background: var(--mainColorLight);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 80, 0, 0.3);
+        }
+
+        @@media (max-width: 768px) {
+            html {
+                font-size: 1.5vw;
+            }
+
+            .not-found-container {
+                padding: 6rem 4rem;
+                margin: 2rem;
+            }
+
+            .error-code {
+                font-size: 15rem;
+            }
+
+            .message {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="not-found-container">
+    <div class="error-code">404</div>
+    <div class="message">Страница не найдена</div>
+    <a href="/" class="home-link">Вернуться на главную</a>
+</div>
+</body>
+</html>

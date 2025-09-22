@@ -1,5 +1,17 @@
 ﻿<Project>
   <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/CraneCalc.Web/adminer/adminer-5.4.0.6lwa8ro70r.php">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\adminer\adminer-5.4.0.php'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"6lwa8ro70r"},{"Name":"integrity","Value":"sha256-elct3E5RLUdSkCt2nrtABGVYPYFMnSgMC3F11RoxWeA="},{"Name":"label","Value":"_content/CraneCalc.Web/adminer/adminer-5.4.0.php"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"507284"},{"Name":"Content-Type","Value":"application/octet-stream"},{"Name":"ETag","Value":"\u0022elct3E5RLUdSkCt2nrtABGVYPYFMnSgMC3F11RoxWeA=\u0022"},{"Name":"Last-Modified","Value":"Sun, 21 Sep 2025 19:23:34 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/CraneCalc.Web/adminer/adminer-5.4.0.php">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\adminer\adminer-5.4.0.php'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-elct3E5RLUdSkCt2nrtABGVYPYFMnSgMC3F11RoxWeA="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"507284"},{"Name":"Content-Type","Value":"application/octet-stream"},{"Name":"ETag","Value":"\u0022elct3E5RLUdSkCt2nrtABGVYPYFMnSgMC3F11RoxWeA=\u0022"},{"Name":"Last-Modified","Value":"Sun, 21 Sep 2025 19:23:34 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/CraneCalc.Web/css/views/Calculation/calculation.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\views\Calculation\calculation.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

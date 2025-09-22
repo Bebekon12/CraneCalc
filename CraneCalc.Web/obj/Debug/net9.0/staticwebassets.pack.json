@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Web\\wwwroot\\adminer\\adminer-5.4.0.php",
+      "PackagePath": "staticwebassets\\adminer\\adminer-5.4.0.php"
+    },
+    {
       "Id": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Web\\wwwroot\\css\\views\\Calculation\\calculation.css",
       "PackagePath": "staticwebassets\\css\\views\\Calculation\\calculation.css"
     },
