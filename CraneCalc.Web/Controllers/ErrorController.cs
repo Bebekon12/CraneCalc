@@ -2,15 +2,24 @@
 
 namespace CraneCalc.Web.Controllers;
 
+[Route("Error")]
 public class ErrorController : Controller
 {
-    [Route("Error/{statusCode:int}")]
+    [Route("{statusCode:int}")]
     public IActionResult HttpStatusCodeHandler(int statusCode)
     {
+        Response.StatusCode = statusCode;
+        
         return statusCode switch
         {
             404 => View("NotFound"),
-            _ => throw new ArgumentOutOfRangeException(nameof(statusCode), statusCode, null)
+            _ => View("Error")
         };
+    }
+
+    [Route("")]
+    public IActionResult Error()
+    {
+        return View("Error");
     }
 }

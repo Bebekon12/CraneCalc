@@ -20,32 +20,21 @@ using (var scope = app.Services.CreateScope())
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    app.UseStatusCodePagesWithReExecute("/Error/{0}");
 }
 else
 {
     app.UseDeveloperExceptionPage();
 }
 
+app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
 app.UseHttpsRedirection();
-app.UseRouting();
-
-app.UseAuthorization();
-
 app.UseStaticFiles();
 
-app.MapStaticAssets();
+app.UseRouting();
+app.UseAuthorization();
 
-app.Use(async (context, next) =>
-{
-    await next();
-    
-    if (context.Response is { StatusCode: 404, HasStarted: false })
-    {
-        context.Request.Path = "/Error/404";
-        await next();
-    }
-});
+app.MapStaticAssets();
 
 app.MapControllerRoute(
         name: "default",

@@ -9,6 +9,5 @@ public interface ICartRepository
     
     Task<Cart> CreateCartAsync(Cart cart, CancellationToken cancellationToken);
     
-    Task RemoveCargoInCartAsync(Guid cartId, Guid cargoId, CancellationToken ct);
     Task RemoveCartAsync(Guid cartId, CancellationToken ct);
 }

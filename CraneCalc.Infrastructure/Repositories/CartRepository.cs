@@ -38,19 +38,6 @@ public class CartRepository(AppDbContext context) : ICartRepository
         
         return cart;
     }
-
-    public async Task RemoveCargoInCartAsync(Guid cartId, Guid cargoId, CancellationToken ct)
-    {
-        await context.Database.ExecuteSqlInterpolatedAsync(
-            $"""
-                UPDATE "CartCargos" 
-                SET "IsDeleted" = true
-                WHERE "CartId" = {cartId} 
-                AND "CargoId" = {cargoId} 
-                AND "IsDeleted" = false
-             """, 
-            ct);
-    }
     
     public async Task RemoveCartAsync(Guid cartId, CancellationToken ct)
     {

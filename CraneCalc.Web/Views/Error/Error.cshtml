@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ошибка сервера</title>
+    <style>
+        body {
+            background: radial-gradient(rgba(57, 58, 58, 1) 0%, rgba(14, 14, 14, 1));
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+        }
+
+        .error-container {
+            background: rgba(35, 35, 35, 0.7);
+            padding: 4rem;
+            border-radius: 2rem;
+            backdrop-filter: blur(0.390625vw);
+        }
+    </style>
+</head>
+<body>
+<div class="error-container">
+    <h1>500 - Ошибка сервера</h1>
+    <p>Произошла внутренняя ошибка сервера.</p>
+    <a href="/">Вернуться на главную</a>
+</div>
+</body>
+</html>

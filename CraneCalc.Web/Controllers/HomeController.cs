@@ -80,24 +80,6 @@ public class HomeController(
         });
     }
 
-    [HttpPost("remove-cargo-from-cart/{cargoId:guid}")]
-    public async Task<IActionResult> RemoveFromCart(Guid cargoId, CancellationToken ct)
-    {
-        var cart = await cartRepository.GetCartByUserIdAsync(1, ct);
-    
-        if(cart == null)
-            return NotFound();
-
-        await cartRepository.RemoveCargoInCartAsync(cart.Id, cargoId, ct);
-    
-        if (Request.Headers.XRequestedWith == "XMLHttpRequest")
-        {
-            return Ok();
-        }
-    
-        return RedirectToAction("Cart");
-    }
-
     [HttpPost("remove-cart")]
     public async Task<IActionResult> RemoveCart(CancellationToken ct)
     {
