@@ -63,12 +63,18 @@ public class CargoRepository(AppDbContext context) : ICargoRepository
         var cargo = await context.Cargos.FirstOrDefaultAsync(c => c.Id == cargoId, ct);
         
         if(cargo == null)
-            throw new NullReferenceException("Cargo");
+            throw new NullReferenceException("Cargo not found");
         
-        var cart = await context.Carts.FirstOrDefaultAsync(c => c.Id == cartId, ct);
+        var cart = await context.Carts
+            .Include(cartEntity => cartEntity.CartCargo)
+            .FirstOrDefaultAsync(c => c.Id == cartId, ct);
         
         if(cart == null)
-            throw new NullReferenceException("Cart");
+            throw new NullReferenceException("Cart not found");
+
+        if (cart.CartCargo.Any(cartEntity => cartEntity.CargoId == cargoId))
+            throw new Exception($"Cart cargo with id {cartId} already exists");
+        
         
         cart.CartCargo.Add(new CartCargoEntity
         {
