@@ -1,7 +1,7 @@
 ﻿using CraneCalc.Application.Features.Cargo.Commands.AddImageToCargo;
 using CraneCalc.Application.Features.Cargo.Commands.CreateCargo;
 using CraneCalc.Application.Features.Cargo.Commands.DeleteCargo;
-using CraneCalc.Application.Features.Cargo.Commands.PutCargoInCart;
+using CraneCalc.Application.Features.Cargo.Commands.PutCargoInCraneOrder;
 using CraneCalc.Application.Features.Cargo.Commands.UpdateCargo;
 using CraneCalc.Application.Features.Cargo.Queries.GetCargo;
 using CraneCalc.Application.Features.Cargo.Queries.GetCargoPaginated;
@@ -62,7 +62,7 @@ public class CargoController(IMediator mediator) : ControllerBase
 
     [Authorize]
     [HttpPost("put-in-cart")]
-    public async Task<IActionResult> PutCargoInCart([FromQuery] PutCargoInCartCommand request, CancellationToken ct)
+    public async Task<IActionResult> PutCargoInCart([FromQuery] PutCargoInCraneOrderCommand request, CancellationToken ct)
     {
         await mediator.Send(request, ct);
 

@@ -123,57 +123,57 @@ public class CargoRepository(
         return mapper.Map<CargoModel>(cargo);
     }
 
-    public async Task PutCargoInCartAsync(Guid cargoId, Guid creatorId, bool isModerator, CancellationToken ct)
+    public async Task PutCargoInCraneOrderAsync(Guid cargoId, Guid creatorId, bool isModerator, CancellationToken ct)
     {
-        var cargo = await context.Cargos.FirstOrDefaultAsync(c => c.Id == cargoId, ct);
+        var cargo = await context.Cargos
+            .FirstOrDefaultAsync(c => c.Id == cargoId && !c.IsDeleted, ct);
         
         if(cargo == null)
-            throw new EntityException("Cargo not found");
+            throw new EntityException("Cargo not found or deleted");
 
-        var cart = await context.Carts
-            .Include(c=>c.CartCargo.Where(i=>!i.IsDeleted))
-            .ThenInclude(c=>c.Cargo)
-            .Where(c=>c.Status==Status.Draft)
-            .FirstOrDefaultAsync(c => c.CreatorId == creatorId, ct);
+        var craneOrder = await context.Orders
+            .Include(c => c.CartCargo)
+            .ThenInclude(cc => cc.Cargo)
+            .FirstOrDefaultAsync(c => c.CreatorId == creatorId 
+                                      && c.Status == Status.Draft, ct);
 
-        if(cart != null)
+        if(craneOrder?.CartCargo.Any(cc => cc.CargoId == cargoId) == true)
+            throw new EntityException("Cargo already in cart");
+
+        if(craneOrder != null)
         {
-            if(cart.CartCargo.Where(cc=>cc.CargoId == cargoId).ToList().Count > 0)
-                throw new EntityException($"Cargo already purchased");
-            
-            cart.CartCargo.Add(new CartCargoEntity
+            var cartCargo = new CraneCargoEntity
             {
-                CartId = cart.Id,
+                CartId = craneOrder.Id,
                 CargoId = cargoId,
-                Cargo = cargo,
-                Cart = cart,
                 CalculationResult = 0,
                 SafetyComment = string.Empty,
-            });
-            
+            };
+        
+            context.CartCargos.Add(cartCargo);
             await context.SaveChangesAsync(ct);
-            
             return;
         }
 
-        var newCart = new CartEntity
+        var newCraneOrder = new CraneOrderEntity
         {
             Id = Guid.NewGuid(),
+            CreatorId = creatorId,
             ModeratorId = isModerator ? creatorId : null,
-            CreatorId = creatorId
+            Status = Status.Draft,
+            CreatedDate = DateTime.UtcNow
         };
-        
-        newCart.CartCargo.Add(new CartCargoEntity
+    
+        var newCartCargo = new CraneCargoEntity
         {
-            CartId = newCart.Id,
+            CartId = newCraneOrder.Id,
             CargoId = cargoId,
-            Cargo = cargo,
-            Cart = newCart,
             CalculationResult = 0,
             SafetyComment = string.Empty,
-        });
-        
-        await context.Carts.AddAsync(newCart, ct);
+        };
+
+        context.Orders.Add(newCraneOrder);
+        context.CartCargos.Add(newCartCargo);
         await context.SaveChangesAsync(ct);
     }
 

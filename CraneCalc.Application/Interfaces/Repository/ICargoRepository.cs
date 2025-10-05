@@ -17,6 +17,6 @@ public interface ICargoRepository
     Task DeleteCargoAsync(Guid id, CancellationToken ct);
     
     Task<CargoModel> GetCargoByIdAsync(Guid id, CancellationToken ct);
-    Task PutCargoInCartAsync(Guid cargoId, Guid creatorId, bool isModerator, CancellationToken ct);
+    Task PutCargoInCraneOrderAsync(Guid cargoId, Guid creatorId, bool isModerator, CancellationToken ct);
     Task<string> AddOrUpdateCargoPhotoAsync(Guid cargoId, Stream fileStream, CancellationToken ct);
 }

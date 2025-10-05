@@ -1453,11 +1453,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj",
+      "projectUniqueName": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj",
       "projectName": "CraneCalc.Application",
-      "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj",
+      "projectPath": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Application\\CraneCalc.Application.csproj",
       "packagesPath": "C:\\Users\\artur\\.nuget\\packages\\",
-      "outputPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Application\\obj\\",
+      "outputPath": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Application\\obj\\",
       "projectStyle": "PackageReference",
       "UsingMicrosoftNETSdk": false,
       "fallbackFolders": [
@@ -1478,8 +1478,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj": {
-              "projectPath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj"
+            "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj": {
+              "projectPath": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj"
             }
           }
         }

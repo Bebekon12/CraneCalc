@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HOi+5KGHQfo=",
+  "dgSpecHash": "D9tZlzP0d34=",
   "success": true,
-  "projectFilePath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj",
+  "projectFilePath": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Domain\\CraneCalc.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\artur\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\artur\\.nuget\\packages\\mediatr\\13.0.0\\mediatr.13.0.0.nupkg.sha512",

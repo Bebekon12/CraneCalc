@@ -11,8 +11,8 @@ public static class RepositoryServicesConfig
     public static void AddRepositoryAndServices(this IServiceCollection services)
     {
         services.AddScoped<ICargoRepository, CargoRepository>();
-        services.AddScoped<ICartRepository, CartRepository>();
-        services.AddScoped<ICartCargoRepository, CartCargoRepository>();
+        services.AddScoped<ICraneOrderRepository, CraneOrderRepository>();
+        services.AddScoped<ICraneCargoRepository, CraneCargoRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
         
         services.AddHttpContextAccessor();
