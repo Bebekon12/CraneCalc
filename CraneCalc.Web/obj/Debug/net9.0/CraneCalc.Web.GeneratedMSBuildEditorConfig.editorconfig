@@ -9,53 +9,57 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CraneCalc.Web
 build_property.RootNamespace = CraneCalc.Web
-build_property.ProjectDir = D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Web\
+build_property.ProjectDir = D:\Unik\3 course\RIP\CraneCalc\CraneCalc.Web\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Универ\3 курс\RIP\CraneCalc\CraneCalc.Web
+build_property.MSBuildProjectDirectory = D:\Unik\3 course\RIP\CraneCalc\CraneCalc.Web
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[D:/Универ/3 курс/RIP/CraneCalc/CraneCalc.Web/Views/Error/NotFound.cshtml]
+[D:/Unik/3 course/RIP/CraneCalc/CraneCalc.Web/Views/Error/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Unik/3 course/RIP/CraneCalc/CraneCalc.Web/Views/Error/NotFound.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcTm90Rm91bmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Универ/3 курс/RIP/CraneCalc/CraneCalc.Web/Views/Home/CargoDetail.cshtml]
+[D:/Unik/3 course/RIP/CraneCalc/CraneCalc.Web/Views/Home/CargoDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYXJnb0RldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Универ/3 курс/RIP/CraneCalc/CraneCalc.Web/Views/Home/Cart.cshtml]
+[D:/Unik/3 course/RIP/CraneCalc/CraneCalc.Web/Views/Home/Cart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Универ/3 курс/RIP/CraneCalc/CraneCalc.Web/Views/Home/Index.cshtml]
+[D:/Unik/3 course/RIP/CraneCalc/CraneCalc.Web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Универ/3 курс/RIP/CraneCalc/CraneCalc.Web/Views/Shared/_HeaderPartial.cshtml]
+[D:/Unik/3 course/RIP/CraneCalc/CraneCalc.Web/Views/Shared/_HeaderPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXJQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Универ/3 курс/RIP/CraneCalc/CraneCalc.Web/Views/Shared/_Layout.cshtml]
+[D:/Unik/3 course/RIP/CraneCalc/CraneCalc.Web/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Универ/3 курс/RIP/CraneCalc/CraneCalc.Web/Views/Shared/_MetaTagsPartial.cshtml]
+[D:/Unik/3 course/RIP/CraneCalc/CraneCalc.Web/Views/Shared/_MetaTagsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZXRhVGFnc1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Универ/3 курс/RIP/CraneCalc/CraneCalc.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Unik/3 course/RIP/CraneCalc/CraneCalc.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Универ/3 курс/RIP/CraneCalc/CraneCalc.Web/Views/_ViewImports.cshtml]
+[D:/Unik/3 course/RIP/CraneCalc/CraneCalc.Web/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Универ/3 курс/RIP/CraneCalc/CraneCalc.Web/Views/_ViewStart.cshtml]
+[D:/Unik/3 course/RIP/CraneCalc/CraneCalc.Web/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

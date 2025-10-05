@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "d7qeo9BrOVA=",
+  "dgSpecHash": "N1C5uRFzgLg=",
   "success": true,
-  "projectFilePath": "D:\\Универ\\3 курс\\RIP\\CraneCalc\\CraneCalc.Web\\CraneCalc.Web.csproj",
+  "projectFilePath": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\CraneCalc.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\artur\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.9\\microsoft.entityframeworkcore.9.0.9.nupkg.sha512",
     "C:\\Users\\artur\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.9\\microsoft.entityframeworkcore.abstractions.9.0.9.nupkg.sha512",

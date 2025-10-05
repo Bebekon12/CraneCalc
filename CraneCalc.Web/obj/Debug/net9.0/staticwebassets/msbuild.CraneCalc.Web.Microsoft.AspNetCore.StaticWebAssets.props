@@ -30,8 +30,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>wdc3ods8j4</Fingerprint>
-      <Integrity>jHIBwM4VxSL/sMnS+cq8VsXCwmyLPQRAeTtcNE2Ewpk=</Integrity>
+      <Fingerprint>iq6wamqipm</Fingerprint>
+      <Integrity>5pOFT3UgBqK77s8CsJd88AcnZwMaZFy/KlucZBM0w/Y=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\views\Calculation\calculation.css'))</OriginalItemSpec>

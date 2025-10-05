@@ -47,31 +47,40 @@
     <div class="two-column-layout">
         <div class="cargo-column">
             <h2 class="column-title">Грузы в заявке</h2>
-            <div class="request-items">
-                @foreach (var item in Model)
-                {
-                    <div class="request-item">
-                        <img src="@item.ImageUrl"
-                             onerror="this.onerror=null; this.src='/img/default.jpg'"
-                             alt="@item.Title" class="item-image" />
-                        <div class="item-details">
-                            <div class="text-in-card">
-                                <div class="item-title">@item.Title</div>
-                                <div class="item-specs">@item.Weight т | @item.Dimensions.ToString()</div>
-                            </div>
-                            <div class="form-result-item">
-                                <div class="safety-comment">
-                                    <label>Комментарий по технике безопасности:</label>
-                                    <textarea class="item-comment" data-item-id="@item.Id"></textarea>
-                                </div>
-                                <div class="form-result">
-                                    <div class="result-label">Производительность груза</div>
-                                    <div class="result-value">0</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
+            <div class="request-table-container">
+                <table class="request-table">
+                    <thead>
+                        <tr>
+                            <th class="table-image">Изображение</th>
+                            <th class="table-title">Название груза</th>
+                            <th class="table-weight">Вес (т)</th>
+                            <th class="table-dimensions">Габариты</th>
+                            <th class="table-comment">Комментарий по технике безопасности</th>
+                            <th class="table-performance">Производительность груза</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="request-table-row">
+                                <td class="table-image">
+                                    <img src="@item.ImageUrl"
+                                         onerror="this.onerror=null; this.src='/img/default.jpg'"
+                                         alt="@item.Title" class="item-image-table" />
+                                </td>
+                                <td class="table-title">@item.Title</td>
+                                <td class="table-weight">@item.Weight</td>
+                                <td class="table-dimensions">@item.Dimensions.ToString()</td>
+                                <td class="table-comment">
+                                    <textarea class="item-comment-table" data-item-id="@item.Id"></textarea>
+                                </td>
+                                <td class="table-performance">
+                                    <div class="result-value-table">0</div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
