@@ -3,7 +3,6 @@ using CraneCalc.Application.Features.Cargo.Commands.UpdateCargo;
 using CraneCalc.Application.Features.Cargo.Queries.GetCargoPaginated;
 using CraneCalc.Application.Interfaces.Repository;
 using CraneCalc.Application.Interfaces.Services;
-using CraneCalc.Domain.Enums;
 using CraneCalc.Domain.Exceptions;
 using CraneCalc.Domain.Models;
 using CraneCalc.Infrastructure.Entities;
@@ -126,54 +125,51 @@ public class CargoRepository(
     public async Task PutCargoInCraneOrderAsync(Guid cargoId, Guid creatorId, bool isModerator, CancellationToken ct)
     {
         var cargo = await context.Cargos
-            .FirstOrDefaultAsync(c => c.Id == cargoId && !c.IsDeleted, ct);
-        
+            .FirstOrDefaultAsync(c => c.Id == cargoId, ct);
+    
         if(cargo == null)
-            throw new EntityException("Cargo not found or deleted");
+            throw new NullReferenceException("Cargo not found");
 
-        var craneOrder = await context.Orders
-            .Include(c => c.CartCargo)
-            .ThenInclude(cc => cc.Cargo)
-            .FirstOrDefaultAsync(c => c.CreatorId == creatorId 
-                                      && c.Status == Status.Draft, ct);
+        var cart = await context.Orders
+            .Include(c => c.CraneCargo)
+            .FirstOrDefaultAsync(c => c.CreatorId == creatorId && !c.IsDeleted, ct);
 
-        if(craneOrder?.CartCargo.Any(cc => cc.CargoId == cargoId) == true)
-            throw new EntityException("Cargo already in cart");
-
-        if(craneOrder != null)
+        if(cart?.CraneCargo.Any(cc => cc.CargoId == cargoId) == true)
+            throw new EntityException($"Cargo already purchased");
+    
+        if(cart != null)
         {
             var cartCargo = new CraneCargoEntity
             {
-                CartId = craneOrder.Id,
+                CraneOrderId = cart.Id,
                 CargoId = cargoId,
                 CalculationResult = 0,
                 SafetyComment = string.Empty,
             };
         
-            context.CartCargos.Add(cartCargo);
-            await context.SaveChangesAsync(ct);
-            return;
+            context.CraneCargos.Add(cartCargo);
         }
-
-        var newCraneOrder = new CraneOrderEntity
+        else
         {
-            Id = Guid.NewGuid(),
-            CreatorId = creatorId,
-            ModeratorId = isModerator ? creatorId : null,
-            Status = Status.Draft,
-            CreatedDate = DateTime.UtcNow
-        };
+            var newCart = new CraneOrderEntity
+            {
+                Id = Guid.NewGuid(),
+                ModeratorId = isModerator ? creatorId : null,
+                CreatorId = creatorId,
+            };
+        
+            var cartCargo = new CraneCargoEntity
+            {
+                CraneOrderId = newCart.Id,
+                CargoId = cargoId,
+                CalculationResult = 0,
+                SafetyComment = string.Empty,
+            };
+        
+            await context.Orders.AddAsync(newCart, ct);
+            context.CraneCargos.Add(cartCargo);
+        }
     
-        var newCartCargo = new CraneCargoEntity
-        {
-            CartId = newCraneOrder.Id,
-            CargoId = cargoId,
-            CalculationResult = 0,
-            SafetyComment = string.Empty,
-        };
-
-        context.Orders.Add(newCraneOrder);
-        context.CartCargos.Add(newCartCargo);
         await context.SaveChangesAsync(ct);
     }
 

@@ -2,6 +2,6 @@
 
 public class CraneOrderInfo
 {
-    public Guid CartId { get; set; }
+    public Guid CraneOrderId { get; set; }
     public int Quntity { get; set; }
 }

@@ -15,9 +15,9 @@ public class EntityModelMappers : Profile
         CreateMap<CargoEntity, CargoModel>();
         
         CreateMap<CraneCargoModel, CraneCargoEntity>()
-            .ForMember(dest=>dest.Cargo, opt=>opt.Ignore());
+            .ForMember(dest=>dest.CraneOrder, opt=>opt.Ignore());
         CreateMap<CraneCargoEntity, CraneCargoModel>()
-            .ForMember(dest=>dest.CargoModel, opt=>opt.Ignore());
+            .ForMember(dest=>dest.CraneOrder, opt=>opt.Ignore());
 
         CreateMap<UserEntity, UserModel>();
         CreateMap<UserModel, UserEntity>();

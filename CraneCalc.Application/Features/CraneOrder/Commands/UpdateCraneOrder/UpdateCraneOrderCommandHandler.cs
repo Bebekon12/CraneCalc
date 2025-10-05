@@ -7,7 +7,7 @@ public class UpdateCraneOrderCommandHandler(ICraneOrderRepository repository) : 
 {
     public async Task<Domain.Models.CraneOrderModel?> Handle(UpdateCraneOrderCommand request, CancellationToken ct)
     {
-        var cart = await repository.UpdateCraneOrderAsync(request.CartId, request, ct);
+        var cart = await repository.UpdateCraneOrderAsync(request.CraneOrderId, request, ct);
         
         return cart;
     }

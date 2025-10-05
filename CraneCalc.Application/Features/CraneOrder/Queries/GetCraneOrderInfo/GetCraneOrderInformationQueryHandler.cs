@@ -18,8 +18,8 @@ public class GetCraneOrderInformationQueryHandler(ICraneOrderRepository reposito
         
         return new CraneOrderInfo
         {
-            CartId = cart.Id,
-            Quntity = cart.CartCargo.Count
+            CraneOrderId = cart.Id,
+            Quntity = cart.CraneCargo.Count
         };
     }
 }

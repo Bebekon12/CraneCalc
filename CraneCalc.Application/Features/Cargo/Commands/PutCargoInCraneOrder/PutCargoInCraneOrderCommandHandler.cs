@@ -15,6 +15,6 @@ public class PutCargoInCraneOrderCommandHandler(ICargoRepository repository, IUs
         if(user == null)
             throw new EntityException("User does not exist");
         
-        await repository.PutCargoInCraneOrderAsync(request.CargoId, user.Id, user.Role == Role.Moderator, ct);
+        await repository.PutCargoInCraneOrderAsync(request.CraneOrderId, user.Id, user.Role == Role.Moderator, ct);
     }
 }

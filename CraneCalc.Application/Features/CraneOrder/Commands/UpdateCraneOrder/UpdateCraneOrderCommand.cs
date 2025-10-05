@@ -3,7 +3,7 @@
 namespace CraneCalc.Application.Features.CraneOrder.Commands.UpdateCraneOrder;
 
 public record UpdateCraneOrderCommand(
-    Guid CartId, 
+    Guid CraneOrderId, 
     double LoadCapacity, 
     double LiftingHeight, 
     double JibOutreach, 

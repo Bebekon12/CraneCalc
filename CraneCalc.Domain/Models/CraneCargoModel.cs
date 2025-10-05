@@ -4,7 +4,7 @@ public class CraneCargoModel
 {
     public int Id { get; set; }
     
-    public Guid CartId { get; set; }
+    public Guid CraneOrderId { get; set; }
         
     public Guid CargoId { get; set; }
         
@@ -12,7 +12,7 @@ public class CraneCargoModel
     
     public double? CalculationResult { get; set; }
         
-    public virtual CraneOrderModel CraneOrderModel { get; set; } = null!;
+    public virtual CraneOrderModel CraneOrder { get; set; } = null!;
         
-    public virtual CargoModel CargoModel { get; set; } = null!;
+    public virtual CargoModel Cargo { get; set; } = null!;
 }

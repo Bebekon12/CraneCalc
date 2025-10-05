@@ -7,8 +7,8 @@ public class CraneCargoRepository(AppDbContext context) : ICraneCargoRepository
 {
     public async Task<string?> DeleteCargoInCraneOrderAsync(Guid craneOrderId, Guid cargoId, CancellationToken ct)
     {
-        var cartCargo = await context.CartCargos
-            .FirstOrDefaultAsync(c=>c.CartId==craneOrderId && c.CargoId==cargoId, ct);
+        var cartCargo = await context.CraneCargos
+            .FirstOrDefaultAsync(c=>c.CraneOrderId==craneOrderId && c.CargoId==cargoId, ct);
         
         if(cartCargo == null)
             return null;
@@ -19,8 +19,8 @@ public class CraneCargoRepository(AppDbContext context) : ICraneCargoRepository
 
     public async Task<string?> UpdateCargoInCraneOrderAsync(Guid cargoId, Guid craneOrderId, string safetyComment, CancellationToken ct)
     {
-        var cartCargo = await context.CartCargos
-            .FirstOrDefaultAsync(c=>c.CartId==craneOrderId && c.CargoId==cargoId, ct);
+        var cartCargo = await context.CraneCargos
+            .FirstOrDefaultAsync(c=>c.CraneOrderId==craneOrderId && c.CargoId==cargoId, ct);
         
         if(cartCargo == null)
             return null;

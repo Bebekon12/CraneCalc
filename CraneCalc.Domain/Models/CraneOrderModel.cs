@@ -26,5 +26,5 @@ public class CraneOrderModel
         
     public double? CalculationResult { get; set; }
         
-    public virtual List<CraneCargoModel> CartCargo { get; set; } = [];
+    public virtual List<CraneCargoModel> CraneCargo { get; set; } = [];
 }

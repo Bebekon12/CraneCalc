@@ -38,7 +38,7 @@ public class CraneOrderListMapper(IUserRepository userRepository)
             LiftingHeight = model.LiftingHeight,
             JibOutreach = model.JibOutreach,
             LiftingSpeed = model.LiftingSpeed,
-            CartCargo = model.CartCargo,
+            CartCargo = model.CraneCargo,
         };
     }
 }

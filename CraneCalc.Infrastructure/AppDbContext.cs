@@ -7,7 +7,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options):DbContext(opti
 {
     public DbSet<CargoEntity> Cargos { get; init; }
     public DbSet<CraneOrderEntity> Orders { get; init; }
-    public DbSet<CraneCargoEntity> CartCargos { get; init; }
+    public DbSet<CraneCargoEntity> CraneCargos { get; init; }
     public DbSet<UserEntity> Users { get; init; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)

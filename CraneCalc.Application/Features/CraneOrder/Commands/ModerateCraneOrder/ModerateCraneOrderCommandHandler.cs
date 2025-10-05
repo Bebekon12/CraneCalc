@@ -10,7 +10,7 @@ public class ModerateCraneOrderCommandHandler(ICraneOrderRepository repository, 
     {
         var userId = await service.GetCurrentUserIdAsync(ct);
         
-        var cart = await repository.ModerateCraneOrderAsync(request.CartId, userId, request.IsApproved, ct);
+        var cart = await repository.ModerateCraneOrderAsync(request.CraneOrderId, userId, request.IsApproved, ct);
         
         return cart;
     }

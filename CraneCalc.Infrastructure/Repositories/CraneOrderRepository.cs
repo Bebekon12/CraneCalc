@@ -12,28 +12,28 @@ public class CraneOrderRepository(AppDbContext context, IMapper mapper) : ICrane
 {
     public async Task<CraneOrderModel?> GetCraneOrderByIdAsync(Guid craneOrderId, CancellationToken ct)
     {
-        var cart = await context.Orders
-            .Include(c=>c.CartCargo)
+        var craneOrder = await context.Orders
+            .Include(c=>c.CraneCargo)
             .ThenInclude(cc=>cc.Cargo)
             .Where(r=>r.Status == Status.Draft && !r.IsDeleted)
             .FirstOrDefaultAsync(r=>r.Id == craneOrderId, ct);
 
-        return cart == null 
+        return craneOrder == null 
             ? null 
-            : mapper.Map<CraneOrderModel>(cart);
+            : mapper.Map<CraneOrderModel>(craneOrder);
     }
 
     public async Task<CraneOrderModel?> GetCraneOrderByUserIdAsync(Guid userId, CancellationToken ct)
     {
-        var cart = await context.Orders
-            .Include(c=>c.CartCargo)
+        var craneOrder = await context.Orders
+            .Include(c=>c.CraneCargo)
             .ThenInclude(cc=>cc.Cargo)
             .Where(r=>r.Status == Status.Draft && !r.IsDeleted)
             .FirstOrDefaultAsync(r => r.CreatorId == userId, ct);
 
-        return cart==null 
+        return craneOrder==null 
             ? null
-            : mapper.Map<CraneOrderModel>(cart);
+            : mapper.Map<CraneOrderModel>(craneOrder);
     }
 
     public async Task<List<CraneOrderModel>> GetFilteredCraneOrderAsync(DateTime from, DateTime before, Status status, CancellationToken ct)
@@ -41,8 +41,8 @@ public class CraneOrderRepository(AppDbContext context, IMapper mapper) : ICrane
         var utcFrom = DateTime.SpecifyKind(from, DateTimeKind.Utc);
         var utcBefore = DateTime.SpecifyKind(before, DateTimeKind.Utc);
         
-        var carts = await context.Orders
-            .Include(c=>c.CartCargo)
+        var craneOrders = await context.Orders
+            .Include(c=>c.CraneCargo)
             .ThenInclude(cc=>cc.Cargo)
             .Where(c => !c.IsDeleted && c.CreatedDate >= utcFrom 
                                      && c.CreatedDate <= utcBefore 
@@ -52,7 +52,7 @@ public class CraneOrderRepository(AppDbContext context, IMapper mapper) : ICrane
             .Select(c=>mapper.Map<CraneOrderModel>(c))
             .ToListAsync(ct);
         
-        return carts;
+        return craneOrders;
     }
 
     public async Task<CraneOrderModel?> UpdateCraneOrderAsync(Guid id, UpdateCraneOrderCommand craneOrder, CancellationToken ct)
@@ -73,47 +73,50 @@ public class CraneOrderRepository(AppDbContext context, IMapper mapper) : ICrane
 
     public async Task<CraneOrderModel?> FormCraneOrderAsync(Guid craneOrderId, CancellationToken ct)
     {
-        var cart = await context.Orders
-            .Include(cartEntity => cartEntity.CartCargo)
+        var craneOrder = await context.Orders
+            .Include(cartEntity => cartEntity.CraneCargo)
             .FirstOrDefaultAsync(c=>c.Id == craneOrderId, ct);
         
-        if(cart == null)
+        if(craneOrder == null)
             return null;
         
-        if (cart.ModeratorId==null) 
+        if (craneOrder.ModeratorId==null) 
             throw new EntityException("Только создатель может формировать заявку");
         
-        if (cart.LoadCapacity <= 0 || cart.LiftingHeight <= 0 || 
-            cart.JibOutreach <= 0 || cart.LiftingSpeed <= 0)
+        if (craneOrder.LoadCapacity <= 0 || craneOrder.LiftingHeight <= 0 || 
+            craneOrder.JibOutreach <= 0 || craneOrder.LiftingSpeed <= 0)
             throw new EntityException("Все технические параметры должны быть заполнены");
         
-        if (cart.CartCargo.Count == 0)
+        if (craneOrder.CraneCargo.Count == 0)
             throw new EntityException("Добавьте хотя бы один груз");
         
-        cart.FormationDate = DateTime.UtcNow;
-        cart.Status = Status.Formed;
+        craneOrder.FormationDate = DateTime.UtcNow;
+        craneOrder.Status = Status.Formed;
         
         await context.SaveChangesAsync(ct);
         
-        return mapper.Map<CraneOrderModel>(cart);
+        return mapper.Map<CraneOrderModel>(craneOrder);
     }
 
     public async Task<CraneOrderModel?> ModerateCraneOrderAsync(Guid craneOrderId, Guid userId, bool isApproved, CancellationToken ct)
     {
-        var cart = await context.Orders
-            .Include(cartEntity => cartEntity.CartCargo)
+        var craneOrder = await context.Orders
+            .Include(cartEntity => cartEntity.CraneCargo)
             .ThenInclude(cartCargoEntity => cartCargoEntity.Cargo)
             .FirstOrDefaultAsync(c=>c.Id == craneOrderId, ct);
         
-        if(cart == null)
+        if(craneOrder == null)
             return null;
 
-        if (cart.ModeratorId != null && cart.ModeratorId == userId)
+        if (craneOrder.Status != Status.Formed)
+            throw new EntityException("Заявка не сформирована");
+
+        if (craneOrder.ModeratorId != null && craneOrder.ModeratorId == userId)
         {
-            cart.CompletionDate = DateTime.UtcNow;
+            craneOrder.CompletionDate = DateTime.UtcNow;
             if (isApproved)
             {
-                cart.Status = Status.Completed;
+                craneOrder.Status = Status.Completed;
         
                 // Константы
                 const double kV = 0.85;  // Коэффициент использования крана
@@ -125,18 +128,18 @@ public class CraneOrderRepository(AppDbContext context, IMapper mapper) : ICrane
                 const double kSov = 1.0; // Коэффициент совмещения операций
 
                 // Параметры из заявки
-                var h = cart.LiftingHeight;   // Высота подъема (м)
-                var vP = cart.LiftingSpeed;  // Скорость подъема (м/мин)
-                var lT = cart.JibOutreach;   // Вылет стрелы (м)
-                var lD = cart.JibOutreach * 0.5; // Предполагаемое расстояние движения крана
+                var h = craneOrder.LiftingHeight;   // Высота подъема (м)
+                var vP = craneOrder.LiftingSpeed;  // Скорость подъема (м/мин)
+                var lT = craneOrder.JibOutreach;   // Вылет стрелы (м)
+                var lD = craneOrder.JibOutreach * 0.5; // Предполагаемое расстояние движения крана
 
                 // Расчет времени цикла (общий для всех грузов)
                 var tM = 2.5 * (h / vP) + 2 * (lT / vT + lD / vD + n1 / n) * kSov;
                 var tC = tM + tR;
 
                 // Для каждого груза рассчитываем производительность индивидуально
-                var cargoList = cart.CartCargo
-                    .Where(c => c.CartId == craneOrderId)
+                var cargoList = craneOrder.CraneCargo
+                    .Where(c => c.CraneOrderId == craneOrderId)
                     .ToList();
 
                 foreach (var cargo in cargoList)
@@ -147,16 +150,16 @@ public class CraneOrderRepository(AppDbContext context, IMapper mapper) : ICrane
                 }
 
                 // Общая производительность для всей корзины
-                cart.CalculationResult = cargoList.Sum(c => c.CalculationResult);
+                craneOrder.CalculationResult = cargoList.Sum(c => c.CalculationResult);
             }
             else
             {
-                cart.Status = Status.Rejected;
+                craneOrder.Status = Status.Rejected;
             }
         }
         
         await context.SaveChangesAsync(ct);
-        return mapper.Map<CraneOrderModel>(cart);
+        return mapper.Map<CraneOrderModel>(craneOrder);
     }
 
     public async Task<string?> DeleteCraneOrderAsync(Guid craneOrderId, Guid userId, CancellationToken ct)

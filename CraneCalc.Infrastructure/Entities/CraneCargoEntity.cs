@@ -1,9 +1,12 @@
-﻿namespace CraneCalc.Infrastructure.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CraneCalc.Infrastructure.Entities;
 
 public class CraneCargoEntity
 {
+    [Key]
     public int Id { get; set; }
-    public Guid CartId { get; set; }
+    public Guid CraneOrderId { get; set; }
         
     public Guid CargoId { get; set; }
         

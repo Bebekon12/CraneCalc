@@ -17,5 +17,5 @@ public class CraneOrderEntity
     public double? JibOutreach { get; set; }
     public double? LiftingSpeed { get; set; }
     public double? CalculationResult { get; set; }
-    public virtual List<CraneCargoEntity> CartCargo { get; set; } = [];
+    public virtual List<CraneCargoEntity> CraneCargo { get; set; } = [];
 }

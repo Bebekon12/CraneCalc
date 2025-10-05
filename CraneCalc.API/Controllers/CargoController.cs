@@ -61,8 +61,8 @@ public class CargoController(IMediator mediator) : ControllerBase
     }
 
     [Authorize]
-    [HttpPost("put-in-cart")]
-    public async Task<IActionResult> PutCargoInCart([FromQuery] PutCargoInCraneOrderCommand request, CancellationToken ct)
+    [HttpPost("put-in-crane-order")]
+    public async Task<IActionResult> PutCargoInCraneOrder([FromQuery] PutCargoInCraneOrderCommand request, CancellationToken ct)
     {
         await mediator.Send(request, ct);
 

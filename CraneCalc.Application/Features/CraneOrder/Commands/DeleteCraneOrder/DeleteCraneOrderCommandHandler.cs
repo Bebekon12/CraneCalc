@@ -10,6 +10,6 @@ public class DeleteCraneOrderCommandHandler(ICraneOrderRepository repository, IU
     {
         var userId = await service.GetCurrentUserIdAsync(ct);
         
-        await repository.DeleteCraneOrderAsync(request.CartId, userId, ct);
+        await repository.DeleteCraneOrderAsync(request.CraneOrderId, userId, ct);
     }
 }

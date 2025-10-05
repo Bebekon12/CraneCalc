@@ -7,7 +7,7 @@ public class UpdateCraneOrderCargoCommandHandler(ICraneCargoRepository repositor
 {
     public async Task<string?> Handle(UpdateCraneOrderCargoCommand request, CancellationToken ct)
     {
-        var result = await repository.UpdateCargoInCraneOrderAsync(request.CartId, request.CargoId, request.SafetyComment, ct);
+        var result = await repository.UpdateCargoInCraneOrderAsync(request.CraneOrderId, request.CargoId, request.SafetyComment, ct);
         
         return result;
     }
