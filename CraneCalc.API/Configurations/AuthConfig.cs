@@ -31,7 +31,16 @@ public static class AuthConfig
                 {
                     OnMessageReceived = context =>
                     {
-                        context.Token = context.Request.Cookies[CookieNames.AccessToken];
+                        var authHeader = context.Request.Headers.Authorization.FirstOrDefault();
+                        if (!string.IsNullOrEmpty(authHeader) && authHeader.StartsWith("Bearer "))
+                        {
+                            context.Token = authHeader["Bearer ".Length..].Trim();
+                        }
+                        
+                        if (string.IsNullOrEmpty(context.Token))
+                        {
+                            context.Token = context.Request.Cookies[CookieNames.AccessToken];
+                        }
 
                         return Task.CompletedTask;
                     }

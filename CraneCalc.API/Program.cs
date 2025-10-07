@@ -27,6 +27,10 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "CraneCalc API V1");
+    c.ConfigObject.AdditionalItems.Add("persistAuthorization", "true");
+});
 
 app.Run();
