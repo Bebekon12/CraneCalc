@@ -5,7 +5,8 @@ using MediatR;
 
 namespace CraneCalc.Application.Features.CraneOrder.Queries.GetCraneOrderInfo;
 
-public class GetCraneOrderInformationQueryHandler(ICraneOrderRepository repository, IUserService service) : IRequestHandler<GetCraneOrderInformationQuery, CraneOrderInfo?>
+public class GetCraneOrderInformationQueryHandler(ICraneOrderRepository repository, IUserService service) 
+    : IRequestHandler<GetCraneOrderInformationQuery, CraneOrderInfo?>
 {
     public async Task<CraneOrderInfo?> Handle(GetCraneOrderInformationQuery request, CancellationToken ct)
     {
@@ -14,7 +15,11 @@ public class GetCraneOrderInformationQueryHandler(ICraneOrderRepository reposito
         var cart = await repository.GetCraneOrderByUserIdAsync(userId, ct);
         
         if(cart == null)
-            return null;
+            return new CraneOrderInfo
+            {
+                CraneOrderId = null,
+                Quntity = 0
+            };
         
         return new CraneOrderInfo
         {
