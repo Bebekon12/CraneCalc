@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Un0Jm1q7jZ4K2ZTlW1XjvJot4zocFtXkuaiSIV4nWNo=",
+  "Hash": "mJZZf7whk8T1GIN6MgsRNXn+t3FhAwxTvY6D9m6NN9s=",
   "Source": "CraneCalc.Web",
   "BasePath": "_content/CraneCalc.Web",
   "Mode": "Default",
@@ -101,12 +101,12 @@
       "OriginalItemSpec": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\wwwroot\\css\\views\\Home\\services.css"
     },
     {
-      "Identity": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\obj\\Debug\\net9.0\\compressed\\17ar2073bo-iq6wamqipm.gz",
+      "Identity": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\obj\\Debug\\net9.0\\compressed\\17ar2073bo-z4meikpfp6.gz",
       "SourceId": "CraneCalc.Web",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/CraneCalc.Web",
-      "RelativePath": "css/views/Calculation/calculation#[.{fingerprint=iq6wamqipm}]?.css.gz",
+      "RelativePath": "css/views/Calculation/calculation#[.{fingerprint=z4meikpfp6}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -115,8 +115,8 @@
       "RelatedAsset": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\wwwroot\\css\\views\\Calculation\\calculation.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "3ukirnu09r",
-      "Integrity": "BS+BzMOnzZTyjXWc5I/dpEl/Kef/GSHPwh+mr/3tYlk=",
+      "Fingerprint": "hbqgf7fv97",
+      "Integrity": "PYT3CV/BgTJPRV3qwxvvumEYvUtnuqLYkQQoR3mIgz0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\wwwroot\\css\\views\\Calculation\\calculation.css"
@@ -1438,8 +1438,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "iq6wamqipm",
-      "Integrity": "5pOFT3UgBqK77s8CsJd88AcnZwMaZFy/KlucZBM0w/Y=",
+      "Fingerprint": "z4meikpfp6",
+      "Integrity": "bSbkDTn1RPaf5zV4rb2ml7L4VX6WM5WQe5yR3SuZIxQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\views\\Calculation\\calculation.css"
@@ -2979,12 +2979,12 @@
     },
     {
       "Route": "css/views/Calculation/calculation.css",
-      "AssetFile": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\obj\\Debug\\net9.0\\compressed\\17ar2073bo-iq6wamqipm.gz",
+      "AssetFile": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\obj\\Debug\\net9.0\\compressed\\17ar2073bo-z4meikpfp6.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000417014178"
+          "Quality": "0.000467289720"
         }
       ],
       "ResponseHeaders": [
@@ -2994,15 +2994,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2397"
+          "Value": "2139"
         },
         {
           "Name": "ETag",
-          "Value": "\"BS+BzMOnzZTyjXWc5I/dpEl/Kef/GSHPwh+mr/3tYlk=\""
+          "Value": "\"PYT3CV/BgTJPRV3qwxvvumEYvUtnuqLYkQQoR3mIgz0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 05 Oct 2025 17:23:09 GMT"
+          "Value": "Tue, 07 Oct 2025 21:09:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3022,13 +3022,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"5pOFT3UgBqK77s8CsJd88AcnZwMaZFy/KlucZBM0w/Y=\""
+          "Value": "W/\"bSbkDTn1RPaf5zV4rb2ml7L4VX6WM5WQe5yR3SuZIxQ=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-5pOFT3UgBqK77s8CsJd88AcnZwMaZFy/KlucZBM0w/Y="
+          "Value": "sha256-bSbkDTn1RPaf5zV4rb2ml7L4VX6WM5WQe5yR3SuZIxQ="
         }
       ]
     },
@@ -3043,7 +3043,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11044"
+          "Value": "10260"
         },
         {
           "Name": "Content-Type",
@@ -3051,11 +3051,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"5pOFT3UgBqK77s8CsJd88AcnZwMaZFy/KlucZBM0w/Y=\""
+          "Value": "\"bSbkDTn1RPaf5zV4rb2ml7L4VX6WM5WQe5yR3SuZIxQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 05 Oct 2025 17:23:09 GMT"
+          "Value": "Tue, 07 Oct 2025 21:09:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3065,13 +3065,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-5pOFT3UgBqK77s8CsJd88AcnZwMaZFy/KlucZBM0w/Y="
+          "Value": "sha256-bSbkDTn1RPaf5zV4rb2ml7L4VX6WM5WQe5yR3SuZIxQ="
         }
       ]
     },
     {
       "Route": "css/views/Calculation/calculation.css.gz",
-      "AssetFile": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\obj\\Debug\\net9.0\\compressed\\17ar2073bo-iq6wamqipm.gz",
+      "AssetFile": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\obj\\Debug\\net9.0\\compressed\\17ar2073bo-z4meikpfp6.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3080,7 +3080,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2397"
+          "Value": "2139"
         },
         {
           "Name": "Content-Type",
@@ -3088,11 +3088,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"BS+BzMOnzZTyjXWc5I/dpEl/Kef/GSHPwh+mr/3tYlk=\""
+          "Value": "\"PYT3CV/BgTJPRV3qwxvvumEYvUtnuqLYkQQoR3mIgz0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 05 Oct 2025 17:23:09 GMT"
+          "Value": "Tue, 07 Oct 2025 21:09:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3110,18 +3110,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-BS+BzMOnzZTyjXWc5I/dpEl/Kef/GSHPwh+mr/3tYlk="
+          "Value": "sha256-PYT3CV/BgTJPRV3qwxvvumEYvUtnuqLYkQQoR3mIgz0="
         }
       ]
     },
     {
-      "Route": "css/views/Calculation/calculation.iq6wamqipm.css",
-      "AssetFile": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\obj\\Debug\\net9.0\\compressed\\17ar2073bo-iq6wamqipm.gz",
+      "Route": "css/views/Calculation/calculation.z4meikpfp6.css",
+      "AssetFile": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\obj\\Debug\\net9.0\\compressed\\17ar2073bo-z4meikpfp6.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000417014178"
+          "Quality": "0.000467289720"
         }
       ],
       "ResponseHeaders": [
@@ -3131,15 +3131,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2397"
+          "Value": "2139"
         },
         {
           "Name": "ETag",
-          "Value": "\"BS+BzMOnzZTyjXWc5I/dpEl/Kef/GSHPwh+mr/3tYlk=\""
+          "Value": "\"PYT3CV/BgTJPRV3qwxvvumEYvUtnuqLYkQQoR3mIgz0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 05 Oct 2025 17:23:09 GMT"
+          "Value": "Tue, 07 Oct 2025 21:09:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3159,13 +3159,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"5pOFT3UgBqK77s8CsJd88AcnZwMaZFy/KlucZBM0w/Y=\""
+          "Value": "W/\"bSbkDTn1RPaf5zV4rb2ml7L4VX6WM5WQe5yR3SuZIxQ=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "iq6wamqipm"
+          "Value": "z4meikpfp6"
         },
         {
           "Name": "label",
@@ -3173,12 +3173,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-5pOFT3UgBqK77s8CsJd88AcnZwMaZFy/KlucZBM0w/Y="
+          "Value": "sha256-bSbkDTn1RPaf5zV4rb2ml7L4VX6WM5WQe5yR3SuZIxQ="
         }
       ]
     },
     {
-      "Route": "css/views/Calculation/calculation.iq6wamqipm.css",
+      "Route": "css/views/Calculation/calculation.z4meikpfp6.css",
       "AssetFile": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\wwwroot\\css\\views\\Calculation\\calculation.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3188,7 +3188,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11044"
+          "Value": "10260"
         },
         {
           "Name": "Content-Type",
@@ -3196,11 +3196,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"5pOFT3UgBqK77s8CsJd88AcnZwMaZFy/KlucZBM0w/Y=\""
+          "Value": "\"bSbkDTn1RPaf5zV4rb2ml7L4VX6WM5WQe5yR3SuZIxQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 05 Oct 2025 17:23:09 GMT"
+          "Value": "Tue, 07 Oct 2025 21:09:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3210,7 +3210,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "iq6wamqipm"
+          "Value": "z4meikpfp6"
         },
         {
           "Name": "label",
@@ -3218,13 +3218,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-5pOFT3UgBqK77s8CsJd88AcnZwMaZFy/KlucZBM0w/Y="
+          "Value": "sha256-bSbkDTn1RPaf5zV4rb2ml7L4VX6WM5WQe5yR3SuZIxQ="
         }
       ]
     },
     {
-      "Route": "css/views/Calculation/calculation.iq6wamqipm.css.gz",
-      "AssetFile": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\obj\\Debug\\net9.0\\compressed\\17ar2073bo-iq6wamqipm.gz",
+      "Route": "css/views/Calculation/calculation.z4meikpfp6.css.gz",
+      "AssetFile": "D:\\Unik\\3 course\\RIP\\CraneCalc\\CraneCalc.Web\\obj\\Debug\\net9.0\\compressed\\17ar2073bo-z4meikpfp6.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3233,7 +3233,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2397"
+          "Value": "2139"
         },
         {
           "Name": "Content-Type",
@@ -3241,11 +3241,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"BS+BzMOnzZTyjXWc5I/dpEl/Kef/GSHPwh+mr/3tYlk=\""
+          "Value": "\"PYT3CV/BgTJPRV3qwxvvumEYvUtnuqLYkQQoR3mIgz0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 05 Oct 2025 17:23:09 GMT"
+          "Value": "Tue, 07 Oct 2025 21:09:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3263,7 +3263,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "iq6wamqipm"
+          "Value": "z4meikpfp6"
         },
         {
           "Name": "label",
@@ -3271,7 +3271,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-BS+BzMOnzZTyjXWc5I/dpEl/Kef/GSHPwh+mr/3tYlk="
+          "Value": "sha256-PYT3CV/BgTJPRV3qwxvvumEYvUtnuqLYkQQoR3mIgz0="
         }
       ]
     },

@@ -42,7 +42,7 @@ public class HomeController(
         var cart = await cartRepository.GetCartByIdAsync(id, ct);
         
         if (cart == null)
-            return NotFound();
+            return View(new List<Cargo>());
 
         var cargos = cart.CartCargo
             .Where(c=>!c.IsDeleted)

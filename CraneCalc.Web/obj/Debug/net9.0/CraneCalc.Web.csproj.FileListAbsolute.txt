@@ -457,4 +457,4 @@ D:\Unik\3 course\RIP\CraneCalc\CraneCalc.Web\obj\Debug\net9.0\refint\CraneCalc.W
 D:\Unik\3 course\RIP\CraneCalc\CraneCalc.Web\obj\Debug\net9.0\CraneCalc.Web.pdb
 D:\Unik\3 course\RIP\CraneCalc\CraneCalc.Web\obj\Debug\net9.0\CraneCalc.Web.genruntimeconfig.cache
 D:\Unik\3 course\RIP\CraneCalc\CraneCalc.Web\obj\Debug\net9.0\ref\CraneCalc.Web.dll
-D:\Unik\3 course\RIP\CraneCalc\CraneCalc.Web\obj\Debug\net9.0\compressed\17ar2073bo-iq6wamqipm.gz
+D:\Unik\3 course\RIP\CraneCalc\CraneCalc.Web\obj\Debug\net9.0\compressed\17ar2073bo-z4meikpfp6.gz
