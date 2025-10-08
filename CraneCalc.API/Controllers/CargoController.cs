@@ -16,6 +16,7 @@ namespace CraneCalc.API.Controllers;
 public class CargoController(IMediator mediator) : ControllerBase
 {
     [HttpGet("paginated")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetCargosPaginated(
         [FromQuery] GetCargosPaginatedQuery query,
         CancellationToken ct = default)
@@ -26,6 +27,7 @@ public class CargoController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetCargo([FromQuery] GetCargoQuery query, CancellationToken ct)
     {
         var result = await mediator.Send(query, ct);

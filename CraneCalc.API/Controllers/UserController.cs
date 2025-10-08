@@ -24,6 +24,7 @@ public class UserController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost("register")]
+    [AllowAnonymous]
     public async Task<IActionResult> Register([FromBody] RegisterCommand request, CancellationToken ct)
     {
         await mediator.Send(request, ct);
@@ -32,6 +33,7 @@ public class UserController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost("login")]
+    [AllowAnonymous]
     public async Task<IActionResult> Login([FromBody] LoginCommand request, CancellationToken ct)
     {
         var result = await mediator.Send(request, ct);
