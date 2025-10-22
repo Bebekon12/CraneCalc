@@ -10,6 +10,15 @@ public class GetCraneOrderInformationQueryHandler(ICraneOrderRepository reposito
 {
     public async Task<CraneOrderInfo?> Handle(GetCraneOrderInformationQuery request, CancellationToken ct)
     {
+        var login = service.GetCurrentUserLogin();
+        
+        if(login is null)
+            return new CraneOrderInfo
+            {
+                CraneOrderId = null,
+                Quntity = 0
+            };
+        
         var userId = await service.GetCurrentUserIdAsync(ct);
         
         var cart = await repository.GetCraneOrderByUserIdAsync(userId, ct);

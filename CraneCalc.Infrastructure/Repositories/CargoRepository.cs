@@ -50,6 +50,8 @@ public class CargoRepository(
     {
         var cargoEntity = mapper.Map<CargoEntity>(cargoModel);
         
+        cargoEntity.ImageUrl ??= "http://localhost:9000/images/img/default.jpg";
+        
         await context.Cargos.AddAsync(cargoEntity, ct);
         await context.SaveChangesAsync(ct);
         

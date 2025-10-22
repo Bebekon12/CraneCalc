@@ -15,9 +15,8 @@ namespace CraneCalc.API.Controllers;
 [Route("api/crane-order")]
 public class CraneOrderController(IMediator mediator) : ControllerBase
 {
-    [Authorize]
     [HttpGet("info")]
-    public async Task<IActionResult> GetCraneOrderInformation( CancellationToken ct)
+    public async Task<IActionResult> GetCraneOrderInformation(CancellationToken ct)
     {
         var query = new GetCraneOrderInformationQuery();
         var result = await mediator.Send(query, ct);
