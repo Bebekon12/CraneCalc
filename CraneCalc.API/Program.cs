@@ -1,4 +1,5 @@
 using CraneCalc.API.Configurations;
+using CraneCalc.Api.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -23,6 +24,7 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseMiddleware<TokenBlacklistMiddleware>();
 
 app.MapControllers();
 

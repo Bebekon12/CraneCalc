@@ -41,18 +41,6 @@ public class UserController(IMediator mediator) : ControllerBase
         if(result is null) 
             return NotFound();
         
-        Response.Cookies.Append(CookieNames.AccessToken, result.AccessToken, new CookieOptions
-        {
-            HttpOnly = true,
-            Expires = DateTimeOffset.UtcNow.AddMinutes(15)
-        });
-    
-        Response.Cookies.Append(CookieNames.RefreshToken, result.RefreshToken, new CookieOptions
-        {
-            HttpOnly = true,
-            Expires = DateTimeOffset.UtcNow.AddDays(7)
-        });
-        
         return Ok(new
         {
             result.AccessToken
@@ -78,9 +66,6 @@ public class UserController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> Logout(CancellationToken ct)
     {
         await mediator.Send(new LogoutCommand(), ct);
-        
-        Response.Cookies.Delete(CookieNames.AccessToken);
-        Response.Cookies.Delete(CookieNames.RefreshToken);
         
         return NoContent();
     }
