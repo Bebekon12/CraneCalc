@@ -13,4 +13,7 @@ public interface ICraneOrderRepository
     Task<CraneOrderModel?> FormCraneOrderAsync(Guid craneOrderId, CancellationToken ct);
     Task<CraneOrderModel?> ModerateCraneOrderAsync(Guid craneOrderId, Guid userId, bool isApproved, CancellationToken ct);
     Task<string?> DeleteCraneOrderAsync(Guid craneOrderId, Guid userId, CancellationToken ct);
+    
+    Task UpdateCalculationResultsAsync(Guid craneOrderId, double? totalResult, List<CargoCalculationResult> cargoResults, CancellationToken ct);
+    Task<bool> SaveChangesAsync(CancellationToken ct);
 }

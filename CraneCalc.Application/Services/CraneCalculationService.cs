@@ -17,6 +17,7 @@ public class CraneCalculationService : ICraneCalculationService
     {
         _httpClient = httpClient;
         _httpClient.BaseAddress = new Uri(FastApiBaseUrl);
+        _httpClient.Timeout = TimeSpan.FromSeconds(30);
         _logger = logger;
     }
 
@@ -24,24 +25,21 @@ public class CraneCalculationService : ICraneCalculationService
     {
         try
         {
-            _logger.LogInformation("Sending calculation request to FastAPI for order {OrderId}", 
-                request.CraneOrderId);
+            _logger.LogInformation("Initiating calculation for order {OrderId}", request.CraneOrderId);
             
-            // Логируем данные запроса
-            var jsonRequest = JsonSerializer.Serialize(request, new JsonSerializerOptions 
-            { 
-                WriteIndented = true 
-            });
-            _logger.LogInformation("Request data: {JsonRequest}", jsonRequest);
-
             var response = await _httpClient.PostAsJsonAsync("/calculate", request, ct);
             
             if (response.IsSuccessStatusCode)
             {
-                var result = await response.Content.ReadFromJsonAsync<CalculationResponse>(cancellationToken: ct);
-                _logger.LogInformation("Calculation completed successfully for order {OrderId}", 
+                _logger.LogInformation("Calculation initiated successfully for order {OrderId}", 
                     request.CraneOrderId);
-                return result ?? new CalculationResponse { IsSuccess = false };
+                
+                // Возвращаем пустой ответ, так как результаты придут через callback
+                return new CalculationResponse 
+                { 
+                    CraneOrderId = request.CraneOrderId,
+                    IsSuccess = true 
+                };
             }
             else
             {

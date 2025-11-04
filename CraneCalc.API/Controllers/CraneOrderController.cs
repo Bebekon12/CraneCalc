@@ -1,6 +1,7 @@
 ﻿using CraneCalc.Application.Features.CraneOrder.Commands.DeleteCraneOrder;
 using CraneCalc.Application.Features.CraneOrder.Commands.FormCraneOrder;
 using CraneCalc.Application.Features.CraneOrder.Commands.ModerateCraneOrder;
+using CraneCalc.Application.Features.CraneOrder.Commands.UpdateCalculationResult;
 using CraneCalc.Application.Features.CraneOrder.Commands.UpdateCraneOrder;
 using CraneCalc.Application.Features.CraneOrder.Queries.GetCraneOrder;
 using CraneCalc.Application.Features.CraneOrder.Queries.GetCraneOrderInfo;
@@ -84,6 +85,18 @@ public class CraneOrderController(IMediator mediator) : ControllerBase
             return NotFound();
         
         return Ok(result);
+    }
+    
+    [HttpPost("update-calculation")]
+    public async Task<IActionResult> UpdateCalculationResult([FromBody] UpdateCalculationResultCommand command, CancellationToken ct)
+    {
+        var result = await mediator.Send(command, ct);
+    
+        if (!result)
+            return Unauthorized("Invalid auth token");
+        
+        
+        return Ok(new { success = true });
     }
 
     [Authorize]

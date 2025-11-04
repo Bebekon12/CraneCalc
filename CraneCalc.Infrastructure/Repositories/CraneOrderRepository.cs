@@ -7,6 +7,7 @@ using CraneCalc.Application.Interfaces.Services;
 using CraneCalc.Domain.Enums;
 using CraneCalc.Domain.Exceptions;
 using CraneCalc.Domain.Models;
+using CraneCalc.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CraneCalc.Infrastructure.Repositories;
@@ -121,45 +122,8 @@ public class CraneOrderRepository(AppDbContext context, IMapper mapper, ICraneCa
             {
                 craneOrder.Status = Status.Completed;
                 
-                // Проверяем, что все необходимые параметры заполнены
-                if (craneOrder.LiftingHeight.HasValue && 
-                    craneOrder.LiftingSpeed.HasValue && 
-                    craneOrder.JibOutreach.HasValue)
-                {
-                    // Вызываем асинхронный сервис расчета и ЖДЕМ результат
-                    var calculationRequest = new CalculationRequest
-                    {
-                        CraneOrderId = craneOrderId.ToString(),
-                        LiftingHeight = craneOrder.LiftingHeight,
-                        LiftingSpeed = craneOrder.LiftingSpeed,
-                        JibOutreach = craneOrder.JibOutreach,
-                        Cargos = craneOrder.CraneCargo.Select(cc => new CargoRequest
-                        {
-                            Id = cc.CargoId.ToString(),
-                            Weight = cc.Cargo.Weight
-                        }).ToList()
-                    };
-
-                    // ЖДЕМ результат расчета
-                    var result = await calculationService.CalculateCraneProductivityAsync(calculationRequest, ct);
-                    
-                    // Обновляем результаты сразу
-                    if (result.IsSuccess)
-                    {
-                        // Обновляем результаты для каждого груза
-                        foreach (var cargoResult in result.CargoResults)
-                        {
-                            var craneCargo = craneOrder.CraneCargo.FirstOrDefault(cc => cc.CargoId.ToString() == cargoResult.CargoId);
-                            if (craneCargo != null)
-                            {
-                                craneCargo.CalculationResult = cargoResult.CalculationResult;
-                            }
-                        }
-
-                        // Обновляем общий результат
-                        craneOrder.CalculationResult = result.TotalCalculationResult;
-                    }
-                }
+                // Инициируем асинхронный расчет (не ждем результат)
+                _ = InitiateCalculationAsync(craneOrderId, craneOrder, ct);
             }
             else
             {
@@ -169,6 +133,40 @@ public class CraneOrderRepository(AppDbContext context, IMapper mapper, ICraneCa
         
         await context.SaveChangesAsync(ct);
         return mapper.Map<CraneOrderModel>(craneOrder);
+    }
+
+    private async Task InitiateCalculationAsync(Guid craneOrderId, CraneOrderEntity craneOrder, CancellationToken ct)
+    {
+        try
+        {
+            // Проверяем, что все необходимые параметры заполнены
+            if (craneOrder.LiftingHeight.HasValue && 
+                craneOrder.LiftingSpeed.HasValue && 
+                craneOrder.JibOutreach.HasValue)
+            {
+                var calculationRequest = new CalculationRequest
+                {
+                    CraneOrderId = craneOrderId.ToString(),
+                    LiftingHeight = craneOrder.LiftingHeight,
+                    LiftingSpeed = craneOrder.LiftingSpeed,
+                    JibOutreach = craneOrder.JibOutreach,
+                    Cargos = craneOrder.CraneCargo.Select(cc => new CargoRequest
+                    {
+                        Id = cc.CargoId.ToString(),
+                        Weight = cc.Cargo.Weight
+                    }).ToList()
+                };
+
+                // Отправляем запрос на расчет (не ждем результат)
+                // FastAPI сам отправит результаты через метод update-calculation
+                await calculationService.CalculateCraneProductivityAsync(calculationRequest, ct);
+            }
+        }
+        catch (Exception ex)
+        {
+            // Логируем ошибку, но не прерываем выполнение
+            Console.WriteLine($"Error initiating calculation: {ex.Message}");
+        }
     }
 
     private async Task UpdateCalculationResultsAsync(Guid craneOrderId, CalculationResponse result, CancellationToken ct)
@@ -208,5 +206,43 @@ public class CraneOrderRepository(AppDbContext context, IMapper mapper, ICraneCa
         await context.SaveChangesAsync(ct);
             
         return "success";
+    }
+
+    public async Task<CraneOrderModel?> GetByIdWithCargoAsync(Guid id, CancellationToken ct)
+    {
+        return mapper.Map<CraneOrderModel>(await context.Orders
+            .Include(o => o.CraneCargo)
+            .FirstOrDefaultAsync(o => o.Id == id, ct));
+    }
+
+    public async Task UpdateCalculationResultsAsync(Guid craneOrderId, double? totalResult, List<CargoCalculationResult> cargoResults, CancellationToken ct)
+    {
+        // Получаем entity, а не модель
+        var craneOrder = await context.Orders
+            .Include(o => o.CraneCargo)
+            .FirstOrDefaultAsync(o => o.Id == craneOrderId, ct);
+    
+        if (craneOrder == null) return;
+
+        // Обновляем общий результат
+        craneOrder.CalculationResult = totalResult;
+
+        // Обновляем результаты для каждого груза
+        foreach (var cargoResult in cargoResults)
+        {
+            var craneCargo = craneOrder.CraneCargo.FirstOrDefault(cc => cc.CargoId.ToString() == cargoResult.CargoId);
+            if (craneCargo != null)
+            {
+                craneCargo.CalculationResult = cargoResult.CalculationResult;
+            }
+        }
+
+        // Сохраняем изменения
+        await context.SaveChangesAsync(ct);
+    }
+
+    public async Task<bool> SaveChangesAsync(CancellationToken ct)
+    {
+        return await context.SaveChangesAsync(ct) > 0;
     }
 }
