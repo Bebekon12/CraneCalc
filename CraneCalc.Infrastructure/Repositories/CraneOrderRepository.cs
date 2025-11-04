@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using CraneCalc.Application.Features.CraneOrder.Commands.UpdateCraneOrder;
+using CraneCalc.Application.Features.DTOs.Request;
+using CraneCalc.Application.Features.DTOs.Response;
 using CraneCalc.Application.Interfaces.Repository;
+using CraneCalc.Application.Interfaces.Services;
 using CraneCalc.Domain.Enums;
 using CraneCalc.Domain.Exceptions;
 using CraneCalc.Domain.Models;
@@ -8,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CraneCalc.Infrastructure.Repositories;
 
-public class CraneOrderRepository(AppDbContext context, IMapper mapper) : ICraneOrderRepository
+public class CraneOrderRepository(AppDbContext context, IMapper mapper, ICraneCalculationService calculationService) : ICraneOrderRepository
 {
     public async Task<CraneOrderModel?> GetCraneOrderByIdAsync(Guid craneOrderId, CancellationToken ct)
     {
@@ -103,7 +106,7 @@ public class CraneOrderRepository(AppDbContext context, IMapper mapper) : ICrane
         var craneOrder = await context.Orders
             .Include(cartEntity => cartEntity.CraneCargo)
             .ThenInclude(cartCargoEntity => cartCargoEntity.Cargo)
-            .FirstOrDefaultAsync(c=>c.Id == craneOrderId, ct);
+            .FirstOrDefaultAsync(c => c.Id == craneOrderId, ct);
         
         if(craneOrder == null)
             return null;
@@ -117,40 +120,46 @@ public class CraneOrderRepository(AppDbContext context, IMapper mapper) : ICrane
             if (isApproved)
             {
                 craneOrder.Status = Status.Completed;
-        
-                // Константы
-                const double kV = 0.85;  // Коэффициент использования крана
-                const double tR = 0.5;   // Время ручных операций (мин)
-                const double vT = 30;    // Скорость тележки (м/мин)
-                const double vD = 30;    // Скорость движения крана (м/мин)
-                const double n1 = 1;     // Число поворотов стрелы
-                const double n = 2;      // Максимальное число поворотов
-                const double kSov = 1.0; // Коэффициент совмещения операций
-
-                // Параметры из заявки
-                var h = craneOrder.LiftingHeight;   // Высота подъема (м)
-                var vP = craneOrder.LiftingSpeed;  // Скорость подъема (м/мин)
-                var lT = craneOrder.JibOutreach;   // Вылет стрелы (м)
-                var lD = craneOrder.JibOutreach * 0.5; // Предполагаемое расстояние движения крана
-
-                // Расчет времени цикла (общий для всех грузов)
-                var tM = 2.5 * (h / vP) + 2 * (lT / vT + lD / vD + n1 / n) * kSov;
-                var tC = tM + tR;
-
-                // Для каждого груза рассчитываем производительность индивидуально
-                var cargoList = craneOrder.CraneCargo
-                    .Where(c => c.CraneOrderId == craneOrderId)
-                    .ToList();
-
-                foreach (var cargo in cargoList)
+                
+                // Проверяем, что все необходимые параметры заполнены
+                if (craneOrder.LiftingHeight.HasValue && 
+                    craneOrder.LiftingSpeed.HasValue && 
+                    craneOrder.JibOutreach.HasValue)
                 {
-                    // Используем массу конкретного груза вместо грузоподъемности крана
-                    var productivity = 60 * cargo.Cargo.Weight * kV / tC;
-                    cargo.CalculationResult = Math.Round((double)productivity!, 2);
-                }
+                    // Вызываем асинхронный сервис расчета и ЖДЕМ результат
+                    var calculationRequest = new CalculationRequest
+                    {
+                        CraneOrderId = craneOrderId.ToString(),
+                        LiftingHeight = craneOrder.LiftingHeight,
+                        LiftingSpeed = craneOrder.LiftingSpeed,
+                        JibOutreach = craneOrder.JibOutreach,
+                        Cargos = craneOrder.CraneCargo.Select(cc => new CargoRequest
+                        {
+                            Id = cc.CargoId.ToString(),
+                            Weight = cc.Cargo.Weight
+                        }).ToList()
+                    };
 
-                // Общая производительность для всей корзины
-                craneOrder.CalculationResult = cargoList.Sum(c => c.CalculationResult);
+                    // ЖДЕМ результат расчета
+                    var result = await calculationService.CalculateCraneProductivityAsync(calculationRequest, ct);
+                    
+                    // Обновляем результаты сразу
+                    if (result.IsSuccess)
+                    {
+                        // Обновляем результаты для каждого груза
+                        foreach (var cargoResult in result.CargoResults)
+                        {
+                            var craneCargo = craneOrder.CraneCargo.FirstOrDefault(cc => cc.CargoId.ToString() == cargoResult.CargoId);
+                            if (craneCargo != null)
+                            {
+                                craneCargo.CalculationResult = cargoResult.CalculationResult;
+                            }
+                        }
+
+                        // Обновляем общий результат
+                        craneOrder.CalculationResult = result.TotalCalculationResult;
+                    }
+                }
             }
             else
             {
@@ -160,6 +169,31 @@ public class CraneOrderRepository(AppDbContext context, IMapper mapper) : ICrane
         
         await context.SaveChangesAsync(ct);
         return mapper.Map<CraneOrderModel>(craneOrder);
+    }
+
+    private async Task UpdateCalculationResultsAsync(Guid craneOrderId, CalculationResponse result, CancellationToken ct)
+    {
+        var craneOrder = await context.Orders
+            .Include(o => o.CraneCargo)
+            .FirstOrDefaultAsync(o => o.Id == craneOrderId, ct);
+
+        if (craneOrder != null && result.IsSuccess)
+        {
+            // Обновляем результаты для каждого груза
+            foreach (var cargoResult in result.CargoResults)
+            {
+                var craneCargo = craneOrder.CraneCargo.FirstOrDefault(cc => cc.CargoId.ToString() == cargoResult.CargoId);
+                if (craneCargo != null)
+                {
+                    craneCargo.CalculationResult = cargoResult.CalculationResult;
+                }
+            }
+
+            // Обновляем общий результат
+            craneOrder.CalculationResult = result.TotalCalculationResult;
+
+            await context.SaveChangesAsync(ct);
+        }
     }
 
     public async Task<string?> DeleteCraneOrderAsync(Guid craneOrderId, Guid userId, CancellationToken ct)

@@ -19,5 +19,6 @@ public static class RepositoryServicesConfig
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IJwtProvider, JwtProvider>();
         services.AddScoped<IPasswordHasher, PasswordHasher>();
+        services.AddHttpClient<ICraneCalculationService, CraneCalculationService>();
     }
 }
